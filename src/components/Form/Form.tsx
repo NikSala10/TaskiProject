@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { TypeAddToDo } from "../types/TodoType";
+import type { TypeAddToDo } from "../../types/TodoType";
 
 const FormToDo = ({ addToDo }: TypeAddToDo) => {
   const [toDoInput, setToDoInput] = useState<string>("");
