@@ -1,10 +1,9 @@
 import type { IconTextBarProps } from "../../types/ItemsBar";
 
-const ItemsBar = ({ icon, text, onClick }: IconTextBarProps) => {
+const ItemsBar = ({ icon, text }: IconTextBarProps) => {
   return (
     <div
       className="icon-bar"
-      onClick={onClick}
     >
       <span className="text-xl">{icon}</span>
       <span>{text}</span>
