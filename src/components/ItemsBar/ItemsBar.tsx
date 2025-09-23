@@ -1,4 +1,4 @@
-import type { IconTextBarProps } from "../../types/ItemsBar";
+import type { IconTextBarProps } from "../../types/NavBarType";
 
 const ItemsBar = ({ icon, text }: IconTextBarProps) => {
   return (

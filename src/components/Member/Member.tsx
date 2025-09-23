@@ -1,12 +1,12 @@
-import type { IconTextBarProps } from "../../types/ItemsBar";
+import type {MemberBarProps } from "../../types/NavBarType";
 
-const Member = ({ icon, text }: IconTextBarProps) => {
+const Member = ({ avatar, name }: MemberBarProps) => {
   return (
     <div
       className="member-bar"
     >
-      <span className="icon-member">{icon}</span>
-      <span>{text}</span>
+      <span className="icon-member">{avatar}</span>
+      <span>{name}</span>
     </div>
   );
 };

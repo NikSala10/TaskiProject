@@ -1,17 +1,17 @@
 export const membersIcons = [
   { 
     id: 1, 
-    icon: '../assets/Group 399.png', 
-    text: "Ele" 
+    avatar: '../assets/Group 399.png', 
+    name: "Ele" 
 },
   { 
     id: 1, 
-    icon: '../assets/Group 401.png', 
-    text: "Mimi" 
+    avatar: '../assets/Group 401.png', 
+    name: "Mimi" 
 },
   { 
     id: 1, 
-    icon: '../assets/Group 405.png', 
-    text: "Jui" 
+    avatar: '../assets/Group 405.png', 
+    name: "Jui" 
 },
 ]
