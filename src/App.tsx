@@ -8,10 +8,12 @@ import Groups from "./pages/Groups/Groups";
 function App() {
   return (
     <Router>
-      <NavBar items={menuItems} avatars={membersIcons} />
-      <Routes>
-        <Route path="/" element={<Groups />} />
-      </Routes>
+      <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
+      <div className="screens">
+        <Routes>
+          <Route path="/" element={<Groups />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
