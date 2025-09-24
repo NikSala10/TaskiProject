@@ -1,12 +1,11 @@
 import type {MemberBarProps } from "../../types/NavBarType";
 
-const Member = ({ avatar, name }: MemberBarProps) => {
+const Member = ({ avatar, name, color  }: MemberBarProps) => {
   return (
     <div
-      className="member-bar"
-    >
+      className="member-bar" style={{ backgroundColor: color || "#60a5fa" }}>
       <span className="icon-member">{avatar}</span>
-      <span>{name}</span>
+      <span className="member">{name}</span>
     </div>
   );
 };

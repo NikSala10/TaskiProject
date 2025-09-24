@@ -6,7 +6,7 @@ const ItemsBar = ({ icon, text }: IconTextBarProps) => {
       className="icon-bar"
     >
       <span className="text-xl">{icon}</span>
-      <span>{text}</span>
+      <span className="item">{text}</span>
     </div>
   );
 };

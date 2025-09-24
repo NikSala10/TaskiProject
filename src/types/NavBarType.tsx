@@ -10,6 +10,7 @@ export type IconTextBarProps = {
 export type MemberBarProps = {
   avatar: ReactNode; 
   name: string;
+  color?: string;
 };
 
 export type NavBarProps = {
