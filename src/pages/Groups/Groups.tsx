@@ -13,7 +13,7 @@ const Groups = () => {
   }, [setPageInfo]);
 
   return (
-    <h1>Groups</h1>
+    <p>Groups</p>
   );
 };
 
