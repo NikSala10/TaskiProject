@@ -5,12 +5,13 @@ import { membersIcons } from "./data/memberBar";
 import NavBar from "./components/NavBar/NavBar";
 import Groups from "./pages/Groups/Groups";
 import User from "./components/UserProfile/User";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <Router>
       <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
-      <div className="headerUp"><User/></div>
+      <div className="headerUp"><Header /> <User/></div>
       <div className="screens">
         <Routes>
           <Route path="/" element={<Groups />} />

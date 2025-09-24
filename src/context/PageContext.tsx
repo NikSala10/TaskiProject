@@ -18,8 +18,11 @@ export const PageProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const usePage = () => {
-  const ctx = useContext(PageContext);
-  if (!ctx) throw new Error("usePage debe usarse dentro de PageProvider");
-  return ctx;
+  const context = useContext(PageContext);
+  if (!context) {
+    throw new Error("usePage debe usarse dentro de PageProvider");
+  }
+  return context;
 };
