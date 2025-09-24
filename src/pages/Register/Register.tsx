@@ -1,13 +1,19 @@
-import FormToDo from "../components/";
-// import { useToDo } from "../context/ToDoContext";
-import { ToDoContext } from "../context/ToDoContext";
-import { useContext } from "react";
+import React from "react";
+import SignUpForm from ".../components/Form/FormRegister/FormRegister";
+import "./SignUpPage.css";
 
-const ToDoBuild = () => {
-  const { addToDo } = useContext(ToDoContext);
-  //   const { addToDo } = useToDo();
+const SignUpPage: React.FC = () => {
+  return (
+    <div className="signup-container">
+    <div className="signup-left">
+      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
+    </div>
 
-  return <FormToDo addToDo={addToDo}></FormToDo>;
+      <div className="signup-right">
+        <SignUpForm />
+      </div>
+    </div>
+  );
 };
 
-export default ToDoBuild;
+export default SignUpPage;
