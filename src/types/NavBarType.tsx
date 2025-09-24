@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export type IconTextBarProps = {
   icon: ReactNode; 
   text: string;
+  isActive?: boolean;
   onClick?: () => void; 
 };
 

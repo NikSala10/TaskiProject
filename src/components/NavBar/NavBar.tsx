@@ -1,9 +1,12 @@
+import { useState } from "react";
 import type {NavBarProps } from "../../types/NavBarType";
 import ItemsBar from "../ItemsBar/ItemsBar";
 import Member from "../Member/Member";
 import "./NavBar.css";
 
 const NavBar = ({ items, avatars }: NavBarProps) => {
+  const [activeItem, setActiveItem] = useState<string>("");
+
   return (
     <div
       className="nav-bar">
@@ -21,7 +24,7 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
         </div>
         <div className="items-bar">
             {items.map((item, index) => (
-                <ItemsBar key={index} icon={item.icon} text={item.text} />
+                <ItemsBar key={index} icon={item.icon} text={item.text} isActive={activeItem === item.text} onClick={() => setActiveItem(item.text)} />
             ))}
         </div>
         <div className="avatars-bar">

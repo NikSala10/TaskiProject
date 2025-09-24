@@ -15,6 +15,7 @@
 }
 .logo {
     margin-left: 0.2rem;
+    cursor: pointer;
 }
 .items-bar{
     gap: 12px;
@@ -61,4 +62,7 @@
 }
 .members{
     margin-left: -4rem;
+}
+.icon-bar.active {
+  background-color: rgba(37, 99, 235, 0.1);
 }
