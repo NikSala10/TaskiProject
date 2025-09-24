@@ -1,12 +1,16 @@
-import type { HeaderProps } from "../../types/HeaderType";
+import { usePage } from "../../context/PageContext";
 
-const Header = ({ svg, namepage}: HeaderProps) => {
+type HeaderProps = {
+  className?: string;
+};
+
+const Header = ({ className }: HeaderProps) => {
+  const { pageInfo } = usePage();
+
   return (
-    <div className="header">
-        <div className="" >
-        <span className="icon-head">{svg}</span>
-        <span className="name-page">{namepage}</span>
-        </div>
+    <div className={className}>
+      {pageInfo.icon && <span>{pageInfo.icon}</span>}
+      <h2>{pageInfo.name}</h2>
     </div>
   );
 };
