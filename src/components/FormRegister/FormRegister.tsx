@@ -8,6 +8,7 @@ interface SignUpFormProps {
 const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className="signup-form">
+     <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
       <h2 className="signup-title">Sign up</h2>
       <p className="signup-subtitle">
         Already a member? <a href="/login">Log in</a>
