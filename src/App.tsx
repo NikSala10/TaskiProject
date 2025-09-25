@@ -1,11 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { menuItems } from "./data/itemsBar";
-import { membersIcons } from "./data/memberBar";
-import NavBar from "./components/NavBar/NavBar";
-import Groups from "./pages/Groups/Groups";
-import User from "./components/UserProfile/User";
-import Header from "./components/Header/Header";
+import Home from "./pages/Login/Login";
+import ToDoBuild from "./pages/Registro";
 
 function App() {
   return (
