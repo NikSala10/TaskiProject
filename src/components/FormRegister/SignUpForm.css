@@ -9,14 +9,13 @@
   .signup-image {
     flex: 1;
     background: #fdf9f7;  
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
+    justify-content: left; 
+    align-items: left;  
+       
   }
   
   .signup-form {
     flex: 1;
-    background: #c8a6f5; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -55,7 +54,8 @@
     width: 100%;
     max-width: 320px;
     color: #fff;
-    background-color: #c8a6f5;
+   
+    
   }
   
   .form-group input {
@@ -67,7 +67,10 @@
     background: transparent;  
     color: #fff;    
   }
-  
+  .form-groupinputs {
+    margin-top: -12rem;
+    background-color: #c8a6f5;
+  }
   .form-group input::placeholder {
     color: rgba(255, 255, 255, 0.8);
   }

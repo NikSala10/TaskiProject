@@ -14,6 +14,8 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
         Already a member? <a href="/login">Log in</a>
       </p>
 
+      <div className="form-groupinputs">
+
       <div className="form-group">
         <label htmlFor="username">User name</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" />
@@ -38,6 +40,7 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
       </div>
 
       <button type="submit" className="signup-btn">Start</button>
+      </div>
     </form>
   );
 };
