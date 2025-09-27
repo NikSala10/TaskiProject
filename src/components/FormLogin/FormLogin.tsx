@@ -8,8 +8,10 @@ interface FormLogin {
 const FormLogin: React.FC<FormLogin> = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className="login-form">
+
+      <img src="src/assets/Portada.png" alt="Portada" className="login-image" />
+
       <h1 className="login-title">Login</h1>
-      
       <p className="login-subtitle">
         Not registered yet? <a href="/register" className="signup-link">Sign up</a>
       </p>
