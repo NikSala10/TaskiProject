@@ -1,6 +1,6 @@
-import FormToDo from "../components/";
+import FormToDo from "../../components/Form/Form";
 // import { useToDo } from "../context/ToDoContext";
-import { ToDoContext } from "../context/ToDoContext";
+import { ToDoContext } from "../../context/ToDoContext";
 import { useContext } from "react";
 
 const ToDoBuild = () => {
