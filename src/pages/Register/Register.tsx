@@ -1,4 +1,4 @@
-import FormToDo from "../../components/Form/Form";
+import FormToDo from "../../components/FormRegister/FormRegister";
 // import { useToDo } from "../context/ToDoContext";
 import { ToDoContext } from "../../context/ToDoContext";
 import { useContext } from "react";
