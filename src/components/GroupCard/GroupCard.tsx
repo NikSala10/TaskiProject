@@ -4,9 +4,9 @@ import Button from "../Button/Button";
 
 const GroupCard = ({ groupName, members }: GroupCardType) => {
   return (
-    <div>
-      <h3>{groupName}</h3>
-      <div style={{ display: "flex", gap: "10px" }}>
+    <div className="card-group">
+      <h3 className="group-name">{groupName}</h3>
+      <div className="members-list">
         {members.map((member, index) => (
           <AvatarWithName
             key={index}
@@ -16,7 +16,7 @@ const GroupCard = ({ groupName, members }: GroupCardType) => {
           />
         ))}
       </div>
-        <Button text="Remove" color="#FF935A" width="130px" />
+        <Button text="Remove" color="#FF935A" width="150px" />
     </div>
   );
 };

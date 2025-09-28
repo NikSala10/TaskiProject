@@ -6,4 +6,54 @@
 }
 .cardsGroups{
     display: flex;
+    margin-top: 2rem;
+    gap: 50px;
+}
+.group-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+.card-group {
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 3rem;
+}
+.avatar {
+  width: 38px;
+  height: 38px;
+}
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 40px;
+  border: 1px solid #82C2F6;
+  border-radius: 10px;
+  font-family: sans-serif;
+  width: 280px;
+}
+
+.name {
+  color: #2B438D;
+  font-weight: 500;
+}
+
+.role {
+  color: #2B438D;
+  font-weight: 500;
+  margin-left: auto;
+}
+.name, .role {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.members-list {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
 }

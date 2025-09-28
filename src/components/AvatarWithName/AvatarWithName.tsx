@@ -3,10 +3,10 @@ import type { AvatarWithNameProps } from "../../types/GroupCardType";
 const AvatarWithName = ({avatar, namePlayer, rol}: AvatarWithNameProps) => {
 
   return (
-    <div>
-        <span>{avatar}</span>
-        <span>{namePlayer}</span>
-        <span>{rol}</span>
+    <div className="user-card">
+        <span className="avatar">{avatar}</span>
+        <span className="name">{namePlayer}</span>
+        <span className="role">{rol}</span>
     </div>
   );
 };
