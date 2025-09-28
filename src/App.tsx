@@ -1,15 +1,33 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Login/Login";
-import ToDoBuild from "./pages/Register/Register";
+import NavBar from "./components/NavBar/NavBar";
+import Header from "./components/Header/Header";
+import User from "./components/UserProfile/User";
+import Groups from "./pages/Groups/Groups";
+import { menuItems } from "./data/itemsBar";
+import { membersIcons } from "./data/memberBar";
+import Tasks from "./pages/Tasks/Tasks";
+import PlanReview from "./pages/Plan Review/PlanReview";
+import Ranking from "./pages/Ranking/Ranking";
+import Profile from "./pages/Profile/Profile";
+// import SignUpPage from "./pages/Register/Register";
+
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/build" element={<ToDoBuild />} />
-      </Routes>
+      <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
+      <div className="headerUp"><Header /> <User/></div>
+      <div className="screens">
+        <Routes>
+          <Route path="/" element={<Groups />} />
+          <Route path="/groups" element={<Groups />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/plan-review" element={<PlanReview />} />
+          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
     </Router>
   );
 }

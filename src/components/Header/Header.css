@@ -7,3 +7,6 @@ h2{
     color: #2B438D;
     font-size: 28px;
 }
+.user {
+    cursor: pointer;
+}

@@ -4,6 +4,7 @@ export type IconTextBarProps = {
   icon: ReactNode; 
   text: string;
   isActive?: boolean;
+  path?: string;  
   onClick?: () => void; 
 };
 
