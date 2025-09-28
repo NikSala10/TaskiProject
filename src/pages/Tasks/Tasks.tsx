@@ -16,11 +16,13 @@ const Tasks = () => {
       <div className="all-tasks">
         <TasksList tasks={tasks} />
       </div>
-      <div className="aditional-info">
-        <h3>Additional tasks</h3>
-        <div className="tetxt">
-          <p>You can accept 3 additional <br/>tasks and review them</p>
-          <Button text="View" color="#82C2F6" width="100px" />
+      <div className="add">
+        <div className="aditional-info">
+          <h3>Additional tasks</h3>
+          <div className="tetxt">
+            <p>You can accept 3 additional <br/>tasks and review them</p>
+            <Button text="View" color="#82C2F6" width="100px" />
+          </div>
         </div>
       </div>
     </div>
