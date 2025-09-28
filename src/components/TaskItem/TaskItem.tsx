@@ -1,7 +1,7 @@
 
 const TaskItem = () => {
   return (
-    <div className="task-card">
+    <div className="task-item">
         <h3></h3>
     </div>
   );
