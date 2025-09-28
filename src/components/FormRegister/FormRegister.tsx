@@ -17,25 +17,21 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
       <div className="form-group">
         <label htmlFor="username">User name</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" />
-      </div>
 
-      <div className="form-group">
         <label htmlFor="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" />
-      </div>
 
-      <div className="form-group">
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" />
-      </div>
 
         <input type="checkbox" id="terms" name="terms" />
         <label htmlFor="terms">
           By entering your information, you agree to our <a href="/terms">Terms</a> and{" "}
           <a href="/privacy">Privacy Policy</a>.
         </label>
-
       <button type="submit" className="signup-btn">Start</button>
+      </div>
+
     </form>
   );
 };
