@@ -62,10 +62,7 @@ const CreateGroupForm: React.FC<CreateGroupFormProps> = ({ onSubmit }) => {
           </label>
           <select id="planDuration" name="planDuration" className="form-select">
             <option value="">Select duration</option>
-            <option value="1week">1 Week</option>
-            <option value="2weeks">2 Weeks</option>
             <option value="1month">1 Month</option>
-            <option value="3months">3 Months</option>
             <option value="6months">6 Months</option>
             <option value="1year">1 Year</option>
           </select>
