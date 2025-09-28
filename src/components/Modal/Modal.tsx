@@ -1,11 +1,12 @@
 import type { ModalProps } from '../../types/Modal';
+import "./Modal.css";
 
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div>
-      <div>
+    <div className='modal-background'>
+      <div className='modal-header'>
         <button onClick={onClose}>X</button>
       </div>
         <div>
