@@ -1,4 +1,4 @@
-import type { ModalProps } from '../../types/ModalTasksType';
+import type { ModalProps } from '../../types/Modal';
 
 const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;
