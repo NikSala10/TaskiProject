@@ -1,84 +1,102 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: #fdf9f7;  
+.login-form {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.form-group-img {
+  flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 45rem;
+    height: 1rem;
+    align-items: center;  
+    margin-left:-50rem ;
+    margin-top: 20rem;
+}
+
+
+.login-form .form-group {
+  flex: 1;
+  background: #c8a6f5; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-right: -45rem;
+  padding:18rem;
+  padding-top:35rem;
+  margin-top:-25rem;
 }
 
 .login-title {
   font-size: 2.5rem;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 0.5rem;
   color: #fff;
 }
 
 .login-subtitle {
   text-align: center;
+  font-size: 0.9rem;
   margin-bottom: 2rem;
-  color: #666;
+  color: #fff;
 }
 
 .signup-link {
-  color: #007bff;
+  color: #fff;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .signup-link:hover {
   text-decoration: underline;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  width: 100%;
-  max-width: 320px;
-  color: #fff;
-  background-color: #c8a6f5;
-  margin-top: -50rem;
-  align-items: left;
-}
-
-.form-label {
+.login-form .form-label {
   text-align: left;
-  align-self: flex-start;
   width: 100%;
   margin-bottom: 0.5rem;
+  color: #fff;
+  font-weight: 500;
+  display: block;
 }
 
-.form-input {
+.login-form .form-input {
   padding: 0.8rem;
-    border: 1px solid #fff;   
-    border-radius: 6px;
-    font-size: 0.95rem;
-    outline: none;
-    background: transparent;  
-    color: #fff; 
+  border: 1px solid #fff;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
-.form-input:focus {
-  outline: none;
-  border-color: #007bff;
+.login-form .form-input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .forgot-password {
-  text-align: right;
-  margin-bottom: 2rem;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 1.5rem;
 }
 
 .forgot-link {
-  color: #666;
+  color: #fff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .forgot-link:hover {
-  color: #007bff;
   text-decoration: underline;
 }
 
+/* Botón */
 .login-btn {
   background: #fff;
   color: #c8a6f5;
@@ -89,11 +107,9 @@ html, body {
   border-radius: 6px;
   cursor: pointer;
   width: 100%;
-  max-width: 320px;
   transition: background 0.3s;
-  margin-right:1rem ;
 }
 
 .login-btn:hover {
-  background: #eee;}
-
+  background: #eee;
+}
