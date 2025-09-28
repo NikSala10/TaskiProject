@@ -32,7 +32,7 @@ const Tasks = () => {
         </div>
       </div>
          <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <p>Here are the task details or actions you want to show in the modal.</p>
+          <h3 className="tit-additional">Aditional Tasks</h3>
       </Modal>
 
     </div>
