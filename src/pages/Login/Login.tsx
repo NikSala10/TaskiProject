@@ -5,7 +5,7 @@ import LoginForm from "../../components/FormLogin/FormLogin";
 const LoginPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí irá la lógica de login
+    
     console.log("Login submitted");
   };
 
