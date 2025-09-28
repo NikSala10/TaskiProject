@@ -5,8 +5,6 @@ html, body {
   background: #fdf9f7;  
 }
 
-
-  
   .signup-image {
     flex: 1;
     display: flex;
@@ -27,7 +25,7 @@ html, body {
     align-items: center;
     padding: 2rem;
     color: #fff;
-    margin-right: -49rem;
+    margin-right: -45rem;
     padding:18rem;
     padding-top:35rem;
     margin-top:5rem;
