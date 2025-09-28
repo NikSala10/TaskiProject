@@ -51,9 +51,9 @@
 .text-info {
   display: flex;
   align-items: center;
-  gap: 50px;
-  width: 100%;
+  justify-content: space-between;
   color: #ffffff;
+  width: 70%;
 }
 
 .task-info {
@@ -75,7 +75,6 @@
   color: #ffffff;
   margin: 0;
   padding: 0;
-   flex: 1; 
 }
 
 .priority {
