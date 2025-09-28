@@ -1,16 +1,14 @@
-.tit-taks {
-    margin: 0;
-}
 .btn-create-task{
     display: flex;
     justify-content: flex-end; 
-    padding: 0.5rem 2rem;   
+    padding: 0rem 2rem;   
 }
 .tit{
     font-size: 24px;
     font-weight: 600;
     margin: 0;
     color: #2B438D;
+    margin-bottom: 2rem;
 }
 .tetxt{
     display: flex;
