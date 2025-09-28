@@ -29,13 +29,11 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
         <input type="password" id="password" name="password" placeholder="Enter your password" />
       </div>
 
-      <div className="terms">
         <input type="checkbox" id="terms" name="terms" />
         <label htmlFor="terms">
           By entering your information, you agree to our <a href="/terms">Terms</a> and{" "}
           <a href="/privacy">Privacy Policy</a>.
         </label>
-      </div>
 
       <button type="submit" className="signup-btn">Start</button>
     </form>
