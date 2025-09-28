@@ -10,7 +10,7 @@ const Tasks = () => {
   useSetPageInfo("Tasks");
   const normalTasks = tasks.filter(task => !task.isAdditional);
   const additionalTasks = tasks.filter(task => task.isAdditional);
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -36,6 +36,9 @@ const Tasks = () => {
       </div>
          <Modal isOpen={isModalOpen} onClose={closeModal}>
           <h3 className="tit-additional">Aditional Tasks</h3>
+          <div className="additional-tasks-list">
+            <TasksList tasks={additionalTasks} />
+          </div>
       </Modal>
 
     </div>
