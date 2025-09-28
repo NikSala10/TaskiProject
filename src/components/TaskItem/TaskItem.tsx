@@ -21,6 +21,30 @@ const TaskItem = ({ task }: TaskItemProps) => {
     }
   };
 
+  const renderButton = () => {
+    if (task.isAdditional) {
+      // Botón de "Aceptar" para tareas adicionales
+      return (
+        <button
+          className="accept-btn"
+          onClick={handleToggleComplete}
+        >
+          Aceptar
+        </button>
+      );
+    } else {
+      // Botón de "Check" para tareas normales
+      return (
+        <button
+          className={`complete-btn ${isCompleted ? "completed" : ""}`}
+          onClick={handleToggleComplete}
+        >
+          {isCompleted ? "✓" : ""}
+        </button>
+      );
+    }
+  };
+  
   return (
     <div className={`task-item ${isCompleted ? "completed" : ""}`}>
         <h3>{task.name}</h3>
