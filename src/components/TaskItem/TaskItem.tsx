@@ -13,7 +13,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
       case 'High':
         return '#82C2F6'; 
       case 'Medium':
-        return '#ffffffff'; 
+        return '#C8A2EE'; 
       case 'Low':
         return '#FF935A'; 
       default:
