@@ -3,5 +3,6 @@ export type PeriodType = "Monthly" | "Semi-Annual" | "Annual";
 
 
 export interface CardProps {
-
+  familyName: string; 
+  budget?: string;    
 }

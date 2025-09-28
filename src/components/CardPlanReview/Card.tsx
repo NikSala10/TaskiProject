@@ -1,11 +1,9 @@
 import { useState } from "react";
-import type { PeriodType } from "../../types/PlanReview";
+import type { PeriodType, CardProps } from "../../types/PlanReview";
 import "./Card.css";
 import Button from "../Button/Button";
 
-
-const Card = () => {
-    
+const Card = ({ familyName, budget = "$500,000" }: CardProps) => {  
   const [activePeriod, setActivePeriod] = useState<PeriodType>("Monthly");
 
   const periods: PeriodType[] = ["Monthly", "Semi-Annual", "Annual"];
@@ -16,9 +14,8 @@ const Card = () => {
 
   return (
     <div className="plan-review-container">
-      
       <div className="plan-card">
-        <h2 className="plan-title">Morgan Family</h2>
+        <h2 className="plan-title">{familyName}</h2> 
         <p className="period-text">The current period of this group is:</p>
 
         <div className="period-buttons">
@@ -40,11 +37,12 @@ const Card = () => {
             <input
               type="text"
               className="budget-input"
-              value="$500,000"
+              value={budget} 
               readOnly
             />
             <button className="edit-btn" type="button">
               ✏️
+              <img src="../../assets/Vector.png" alt="" />
             </button>
           </div>
         </div>
