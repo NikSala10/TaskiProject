@@ -23,7 +23,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
 
   return (
     <div className={`task-item ${isCompleted ? "completed" : ""}`}>
-        <h3 className="tit-taks">{task.name}</h3>
+        <h3>{task.name}</h3>
         <div className="task-info">
           <div className="text-info">
             <span className="priority" style={{ backgroundColor: getPriorityColor(task.priority) }}>
