@@ -1,5 +1,5 @@
 
-const TaskCard = () => {
+const TaskItem = () => {
   return (
     <div className="task-card">
         <h3></h3>
@@ -7,4 +7,4 @@ const TaskCard = () => {
   );
 };
 
-export default TaskCard;
+export default TaskItem;
