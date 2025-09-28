@@ -28,14 +28,8 @@ const TaskItem = ({ task }: TaskItemProps) => {
           className="accept-btn">Aceptar</button>
       );
     } else {
-      // Botón de "Check" para tareas normales
       return (
-        <button
-          className={`complete-btn ${isCompleted ? "completed" : ""}`}
-          onClick={handleToggleComplete}
-        >
-          {isCompleted ? "✓" : ""}
-        </button>
+        <button className={`complete-btn ${isCompleted ? "completed" : ""}`} onClick={handleToggleComplete}>{isCompleted ? "✓" : ""}</button>
       );
     }
   };
