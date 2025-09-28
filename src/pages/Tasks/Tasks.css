@@ -113,3 +113,13 @@
   text-decoration: line-through;
   color: #ffffff;
 }
+.tasks-list {
+  display: flex;
+  gap: 2rem; 
+}
+
+.tasks-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
