@@ -5,7 +5,6 @@ import "./CreateGroupPage.css";
 const CreateGroupPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí irá la lógica para crear el grupo
     console.log("Create group submitted");
   };
 
