@@ -1,8 +1,6 @@
 import type { ModalProps } from '../../types/ModalTasksType';
 
-
-
-const ModalAddiitonalTasks = ({ isOpen, onClose, title, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
@@ -18,4 +16,4 @@ const ModalAddiitonalTasks = ({ isOpen, onClose, title, children }: ModalProps) 
   );
 };
 
-export default ModalAddiitonalTasks;
+export default Modal;
