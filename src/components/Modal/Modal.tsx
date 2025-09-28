@@ -8,7 +8,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     <div className='modal-background'>
       <div className='modal-content'>
         <div className='modal-header'>
-          <button onClick={onClose}>X</button>
+          <button onClick={onClose} className="close-btn">X</button>
         </div>
         <div >
           {children}
