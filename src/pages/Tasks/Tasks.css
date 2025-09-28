@@ -1,7 +1,7 @@
 .btn-create-task{
     display: flex;
     justify-content: flex-end; 
-    padding: 1rem 3rem;   
+    padding: 1rem 2rem;   
 }
 .tit{
     font-size: 24px;
