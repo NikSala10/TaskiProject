@@ -1,0 +1,11 @@
+.btn-create-task{
+    display: flex;
+    justify-content: flex-end; 
+    padding: 1rem 3rem;   
+}
+.tit{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: #2B438D;
+}
