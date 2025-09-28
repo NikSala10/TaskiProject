@@ -34,26 +34,7 @@
   background-color: #FF935A;
 }
 
-
-/* Contenido del Modal */
-.modal-body {
-  font-size: 14px;
-  color: #333;
-  line-height: 1.5;
-}
-
-/* Estilo para el botón de aceptar */
-.accept-btn {
-  background-color: #82C2F6;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.accept-btn:hover {
-  background-color: #4e88c0;
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
 }
