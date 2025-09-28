@@ -25,7 +25,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
     if (task.isAdditional) {
       return (
         <button
-          className="accept-btn">Aceptar</button>
+          className="accept-btn">Accept</button>
       );
     } else {
       return (
