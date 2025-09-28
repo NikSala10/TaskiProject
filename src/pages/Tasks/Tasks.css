@@ -130,7 +130,9 @@
   gap: 1rem; 
 }
 .tit-additional{
-  font-size: 22px;
+  font-size: 24x;
+  margin: 0;
+  margin-bottom: 25px;
 }
 .accept-btn {
   border: none;
