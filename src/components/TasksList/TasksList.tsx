@@ -1,7 +1,7 @@
-import type { TaskProps } from "../../types/TasksType";
+import type { TaskListProps } from "../../types/TasksType";
 import TaskItem from "../TaskItem/TaskItem";
 
-const TasksList = ({tasks}: TaskProps) => {
+const TasksList = ({tasks}: TaskListProps) => {
   return (
     <div className="tasks-list">
         {tasks.map((task) => (

@@ -1,6 +1,6 @@
-import type { TaskProps } from "../../types/TasksType";
+import type { TaskItemProps} from "../../types/TasksType";
 
-const TaskItem = ({task}: TaskProps) => {
+const TaskItem = ({task}: TaskItemProps) => {
   return (
     <div className="task-item">
         <h3>{task.name}</h3>
