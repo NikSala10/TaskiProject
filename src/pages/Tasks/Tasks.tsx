@@ -8,6 +8,7 @@ import Modal from "../../components/Modal/Modal";
 
 const Tasks = () => {
   useSetPageInfo("Tasks");
+  const normalTasks = tasks.filter(task => !task.isAdditional);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -20,7 +21,7 @@ const Tasks = () => {
       </div>
       <h3 className="tit">All</h3>
       <div className="all-tasks">
-        <TasksList tasks={tasks} />
+        <TasksList tasks={normalTasks} />
       </div>
       <div className="add">
         <div className="aditional-info">
