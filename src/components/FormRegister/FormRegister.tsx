@@ -9,12 +9,13 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className="signup-form">
      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
+     
+
+      <div className="form-group">
       <h2 className="signup-title">Sign up</h2>
       <p className="signup-subtitle">
         Already a member? <a href="/login">Log in</a>
       </p>
-
-      <div className="form-group">
         <label htmlFor="username">User name</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" />
 
