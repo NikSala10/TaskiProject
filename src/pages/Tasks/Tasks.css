@@ -129,3 +129,6 @@
   flex-direction: column;
   gap: 1rem; 
 }
+.tit-additional{
+  font-size: 22px;
+}
