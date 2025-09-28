@@ -20,8 +20,8 @@ html, body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-left:-80rem ;
-  margin-top: -5rem;
+  margin-left:-105rem ;
+  margin-top: 85rem;
 }
 
 .signup-form {
@@ -34,8 +34,8 @@ html, body {
   color: #fff;
   margin-right: -45rem;
   padding:18rem;
-  padding-top:30rem;
-  margin-top:-25rem;
+  padding-top:1rem;
+  margin-top:-85rem;
 }
 
 
