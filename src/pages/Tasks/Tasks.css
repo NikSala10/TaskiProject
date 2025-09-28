@@ -144,6 +144,6 @@
   transition: filter 0.2s ease;
 }
 
-.custom-button:hover {
+.accept-btn:hover {
   filter: brightness(0.9);
 }
