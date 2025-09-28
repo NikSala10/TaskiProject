@@ -9,6 +9,7 @@ import { membersIcons } from "./data/memberBar";
 import Tasks from "./pages/Tasks/Tasks";
 import PlanReview from "./pages/Plan Review/PlanReview";
 import Ranking from "./pages/Ranking/Ranking";
+import Profile from "./pages/Profile/Profile";
 // import SignUpPage from "./pages/Register/Register";
 
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/plan-review" element={<PlanReview />} />
           <Route path="/ranking" element={<Ranking />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>

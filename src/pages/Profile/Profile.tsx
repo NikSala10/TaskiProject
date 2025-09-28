@@ -1,11 +1,8 @@
-import { useSetPageInfo } from "../../hook/UseSetPage";
-
 const Profile = () => {
  
-    useSetPageInfo("Profile");
-    
+
   return (
-    <p>Ranking</p>
+    <p>Profile</p>
   );
 };
 
