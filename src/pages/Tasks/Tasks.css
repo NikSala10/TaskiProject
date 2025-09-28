@@ -34,3 +34,23 @@
     flex-direction: column;
     gap: 1rem;
 }
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task-item {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.task-item h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.task-item p {
+  margin: 5px 0;
+}
