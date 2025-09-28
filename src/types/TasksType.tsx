@@ -4,6 +4,7 @@ export type Task = {
   points: number;
   time: string;
   priority: 'Low' | 'Medium' | 'High';
+  isAdditional: boolean;
 };
 
 export type TaskItemProps = {
