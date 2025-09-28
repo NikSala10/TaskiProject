@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { PeriodType, CardProps } from "../../types/PlanReview";
 import "./Card.css";
 import Button from "../Button/Button";
+import EditIcon from "../../assets/Vector.png";
 
 const Card = ({ familyName, budget = "$500,000" }: CardProps) => {  
   const [activePeriod, setActivePeriod] = useState<PeriodType>("Monthly");
@@ -41,8 +42,9 @@ const Card = ({ familyName, budget = "$500,000" }: CardProps) => {
               readOnly
             />
             <button className="edit-btn" type="button">
-              ✏️
-              <img src="../../assets/Vector.png" alt="" />
+
+            <img src={EditIcon} alt="Edit" className="edit-icon" />
+            
             </button>
           </div>
         </div>
