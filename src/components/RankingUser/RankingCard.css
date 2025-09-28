@@ -1,0 +1,54 @@
+.ranking-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #d1b3f8; /* borde violeta suave */
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 10px;
+  background: #fffdfd;
+  width: 260px;
+}
+
+.ranking-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ranking-position {
+  font-size: 20px;
+  font-weight: bold;
+  color: #a56cf5; /* número en violeta */
+}
+
+.ranking-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ranking-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.ranking-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #a56cf5; /* nombre violeta */
+}
+
+.ranking-right {
+  font-size: 14px;
+  color: #666;
+}
+
+.ranking-points {
+  font-size: 15px;
+  font-weight: 500;
+  color: #a56cf5;
+}
