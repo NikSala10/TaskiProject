@@ -38,17 +38,19 @@
 .task-item {
   background-color: #C090F0;  
   padding: 20px;
-  margin: 15px 0;
   border-radius: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
+  flex-direction: column;
+}
+
+.text-info {
+  display: flex;
+  gap: 50px;
 }
 
 .task-info {
-  display: flex;
+    display: flex;
+    justify-content: space-between;
 }
 
 .task-item h3 {
@@ -65,14 +67,10 @@
 }
 
 .priority {
-  padding: 5px 10px;
+  padding: 4px 15px;
   font-size: 12px;
   color: white;
   border-radius: 12px;
-  text-transform: capitalize;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 10px;
 }
 
 .complete-btn {

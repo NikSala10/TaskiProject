@@ -25,18 +25,22 @@ const TaskItem = ({ task }: TaskItemProps) => {
     <div className={`task-item ${isCompleted ? "completed" : ""}`}>
         <h3>{task.name}</h3>
         <div className="task-info">
-          <span className="priority" style={{ backgroundColor: getPriorityColor(task.priority) }}>
-            {task.priority}
-          </span>
-          <p>{task.points} Points</p>
-          <p>{task.time}</p>
-          <button
-            className={`complete-btn ${isCompleted ? "completed" : ""}`}
-            onClick={handleToggleComplete}
-          >
-            {isCompleted ? "✓" : ""}
-          </button>
+          <div className="text-info">
+            <span className="priority" style={{ backgroundColor: getPriorityColor(task.priority) }}>
+              {task.priority}
+            </span>
+            <p>{task.points} Points</p>
+            <p>{task.time}</p>
+          </div>
+          <div>
+            <button
+              className={`complete-btn ${isCompleted ? "completed" : ""}`}
+              onClick={handleToggleComplete}>
+              {isCompleted ? "✓" : ""}
+            </button>
         </div>
+          </div>
+          
     </div>
   );
 };
