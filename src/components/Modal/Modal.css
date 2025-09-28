@@ -1,0 +1,75 @@
+/* Fondo oscuro detrás del modal */
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
+
+/* Contenido del Modal */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Estilo para el encabezado del Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Estilo para el botón de cierre */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2B438D;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #FF935A;
+}
+
+/* Contenido del Modal */
+.modal-body {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Estilo para el botón de aceptar */
+.accept-btn {
+  background-color: #82C2F6;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.accept-btn:hover {
+  background-color: #4e88c0;
+}

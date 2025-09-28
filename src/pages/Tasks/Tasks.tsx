@@ -1,11 +1,17 @@
+import { useState } from "react";
 import Button from "../../components/Button/Button";
 import TasksList from "../../components/TasksList/TasksList";
 import { tasks } from "../../data/tasks";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
+import Modal from "../../components/Modal/Modal";
 
 const Tasks = () => {
   useSetPageInfo("Tasks");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="tasks-page">
@@ -21,10 +27,14 @@ const Tasks = () => {
           <h3>Additional tasks</h3>
           <div className="tetxt">
             <p>You can accept 3 additional <br/>tasks and review them</p>
-            <Button text="View" color="#82C2F6" width="100px" />
+            <Button text="View" color="#82C2F6" width="100px" onClick={openModal}/>
           </div>
         </div>
       </div>
+         <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <p>Here are the task details or actions you want to show in the modal.</p>
+      </Modal>
+
     </div>
   );
 };
