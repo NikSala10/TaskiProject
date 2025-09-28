@@ -23,14 +23,9 @@ const TaskItem = ({ task }: TaskItemProps) => {
 
   const renderButton = () => {
     if (task.isAdditional) {
-      // Botón de "Aceptar" para tareas adicionales
       return (
         <button
-          className="accept-btn"
-          onClick={handleToggleComplete}
-        >
-          Aceptar
-        </button>
+          className="accept-btn">Aceptar</button>
       );
     } else {
       // Botón de "Check" para tareas normales
