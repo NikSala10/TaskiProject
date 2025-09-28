@@ -8,6 +8,8 @@ interface CreateGroupFormProps {
 const CreateGroupForm: React.FC<CreateGroupFormProps> = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit} className="create-group-form">
+
+      <img src="src/assets/Portada.png" alt="Portada" className="Group-image" />
       <h1 className="create-group-title">Create your group!</h1>
       
       <p className="create-group-subtitle">
