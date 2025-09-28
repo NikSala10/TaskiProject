@@ -37,10 +37,12 @@
 
 .task-item {
   background-color: #C090F0;  
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
+  width: 450px;
   display: flex;
   flex-direction: column;
+  color: white;
 }
 
 .text-info {
@@ -58,13 +60,12 @@
   margin: 0;
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
 }
 
 .task-details p {
-  margin: 3px 0;
   font-size: 14px;
-  color: #555;
+  color: #ffffff;
 }
 
 .priority {
@@ -87,8 +88,6 @@
   justify-content: center;
   transition: background-color 0.3s, color 0.3s;
 }
-
-/* Estilo cuando la tarea está marcada como completada */
 .complete-btn.completed {
   background-color: #82C2F6;
   color: #ffffff;
