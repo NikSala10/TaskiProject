@@ -1,8 +1,7 @@
-import React from "react";
 import SignUpForm from "../../components/FormRegister/FormRegister";
 import "../../components/FormRegister/SignUpForm.css";
 
-const SignUpPage: React.FC = () => {
+const Register = () => {
   return (
     <div className="signup-container">
     <div className="signup-left">
@@ -15,4 +14,4 @@ const SignUpPage: React.FC = () => {
   );
 };
 
-export default SignUpPage;
+export default Register;

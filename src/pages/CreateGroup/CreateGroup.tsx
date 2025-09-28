@@ -1,6 +1,5 @@
 import React from "react";
 import CreateGroupForm from "../../components/CreateGroup/CreateGroup";
-import "./CreateGroupPage.css";
 
 const CreateGroupPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {

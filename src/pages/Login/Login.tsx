@@ -2,7 +2,7 @@
 import React from "react";
 import LoginForm from "../../components/FormLogin/FormLogin";
 
-const LoginPage: React.FC = () => {
+const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -18,4 +18,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
