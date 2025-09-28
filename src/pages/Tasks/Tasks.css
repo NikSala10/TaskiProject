@@ -36,24 +36,50 @@
 }
 /* Estilos generales de TaskItem */
 .task-item {
-  background-color: #fff;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #E8E8F7;  /* Fondo morado claro */
+  padding: 20px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.task-item:hover {
+  transform: scale(1.02);
+}
+
+.task-info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .task-item h3 {
   margin: 0;
   font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }
 
-.task-item p {
-  margin: 5px 0;
+.task-details p {
+  margin: 3px 0;
   font-size: 14px;
+  color: #555;
+}
+
+/* Prioridad de la tarea con color */
+.priority {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: white;
+  border-radius: 12px;
+  text-transform: capitalize;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
 }
 
 /* Estilo del botón para marcar la tarea como completada */
@@ -81,12 +107,11 @@
 
 /* Cambios de color para la tarea cuando está completada */
 .task-item.completed {
-  background-color: #e0f7fa;  /* Color de fondo cuando la tarea está completada */
-  border-left: 5px solid #82C2F6;
-  opacity: 0.6;  /* Desvanece un poco la tarea completada */
+  background-color: #e0f7fa;  /* Fondo suave cuando la tarea está completada */
+  opacity: 0.6;
 }
 
 .task-item.completed h3 {
-  text-decoration: line-through;  /* Tachar el texto del título */
-  color: #b0bec5;  /* Cambiar color del título */
+  text-decoration: line-through;
+  color: #b0bec5;
 }

@@ -11,11 +11,11 @@ const TaskItem = ({ task }: TaskItemProps) => {
   const getPriorityColor = (priority: 'Low' | 'Medium' | 'High') => {
     switch (priority) {
       case 'High':
-        return '#5E87A3';  // Azul
+        return '#82C2F6'; 
       case 'Medium':
-        return '#A89EC9';  // Morado
+        return '#ffffffff'; 
       case 'Low':
-        return '#F28C82';  // Naranja
+        return '#FF935A'; 
       default:
         return '#A89EC9';
     }
@@ -24,9 +24,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
   return (
     <div className={`task-item ${isCompleted ? "completed" : ""}`}>
       <div className="task-info">
-        {/* Mostramos el nombre de la tarea */}
         <h3>{task.name}</h3>
-        {/* Mostramos la prioridad con un color específico */}
         <span className="priority" style={{ backgroundColor: getPriorityColor(task.priority) }}>
           {task.priority}
         </span>
@@ -36,7 +34,6 @@ const TaskItem = ({ task }: TaskItemProps) => {
         <p>{task.time}</p>
       </div>
 
-      {/* Botón para marcar como completada */}
       <button
         className={`complete-btn ${isCompleted ? "completed" : ""}`}
         onClick={handleToggleComplete}
