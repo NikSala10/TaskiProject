@@ -1,0 +1,110 @@
+import React from "react";
+import "./CreateGroupForm.css";
+
+interface CreateGroupFormProps {
+  onSubmit?: (e: React.FormEvent) => void;
+}
+
+const CreateGroupForm: React.FC<CreateGroupFormProps> = ({ onSubmit }) => {
+  return (
+    <form onSubmit={onSubmit} className="create-group-form">
+      <h1 className="create-group-title">Create your group!</h1>
+      
+      <p className="create-group-subtitle">
+        Manage household chores and turn teamwork into a fun challenge.<br />
+        Create your group, customize it, and start assigning tasks.
+      </p>
+
+      <div className="separator"></div>
+
+      <div className="form-grid">
+        <div className="form-group">
+          <label htmlFor="groupName" className="form-label">
+            <strong>Group Name</strong>
+          </label>
+          <input 
+            type="text" 
+            id="groupName" 
+            name="groupName" 
+            placeholder="Enter group name"
+            className="form-input"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="startDate" className="form-label">
+            <strong>Start Date</strong>
+          </label>
+          <input 
+            type="date" 
+            id="startDate" 
+            name="startDate" 
+            className="form-input"
+          />
+        </div>
+
+        <div className="form-group full-width">
+          <label htmlFor="description" className="form-label">
+            [Optional Description]
+          </label>
+          <textarea 
+            id="description" 
+            name="description" 
+            placeholder="Enter group description (optional)"
+            className="form-textarea"
+            rows={3}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="planDuration" className="form-label">
+            Plan Duration
+          </label>
+          <select id="planDuration" name="planDuration" className="form-select">
+            <option value="">Select duration</option>
+            <option value="1week">1 Week</option>
+            <option value="2weeks">2 Weeks</option>
+            <option value="1month">1 Month</option>
+            <option value="3months">3 Months</option>
+            <option value="6months">6 Months</option>
+            <option value="1year">1 Year</option>
+          </select>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="planBudget" className="form-label">
+            [Plan Budget]
+          </label>
+          <div className="budget-input-container">
+            <span className="currency-symbol">$</span>
+            <input 
+              type="number" 
+              id="planBudget" 
+              name="planBudget" 
+              placeholder="0.00"
+              className="form-input budget-input"
+              min="0"
+              step="0.01"
+            />
+          </div>
+        </div>
+      </div>
+
+      <p className="budget-note">
+        *The budget you enter will be the total amount that group members can earn.
+      </p>
+
+      <div className="separator"></div>
+
+      <button type="submit" className="create-group-btn">
+        Create Group & Generate Code
+      </button>
+
+      <p className="generate-code-note">
+        Generate a unique code for other members to join
+      </p>
+    </form>
+  );
+};
+
+export default CreateGroupForm;
