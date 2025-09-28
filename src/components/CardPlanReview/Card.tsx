@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { PeriodType, CardProps } from "../../types/PlanReview";
+import type { PeriodType, CardProps } from "../../types/PlanReviewType";
 import "./Card.css";
 import Button from "../Button/Button";
 import EditIcon from "../../assets/Vector.png";
