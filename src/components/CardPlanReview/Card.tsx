@@ -1,64 +1,61 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import type { PeriodType } from "../../types/PlanReview";
 import "./Card.css";
-import type { PlanCardProps } from "../../types/PlanReview";
+import Button from "../Button/Button";
 
 
-const PlanCard: React.FC<PlanCardProps> = ({
-  familyName = "Morgan Family",
-  initialBudget = 500000,
-}) => {
-  const [period, setPeriod] = useState<"Monthly" | "Semi-Annual" | "Annual">(
-    "Monthly"
-  );
-  const [budget, setBudget] = useState<number>(initialBudget);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+const Card = () => {
+    
+  const [activePeriod, setActivePeriod] = useState<PeriodType>("Monthly");
 
-  const handleBudgetChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, ""); // solo números
-    setBudget(Number(value));
+  const periods: PeriodType[] = ["Monthly", "Semi-Annual", "Annual"];
+
+  const handlePeriodClick = (period: PeriodType) => {
+    setActivePeriod(period);
   };
 
   return (
-    <div className="plan-card">
-      <h2 className="plan-title">{familyName}</h2>
-      <p>The current period of this group is:</p>
+    <div className="plan-review-container">
+      
+      <div className="plan-card">
+        <h2 className="plan-title">Morgan Family</h2>
+        <p className="period-text">The current period of this group is:</p>
 
-      <div className="period-buttons">
-        {["Monthly", "Semi-Annual", "Annual"].map((p) => (
-          <button
-            key={p}
-            className={`period-btn ${period === p ? "active" : ""}`}
-            onClick={() => setPeriod(p as any)}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
-
-      <div className="budget-section">
-        <label>Budget</label>
-        <div className="budget-input">
-          <input
-            type="text"
-            value={`$${budget.toLocaleString("es-CO")}`}
-            onChange={handleBudgetChange}
-            readOnly={!isEditing}
-          />
-          <span
-            className="edit-icon"
-            onClick={() => setIsEditing((prev) => !prev)}
-          >
-            ✏️
-          </span>
+        <div className="period-buttons">
+          {periods.map((period) => (
+            <button 
+              key={period}
+              className={`period-btn ${activePeriod === period ? "active" : ""}`} 
+              type="button"
+              onClick={() => handlePeriodClick(period)}
+            >
+              {period}
+            </button>
+          ))}
         </div>
-      </div>
 
-      <div className="actions">
-        <button className="continue-btn">Continue Plan</button>
-        <button className="reset-btn">Reset Period</button>
+        <div className="budget-section">
+          <label className="budget-label">Budget</label>
+          <div className="budget-input-container">
+            <input
+              type="text"
+              className="budget-input"
+              value="$500,000"
+              readOnly
+            />
+            <button className="edit-btn" type="button">
+              ✏️
+            </button>
+          </div>
+        </div>
+
+        <div className="actions-section">
+          <Button text="Continue Plan" color="#82C2F6" width="180px"/>
+          <Button text="Reset Period " color="#FF935A" width="180px"/>
+        </div>
       </div>
     </div>
   );
 };
 
-export default PlanCard;
+export default Card;
