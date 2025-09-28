@@ -38,9 +38,9 @@
 
 .task-item {
   background-color: #C090F0;  
-  padding: 1.1rem;
+  padding: 1.2rem;
   border-radius: 10px;
-  width: 400px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -69,7 +69,7 @@
 }
 
 .text-info p {
-  font-size: 14px;
+  font-size: 15px;
   color: #ffffff;
   margin: 0;
   padding: 0;
@@ -113,7 +113,7 @@
 }
 .tasks-list {
   display: flex;
-  gap: 2rem; 
+  gap: 8.5rem; 
 }
 
 .tasks-column {
