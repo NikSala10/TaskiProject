@@ -57,11 +57,7 @@ const TaskItem = ({ task }: TaskItemProps) => {
             <p>{task.time}</p>
           </div>
           <div>
-            <button
-              className={`complete-btn ${isCompleted ? "completed" : ""}`}
-              onClick={handleToggleComplete}>
-              {isCompleted ? "✓" : ""}
-            </button>
+            <div>{renderButton()}</div>
         </div>
           </div>
           
