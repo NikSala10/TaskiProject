@@ -135,11 +135,12 @@
 .accept-btn {
   border: none;
   border-radius: 8px; 
-  color: white;
-  font-weight: bold;
-  height: 45px;
+  color: #82C2F6;
+  font-weight: 600;
+  height: 30px;
+  width: 50px;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   transition: filter 0.2s ease;
 }
