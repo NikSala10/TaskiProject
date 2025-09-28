@@ -1,5 +1,5 @@
 import React from "react";
-import "./CreateGroupForm.css";
+import "./CreateGroup.css";
 
 interface CreateGroupFormProps {
   onSubmit?: (e: React.FormEvent) => void;
