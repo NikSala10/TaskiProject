@@ -105,4 +105,9 @@ html, body {
   .signup-btn:hover {
     background: #eee;
   }
-  
+  .form-group label {
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
