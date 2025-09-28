@@ -8,10 +8,8 @@ const ModalAddiitonalTasks = ({ isOpen, onClose, title, children }: ModalProps) 
   return (
     <div>
       <div>
-        <header>
-          <h3>{title}</h3>
-          <button onClick={onClose}>X</button>
-        </header>
+        <h3>{title}</h3>
+        <button onClick={onClose}>X</button>
         <div>
           {children}
         </div>
