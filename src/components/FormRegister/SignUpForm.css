@@ -4,7 +4,6 @@
     width: 100%;
     font-family: 'Arial', sans-serif;
     color: #fff;
-    overflow-x: hidden
   }
   
   .signup-image {
@@ -31,6 +30,8 @@
     padding: 15rem;
     padding-top: 25rem;
     margin-top:5rem;
+    overflow-x: hidden
+
   }
   
   .signup-title {
