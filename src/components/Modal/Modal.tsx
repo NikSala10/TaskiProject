@@ -1,17 +1,17 @@
 import type { ModalProps } from '../../types/Modal';
 
-const Modal = ({ isOpen, onClose, title, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) return null;
 
   return (
     <div>
       <div>
-        <h3>{title}</h3>
         <button onClick={onClose}>X</button>
+      </div>
         <div>
           {children}
         </div>
-      </div>
+     
     </div>
   );
 };
