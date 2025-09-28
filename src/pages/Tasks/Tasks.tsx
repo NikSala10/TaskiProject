@@ -9,6 +9,8 @@ import Modal from "../../components/Modal/Modal";
 const Tasks = () => {
   useSetPageInfo("Tasks");
   const normalTasks = tasks.filter(task => !task.isAdditional);
+  const additionalTasks = tasks.filter(task => task.isAdditional);
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
