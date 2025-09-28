@@ -23,11 +23,15 @@
 .close-btn {
   background: none;
   border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
   font-weight: bold;
   color: #ffffff;
   transition: color 0.3s ease;
+  background-color: #FF935A;
 }
 
 
