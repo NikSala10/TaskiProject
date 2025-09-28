@@ -1,4 +1,6 @@
 import Button from "../../components/Button/Button";
+import TasksList from "../../components/TasksList/TasksList";
+import { tasks } from "../../data/tasks";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
 
@@ -11,6 +13,9 @@ const Tasks = () => {
         <Button text="Create Task" color="#82C2F6" width="180px" />
       </div>
       <h3 className="tit">All</h3>
+      <div className="all-tasks">
+        <TasksList tasks={tasks} />
+      </div>
       <div className="aditional-info">
         <h3>Additional tasks</h3>
         <div className="tetxt">
