@@ -17,6 +17,7 @@ html, body {
     display: flex;
     justify-content: center;
     width: 42rem;
+    height: 70rem;
     align-items: center;  
     margin-left:-110rem ;
     margin-top: -23rem;  
