@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"; //ReactNode es el tipado de un componente de react, hay que especificar en el import que es type
+import type { ReactNode } from "react"; 
 
 export type TypeToDoProvider = {
   children: ReactNode;
