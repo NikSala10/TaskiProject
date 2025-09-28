@@ -1,6 +1,6 @@
-import type { GroupCardType } from "../../types/GroupCardType";
+import type { AvatarWithNameProps } from "../../types/GroupCardType";
 
-const AvatarWithName = ({avatar, namePlayer, rol}: GroupCardType) => {
+const AvatarWithName = ({avatar, namePlayer, rol}: AvatarWithNameProps) => {
 
   return (
     <div>
