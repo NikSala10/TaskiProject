@@ -10,7 +10,8 @@
     flex: 1;
     background: #fdf9f7;  
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+    width: 95rem;
     align-items: center;  
     margin-left:-98rem ;
     margin-top: -23rem;   
