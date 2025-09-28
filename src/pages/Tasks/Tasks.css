@@ -136,10 +136,11 @@
   border: none;
   border-radius: 8px; 
   color: #82C2F6;
+  background-color: white;
   font-weight: 600;
-  height: 30px;
-  width: 50px;
-  padding: 10px 20px;
+  height: 35px;
+  width: 90px;
+  padding: 8px 8px;
   font-size: 16px;
   cursor: pointer;
   transition: filter 0.2s ease;
