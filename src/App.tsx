@@ -8,10 +8,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Register />}/>
+        <Route path="/" element={< Login/>}/>
         <Route path="/create-group" element={<CreateGroup/>}/>
         <Route path="/login" element={<Login />} />
-
 
       </Routes>
     </Router>
