@@ -79,10 +79,11 @@
 
 .priority {
   padding: 4px 25px;
+  padding-left: 10px;
   margin: 0;
   height: 18px;
-  display: flex;
-  text-align: left;
+  display: inline-block;  
+  text-align: left; 
   font-size: 14px;
   color: white;
   border-radius: 12px;
