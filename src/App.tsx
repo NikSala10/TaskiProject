@@ -10,7 +10,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/build" element={<ToDoBuild />} />
+        <Route path="/Register" element={<FormRegister />} />
+        <Route path="/create-group" element={<CreateGroupPage />} />
         <Route path="/Login" element={<FormLogin />} />
+
 
       </Routes>
     </Router>
