@@ -19,7 +19,7 @@ const Tasks = () => {
   return (
     <div className="tasks-page">
       <div className="btn-create-task">
-        <Button text="Create Task" color="#82C2F6" width="180px" />
+        <Button text="Create Task" color="#82C2F6" width="180px" onClick={() => {navigate('/groups')}}/>
       </div>
       <h3 className="tit">All</h3>
       <div className="all-tasks">
