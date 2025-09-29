@@ -19,6 +19,9 @@
   color: #555;
   text-align: center;
 }
+.div-head{
+    box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+}
 
 .level {
   background-color: #f5f5f5;
