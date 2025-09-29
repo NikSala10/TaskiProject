@@ -23,7 +23,7 @@
 .tasks-summary{
     display: flex;
     gap: 5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: #2B438D;
     font-weight:600;
     font-size: 18px;
@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 7px;
 }
 .user-profile{
     display: flex;
@@ -123,4 +123,9 @@
     left: 85px;
     cursor: pointer;
     position: absolute;
+}
+.log-out{
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0rem 3rem; 
 }
