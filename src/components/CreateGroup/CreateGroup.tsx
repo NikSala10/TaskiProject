@@ -5,6 +5,10 @@ const CreateGroupForm = () => {
     <form className="create-group-form">
 
       <img src="src/assets/Portada.png" alt="Portada" className="Group-image" />
+   
+      <div className="separator"></div>
+
+      <div className="form-grid">
       <h1 className="create-group-title">Create your group!</h1>
       
       <p className="create-group-subtitle">
@@ -12,9 +16,6 @@ const CreateGroupForm = () => {
         Create your group, customize it, and start assigning tasks.
       </p>
 
-      <div className="separator"></div>
-
-      <div className="form-grid">
         <div className="form-group">
           <label htmlFor="groupName" className="form-label">
             <strong>Group Name</strong>
@@ -26,7 +27,7 @@ const CreateGroupForm = () => {
             placeholder="Enter group name"
             className="form-input"
           />
-        </div>
+        
 
         <div className="form-group">
           <label htmlFor="startDate" className="form-label">
@@ -88,7 +89,6 @@ const CreateGroupForm = () => {
         *The budget you enter will be the total amount that group members can earn.
       </p>
 
-      <div className="separator"></div>
 
       <button type="submit" className="create-group-btn">
         Create Group & Generate Code
@@ -97,6 +97,7 @@ const CreateGroupForm = () => {
       <p className="generate-code-note">
         Generate a unique code for other members to join
       </p>
+      </div>
     </form>
   );
 };
