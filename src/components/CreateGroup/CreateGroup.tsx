@@ -11,60 +11,36 @@ const CreateGroupForm = () => {
         Manage household chores and turn teamwork into a fun challenge.<br />
         Create your group, customize it, and start assigning tasks.
         </p>
+        <div className="flex-inputs">
+          <div className="form-group">
+            <label htmlFor="groupName" className="form-label">
+              <strong>Group Name</strong>
+            </label>
+            <input 
+              type="text" 
+              id="groupName" 
+              name="groupName" 
+              placeholder="Enter group name"
+              className="form-input"
+            />
 
-        <div className="form-group">
-          <label htmlFor="groupName" className="form-label">
-            <strong>Group Name</strong>
-          </label>
-          <input 
-            type="text" 
-            id="groupName" 
-            name="groupName" 
-            placeholder="Enter group name"
-            className="form-input"
-          />
-        
-        <div className="form-group">
-          <label htmlFor="startDate" className="form-label">
-            <strong>Start Date</strong>
-          </label>
-          <input 
-            type="date" 
-            id="startDate" 
-            name="startDate" 
-            className="form-input"
-          />
-        </div>
-
-        <div className="form-group full-width">
-          <label htmlFor="description" className="form-label">
-            [Optional Description]
-          </label>
-          <textarea 
-            id="description" 
-            name="description" 
-            placeholder="Enter group description (optional)"
-            className="form-textarea"
-            rows={3}
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="planDuration" className="form-label">
-            Plan Duration
-          </label>
-          <select id="planDuration" name="planDuration" className="form-select">
-            <option value="">Select duration</option>
-            <option value="1month">1 Month</option>
-            <option value="6months">6 Months</option>
-            <option value="1year">1 Year</option>
-          </select>
-        </div>
-
-        <div className="form-group">
+          <div className="form-group full-width">
+            <label htmlFor="description" className="form-label">
+              [Optional Description]
+            </label>
+            <textarea 
+              id="description" 
+              name="description" 
+              placeholder="Enter group description (optional)"
+              className="form-textarea"
+              rows={3}
+            />
+          </div>
+          <div className="form-group">
           <label htmlFor="planBudget" className="form-label">
             [Plan Budget]
           </label>
+
           <div className="budget-input-container">
             <span className="currency-symbol">$</span>
             <input 
@@ -77,6 +53,31 @@ const CreateGroupForm = () => {
               step="0.01"
             />
           </div>
+        </div>
+        </div>
+
+        <div className="form-group">
+            <label htmlFor="startDate" className="form-label">
+              <strong>Start Date</strong>
+            </label>
+            <input 
+              type="date" 
+              id="startDate" 
+              name="startDate" 
+              className="form-input"
+            />
+          </div>
+          
+        <div className="form-group">
+          <label htmlFor="planDuration" className="form-label">
+            Plan Duration
+          </label>
+          <select id="planDuration" name="planDuration" className="form-select">
+            <option value="">Select duration</option>
+            <option value="1month">1 Month</option>
+            <option value="6months">6 Months</option>
+            <option value="1year">1 Year</option>
+          </select>
         </div>
       </div>
 
