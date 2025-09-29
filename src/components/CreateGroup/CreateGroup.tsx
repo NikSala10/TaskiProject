@@ -94,7 +94,7 @@ const CreateGroupForm = () => {
       </div>
     
       <div className="final-btns">
-        <button type="submit" className="create-group-btn" onClick={() => {navigate('/groups')}}>
+        <button className="create-group-btn" onClick={() => {navigate('/groups')}}>
           Create Group & Generate Code
         </button>
 

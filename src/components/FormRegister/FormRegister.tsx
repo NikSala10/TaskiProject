@@ -26,7 +26,7 @@ const SignUpForm = () => {
         <input type="checkbox" id="terms" name="terms" />
         <label htmlFor="terms">
           By entering your information, you agree to our <a href="/terms">Terms</a> and{" "}
-          <a href="/privacy">Privacy Policy</a>.
+          <a>Privacy Policy</a>.
         </label>
       <button type="submit" className="signup-btn" onClick={() => {navigate('/create-group')}}>Start</button>
       </div>
