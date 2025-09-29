@@ -15,13 +15,14 @@ const CreateTask = () => {
     <div className="create-task-page">
       <form>
         <InputTask
-        label="Título de la tarea"
-        placeholder="Escribe un título"
+        label="Title"
+        placeholder="Ej: Take out the trash"
         type="text"
       />
 
       <InputTask
-        label="Prioridad"
+        label="Asignee"
+        placeholder="Choose a member"
         type="select"
         options={[
           { value: "alta", label: "Alta" },
