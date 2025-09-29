@@ -128,4 +128,5 @@
     display: flex;
     justify-content: flex-end; 
     padding: 0rem 3rem; 
+    cursor: pointer;
 }
