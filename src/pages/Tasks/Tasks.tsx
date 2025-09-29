@@ -5,9 +5,12 @@ import { tasks } from "../../data/tasks";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
 import Modal from "../../components/Modal/Modal";
+import { useNavigate } from "react-router";
 
 const Tasks = () => {
   useSetPageInfo("Tasks");
+  const navigate = useNavigate();
+
   const normalTasks = tasks.filter(task => !task.isAdditional);
   const additionalTasks = tasks.filter(task => task.isAdditional);
 
@@ -19,7 +22,7 @@ const Tasks = () => {
   return (
     <div className="tasks-page">
       <div className="btn-create-task">
-        <Button text="Create Task" color="#82C2F6" width="180px" onClick={() => {navigate('/groups')}}/>
+        <Button text="Create Task" color="#82C2F6" width="180px" onClick={() => {navigate('/create-task')}}/>
       </div>
       <h3 className="tit">All</h3>
       <div className="all-tasks">
