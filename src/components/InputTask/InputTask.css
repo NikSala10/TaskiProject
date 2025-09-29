@@ -22,10 +22,13 @@
 }
 
 .input-field-task::placeholder {
-  color: #5a6a8c; /* gris azulado suave */
+  color: #5a6a8c;
+  font-size: 17px;
+  font-weight: 300;
+
 }
 
 .input-field-task:focus {
-  border-color: #27408b; /* un azul más fuerte al enfocar */
+  border-color: #27408b;
   box-shadow: 0 0 3px rgba(39, 64, 139, 0.4);
 }
