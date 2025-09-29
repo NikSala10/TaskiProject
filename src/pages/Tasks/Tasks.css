@@ -155,6 +155,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
+}
+.additional-tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 8rem;
 }
