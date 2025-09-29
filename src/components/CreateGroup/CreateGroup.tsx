@@ -6,9 +6,9 @@ const CreateGroupForm = () => {
 
       <img src="src/assets/Portada.png" alt="Portada" className="Group-image" />
    
-      <div className="separator"></div>
 
       <div className="form-grid">
+        
       <h1 className="create-group-title">Create your group!</h1>
       
       <p className="create-group-subtitle">

@@ -1,153 +1,100 @@
 /* Contenedor principal */
 .create-group-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: Roboto , sans-serif;
-  color: #fff; /* texto blanco por defecto */
+  display: flex;
+  flex-direction: row; /* imagen izquierda, formulario derecha */
+  height: 100vh;
+  width: 100%;
+  background: #fdf9f7; /* color de fondo claro */
+  font-family: 'Arial', sans-serif;
+  color: #333;
 }
 
-/* Título */
+/* Imagen de portada */
+.Group-image {
+  flex: 1;
+  max-width: 100%;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+
+.form-grid {
+  flex: 1;
+  background: #c8a6f5; /* morado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem;
+  margin-top: ;
+  color: #fff;
+}
+
 .create-group-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #fff; /* blanco */
 }
 
 .create-group-subtitle {
-  text-align: center;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.9); /* blanco suave */
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.separator {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.3);
-  margin: 2rem 0;
-}
-
-/* Grid de inputs */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-
-}
-
+/* Campos del formulario */
 .form-group {
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-
 }
 
 .form-group.full-width {
-  grid-column: 1 / -1;
+  width: 100%;
 }
 
-/* Labels */
 .form-label {
-  display: block;
   margin-bottom: 0.5rem;
-  color: #fff; /* blanco */
-  font-size: 0.95rem;
-  font-weight: 500;
 }
-
 
 .form-input,
 .form-select,
 .form-textarea {
-  width: 100%;
   padding: 0.75rem;
-  border: 1px solid #fff;
   border-radius: 8px;
+  border: 1px solid #ccc;
   font-size: 1rem;
-  background: transparent;
-  color: #fff;
-  transition: border-color 0.3s ease, background 0.3s ease;
-  box-sizing: border-box;
+  width: 100%;
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.form-select {
-  background-color: transparent;
-  cursor: pointer;
-  color: #fff;
-}
-
-/* Input de presupuesto con símbolo */
 .budget-input-container {
-  position: relative;
   display: flex;
   align-items: center;
 }
 
 .currency-symbol {
-  position: absolute;
-  left: 12px;
-  color: #fff;
-  font-weight: bold;
-  z-index: 1;
+  margin-right: 0.5rem;
 }
 
-.budget-input {
-  padding-left: 30px;
-}
-
-/* Nota de presupuesto */
-.budget-note {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-style: italic;
-  margin: 1rem 0 2rem 0;
-  text-align: center;
-}
-
-/* Botón principal */
+/* Botón */
 .create-group-btn {
-  width: 100%;
-  max-width: 360px;
-  padding: 1rem;
-  border-radius: 8px;
-  border: none;
-  background: #fff;
+  background-color: #fff;
   color: #c8a6f5;
-  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-  display: block;
-  margin: 0 auto 1rem auto;
-  transition: background 0.3s ease, color 0.3s ease;
+  margin-top: 1rem;
 }
 
 .create-group-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: #a377e9;
+  background-color: #eee;
 }
 
-.generate-code-text {
-  text-align: center;
+.budget-note,
+.generate-code-note {
+  margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
 }
