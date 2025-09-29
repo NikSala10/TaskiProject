@@ -35,16 +35,16 @@
 }
 
 .level p:first-child {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .level:nth-child(1) {
-  background-color: #f39c12;
+  background-color: #FF935A;
   color: #fff;
 }
 
 .level:nth-child(2) {
-  background-color: #9b59b6;
+  background-color: #DBB6FF;
   color: #fff;
 }
 
