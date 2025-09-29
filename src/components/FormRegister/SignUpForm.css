@@ -1,17 +1,20 @@
-.signup-container {
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    font-family: 'Arial', sans-serif;
-    color: #fff;
-  }
-  
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fdf9f7;  
+  font-family: 'Roboto', sans-serif;
+}
+
   .signup-image {
     flex: 1;
-    background: #fdf9f7;  
-    justify-content: left; 
-    align-items: left;  
-       
+    display: flex;
+    justify-content: center;
+    width: 38rem;
+    height: 1rem;
+    align-items: center;  
+    margin-left:-102rem ;
+    margin-top: -37rem;  
   }
   
   .signup-form {
@@ -22,7 +25,11 @@
     align-items: center;
     padding: 2rem;
     color: #fff;
-  }
+    margin-right: -45rem;
+    padding:18rem;
+    padding-top:35rem;
+    margin-top:-1rem;
+    gap: 1.5rem;  }
   
   .signup-title {
     font-size: 2rem;
@@ -35,12 +42,14 @@
     text-align: center;
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
+    margin-top: -0.5rem;
   }
   
   .signup-subtitle a {
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+    align-items:left;
   }
   
   .signup-subtitle a:hover {
@@ -54,8 +63,11 @@
     width: 100%;
     max-width: 320px;
     color: #fff;
-   
-    
+    background-color: #c8a6f5;
+    margin-top: -45rem;
+    align-items: left;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
   }
   
   .form-group input {
@@ -64,7 +76,7 @@
     border-radius: 6px;
     font-size: 0.95rem;
     outline: none;
-    background: transparent;  
+    background: transparent;
     color: #fff;    
   }
   .form-groupinputs {
@@ -75,18 +87,10 @@
     color: rgba(255, 255, 255, 0.8);
   }
   
-  .terms {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    margin-bottom: 1.5rem;
-    max-width: 320px;
-    color: #fff;
-  }
   
   .terms input {
     margin-top: 0.2rem;
+
   }
   
   .signup-btn {
@@ -107,4 +111,18 @@
   .signup-btn:hover {
     background: #eee;
   }
-  
+  .form-group label {
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+#terms  {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin-left:-18rem ;
+   
+}
+ 

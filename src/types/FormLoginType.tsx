@@ -4,9 +4,7 @@ export type TypeToDoProvider = {
   children: ReactNode;
 };
 
-export interface UserRegisterData {
-    username: string;
+export interface LoginFormData {
     email: string;
     password: string;
-    terms: boolean;
   }
