@@ -89,3 +89,6 @@
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
+.flex-inputs {
+  display: flex;
+}

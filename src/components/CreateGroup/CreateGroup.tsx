@@ -12,46 +12,48 @@ const CreateGroupForm = () => {
         Create your group, customize it, and start assigning tasks.
         </p>
         <div className="flex-inputs">
-          <div className="form-group">
-            <label htmlFor="groupName" className="form-label">
-              <strong>Group Name</strong>
-            </label>
-            <input 
-              type="text" 
-              id="groupName" 
-              name="groupName" 
-              placeholder="Enter group name"
-              className="form-input"
-            />
+          <div className="flex-1">
+            <div className="form-group">
+              <label htmlFor="groupName" className="form-label">
+                <strong>Group Name</strong>
+              </label>
+              <input 
+                type="text" 
+                id="groupName" 
+                name="groupName" 
+                placeholder="Enter group name"
+                className="form-input"
+              />
 
-          <div className="form-group full-width">
-            <label htmlFor="description" className="form-label">
-              [Optional Description]
+            <div className="form-group full-width">
+              <label htmlFor="description" className="form-label">
+                [Optional Description]
+              </label>
+              <textarea 
+                id="description" 
+                name="description" 
+                placeholder="Enter group description (optional)"
+                className="form-textarea"
+                rows={3}
+              />
+            </div>
+            <div className="form-group">
+            <label htmlFor="planBudget" className="form-label">
+              [Plan Budget]
             </label>
-            <textarea 
-              id="description" 
-              name="description" 
-              placeholder="Enter group description (optional)"
-              className="form-textarea"
-              rows={3}
-            />
-          </div>
-          <div className="form-group">
-          <label htmlFor="planBudget" className="form-label">
-            [Plan Budget]
-          </label>
 
-          <div className="budget-input-container">
-            <span className="currency-symbol">$</span>
-            <input 
-              type="number" 
-              id="planBudget" 
-              name="planBudget" 
-              placeholder="0.00"
-              className="form-input budget-input"
-              min="0"
-              step="0.01"
-            />
+            <div className="budget-input-container">
+              <span className="currency-symbol">$</span>
+              <input 
+                type="number" 
+                id="planBudget" 
+                name="planBudget" 
+                placeholder="0.00"
+                className="form-input budget-input"
+                min="0"
+                step="0.01"
+              />
+            </div>
           </div>
         </div>
         </div>
@@ -67,7 +69,7 @@ const CreateGroupForm = () => {
               className="form-input"
             />
           </div>
-          
+
         <div className="form-group">
           <label htmlFor="planDuration" className="form-label">
             Plan Duration
