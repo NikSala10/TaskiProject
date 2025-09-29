@@ -130,6 +130,9 @@
     padding: 0rem 3rem; 
     cursor: pointer;
 }
+.groups-ranking {
+    margin-left: -2rem;
+}
 
 .ranking-list{
     display: flex;
