@@ -6,3 +6,53 @@
 .create-task-page{
     margin-top: 1rem;
 }
+.heads-up {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  font-family: 'Arial', sans-serif;
+}
+
+.heads-up h2 {
+  color: #8e44ad;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.div-head p {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.level {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.level p:first-child {
+  font-weight: bold;
+}
+
+.level:nth-child(1) {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.level:nth-child(2) {
+  background-color: #9b59b6;
+  color: #fff;
+}
+
+.level:nth-child(3) {
+  background-color: #3498db;
+  color: #fff;
+}
