@@ -14,10 +14,21 @@ const CreateTask = () => {
   return (
     <div className="create-task-page">
       <form>
-        <InputTask label="Task Name" placeholder="Enter task name" type="text" />
-        <InputTask label="Description" placeholder="Enter task description" type="text" />
-        <InputTask label="Due Date" placeholder="Select due date" type="date" />
-        <InputTask label="Assign To" placeholder="Enter assignee's name" type="text" />
+        <InputTask
+        label="Título de la tarea"
+        placeholder="Escribe un título"
+        type="text"
+      />
+
+      <InputTask
+        label="Prioridad"
+        type="select"
+        options={[
+          { value: "alta", label: "Alta" },
+          { value: "media", label: "Media" },
+          { value: "baja", label: "Baja" },
+        ]}
+      />
         <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
     </div>
