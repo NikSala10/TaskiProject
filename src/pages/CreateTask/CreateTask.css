@@ -70,3 +70,9 @@
     padding: 0rem 3rem;  
     margin-top: -34rem; 
 }
+.go-bacck {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0rem 0rem; 
+}

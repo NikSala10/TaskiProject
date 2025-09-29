@@ -71,6 +71,7 @@ const CreateTask = () => {
               <p className="point">80 points</p>
             </div>
           </div>
+          <div className="go-bacck">   <Button text="Go Back" color="#C090F0" width="200px" /></div>
         </div>
       </div>
     </div>
