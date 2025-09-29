@@ -117,9 +117,8 @@
   width: 1rem;  
   height: 1rem;
 }
-
-Button {
-  margin-top: 0.9rem;
+.actions-section{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-
-

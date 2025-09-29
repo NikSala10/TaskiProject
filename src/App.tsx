@@ -16,31 +16,87 @@ import './App.css';
 import Winners from "./pages/Winners/Winners";
 import RankingPage from "./pages/Ranking/Ranking";
 
+// 👉 Layout que envuelve las páginas que SÍ llevan NavBar y Header
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
+      <div className="headerUp"><Header /> <User/></div>
+      <div className="screens">{children}</div>
+    </>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
-      <div className="headerUp"><Header /> <User/></div>
-      <div className="screens">
-        <Routes>
-          <Route path="/" element={<Register/>}/>
-          <Route path="/groups" element={<Groups />} />
-          <Route path="/tasks" element={<Tasks />} />
-          <Route path="/create-task" element={<CreateTask />} />
-          <Route path="/plan-review" element={<PlanReview />} />
-          <Route path="/ranking" element={<RankingPage />} />
-          <Route path="/winner" element={<Winners />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/create-group" element={<CreateGroupPage/>}/>
-        </Routes>
-      </div>
       <Routes>
+        {/* Rutas SIN header ni navbar */}
+        <Route path="/" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/create-group" element={<CreateGroupPage />} />
 
+        {/* Rutas CON header y navbar */}
+        <Route
+          path="/groups"
+          element={
+            <Layout>
+              <Groups />
+            </Layout>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <Layout>
+              <Tasks />
+            </Layout>
+          }
+        />
+        <Route
+          path="/create-task"
+          element={
+            <Layout>
+              <CreateTask />
+            </Layout>
+          }
+        />
+        <Route
+          path="/plan-review"
+          element={
+            <Layout>
+              <PlanReview />
+            </Layout>
+          }
+        />
+        <Route
+          path="/ranking"
+          element={
+            <Layout>
+              <RankingPage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/winner"
+          element={
+            <Layout>
+              <Winners />
+            </Layout>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Layout>
+              <Profile />
+            </Layout>
+          }
+        />
       </Routes>
     </Router>
   );
 }
+
 export default App;
