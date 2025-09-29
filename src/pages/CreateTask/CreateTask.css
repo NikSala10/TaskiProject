@@ -38,17 +38,17 @@
   font-weight: 500;
 }
 
-.level:nth-child(1) {
+.level p:nth-child(1) {
   background-color: #FF935A;
-  color: #fff;
+  color: #ffffff;
 }
 
-.level:nth-child(2) {
+.level p:nth-child(2) {
   background-color: #DBB6FF;
-  color: #fff;
+  color: #ffffff;
 }
 
-.level:nth-child(3) {
+.level p:nth-child(3) {
   background-color: #82C2F6;
-  color: #fff;
+  color: #ffffff;
 }
