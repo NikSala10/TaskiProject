@@ -6,14 +6,6 @@
 .create-task-page{
     margin-top: 1rem;
 }
-.heads-up {
-  background-color: #f5f5f5;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: auto;
-  font-family: 'Arial', sans-serif;
-}
 
 .heads-up h2 {
   color: #8e44ad;
@@ -29,7 +21,7 @@
 }
 
 .level {
-  background-color: #fff;
+  background-color: #f5f5f5;
   border-radius: 8px;
   padding: 10px;
   display: flex;
