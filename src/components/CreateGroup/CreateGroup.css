@@ -37,12 +37,10 @@ html, body {
 
 .create-group-subtitle {
   font-size: 1rem;
-  margin-bottom: 3rem;
   line-height: 1.4;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -53,6 +51,8 @@ html, body {
 
 .form-label {
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .form-input,
@@ -73,6 +73,8 @@ html, body {
 .budget-input-container {
   display: flex;
   align-items: center;
+  width: 5rem;
+
 }
 
 .currency-symbol {
@@ -106,7 +108,6 @@ html, body {
 .flex-inputs {
   display: flex;
   gap: 4rem;
-  width: 10rem;
   margin-left: 4rem;
 }
 .flex-1
