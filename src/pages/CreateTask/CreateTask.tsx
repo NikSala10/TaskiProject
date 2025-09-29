@@ -63,6 +63,18 @@ const CreateTask = () => {
           <h2>Heads Up!</h2>
           <div className="div-head">
             <p>Each task comes with points based on its level:</p>
+            <div className="level">
+              <p>Low</p>
+              <p>10 points</p>
+            </div>
+            <div className="level">
+              <p>Medium</p>
+              <p>20 points</p>
+            </div>
+            <div className="level">
+              <p>High</p>
+              <p>80 points</p>
+            </div>
           </div>
         </div>
     </div>
