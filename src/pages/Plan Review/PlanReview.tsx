@@ -1,10 +1,15 @@
 import { useSetPageInfo } from "../../hook/UseSetPage";
+import Card from "../../components/CardPlanReview/Card";
+import "./PlanReview.css";
 
 const PlanReview = () => {
-    
-    useSetPageInfo("Plan Review");
+  useSetPageInfo("Plan Review");
+  
   return (
-    <p>Plan Review</p>
+     <div className="plan-review-container">
+      <Card familyName="Morgan Family" budget="$500,000" />
+      <Card familyName="Chimichangas" budget="$500,000" />
+    </div>
   );
 };
 
