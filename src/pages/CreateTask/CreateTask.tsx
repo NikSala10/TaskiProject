@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import Button from "../../components/Button/Button";
 import InputTask from "../../components/InputTask/InputTask";
 import { useSetPageInfo } from "../../hook/UseSetPage";
@@ -6,6 +7,7 @@ import "./CreateTask.css";
 const CreateTask = () => {
   
   useSetPageInfo("Create Task");
+  const navigate = useNavigate();
   
   return (
     <div className="create-task-page">
@@ -71,7 +73,7 @@ const CreateTask = () => {
               <p className="point">80 points</p>
             </div>
           </div>
-          <div className="go-bacck">   <Button text="Go Back" color="#C090F0" width="200px" /></div>
+          <div className="go-bacck">   <Button text="Go Back" color="#C090F0" width="200px" onClick={() => {navigate('/tasks')}}/></div>
         </div>
       </div>
     </div>
