@@ -37,18 +37,3 @@
 .level p:first-child {
   font-weight: 500;
 }
-
-.level p:nth-child(1) {
-  background-color: #FF935A;
-  color: #ffffff;
-}
-
-.level p:nth-child(2) {
-  background-color: #DBB6FF;
-  color: #ffffff;
-}
-
-.level p:nth-child(3) {
-  background-color: #82C2F6;
-  color: #ffffff;
-}
