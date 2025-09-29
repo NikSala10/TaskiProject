@@ -9,7 +9,7 @@ const CreateTask = () => {
 
   // const sendForm = (e) => {
   //     e.preventDefault();
-  //     alert("task created and assigned");
+  //     alert("Task created and assigned");
   // }
 
   return (
