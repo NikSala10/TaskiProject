@@ -4,6 +4,7 @@ import RabitIcon from "../../assets/Conejo.png";
 import ViperIcon from "../../assets/Serpiente.png";
 import WinnerIcon from "../../assets/trophy.png";
 import '../Ranking/Ranking.css';
+import "./Winners.css";
 
 const Winners = () => {
   useSetPageInfo("");
