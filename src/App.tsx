@@ -10,6 +10,10 @@ import PlanReview from "./pages/Plan Review/PlanReview";
 import Ranking from "./pages/Ranking/Ranking";
 import Profile from "./pages/Profile/Profile";
 import CreateTask from "./pages/CreateTask/CreateTask";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+import CreateGroupPage from "./pages/CreateGroup/CreateGroup";
+import './App.css';
 
 
 function App() {
@@ -19,15 +23,21 @@ function App() {
       <div className="headerUp"><Header /> <User/></div>
       <div className="screens">
         <Routes>
-          <Route path="/" element={<Groups />} />
+          <Route path="/" element={<Register/>}/>
           <Route path="/groups" element={<Groups />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/create-task" element={<CreateTask />} />
           <Route path="/plan-review" element={<PlanReview />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-group" element={<CreateGroupPage/>}/>
         </Routes>
       </div>
+      <Routes>
+
+      </Routes>
     </Router>
   );
 }
