@@ -56,8 +56,10 @@ const CreateTask = () => {
           placeholder="Today, 6:00 PM"
           type="date"
           />
-      
-          <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
+
+          <div className="btn-assign">
+            <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
+          </div>
           </div>
         </form>
     </div>
