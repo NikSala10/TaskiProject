@@ -1,4 +1,5 @@
 import type { InputProps } from "../../types/InputTask";
+import "./InputTask.css";
 
 const InputTask = ({ label, placeholder, type, options = [] }: InputProps) => {
   return (
