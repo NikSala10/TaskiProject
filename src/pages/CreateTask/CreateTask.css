@@ -1,7 +1,7 @@
 .inputs-all {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 .create-task-page{
     margin-top: 1rem;
@@ -64,4 +64,9 @@
     width: 65px;
     border-radius: 10px;
 }
-
+.hed{
+    display: flex;
+    justify-content: flex-end; 
+    padding: 0rem 3rem;  
+    margin-top: -35rem; 
+}
