@@ -64,16 +64,16 @@ const CreateTask = () => {
           <div className="div-head">
             <p>Each task comes with points <br/> based on its level:</p>
             <div className="level">
-              <p>Low</p>
-              <p>10 points</p>
+              <p className="val">Low</p>
+              <p className="point">10 points</p>
             </div>
             <div className="level">
-              <p>Medium</p>
-              <p>20 points</p>
+              <p className="val2">Medium</p>
+              <p className="point">20 points</p>
             </div>
             <div className="level">
-              <p>High</p>
-              <p>80 points</p>
+              <p className="val3">High</p>
+              <p className="point">80 points</p>
             </div>
           </div>
         </div>
