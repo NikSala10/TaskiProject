@@ -10,6 +10,7 @@ import Tasks from "./pages/Tasks/Tasks";
 import PlanReview from "./pages/Plan Review/PlanReview";
 import Ranking from "./pages/Ranking/Ranking";
 import Profile from "./pages/Profile/Profile";
+import CreateTask from "./pages/CreateTask/CreateTask";
 // import SignUpPage from "./pages/Register/Register";
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Groups />} />
           <Route path="/groups" element={<Groups />} />
           <Route path="/tasks" element={<Tasks />} />
+          <Route path="/create-task" element={<CreateTask />} />
           <Route path="/plan-review" element={<PlanReview />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/profile" element={<Profile />} />
