@@ -20,6 +20,14 @@ const CreateTask = () => {
         type="text"
       />
 
+    <InputTask
+        label="Choose group"
+        type="select"
+        options={[
+          { value: "1", label: "Morgan Family" },
+          { value: "2", label: "Chimichangas" },
+        ]}
+      />
       <InputTask
         label="Asignee"
         type="select"
@@ -30,7 +38,23 @@ const CreateTask = () => {
           { value: "baja", label: "Patiks" },
         ]}
       />
-      
+
+      <InputTask
+        label="Priority"
+        type="select"
+        options={[
+          { value: "low", label: "Low" },
+          { value: "medium", label: "Medium" },
+          { value: "high", label: "High" },
+        ]}
+      />
+
+      <InputTask
+      label="Schedule"
+      placeholder="Today, 6:00 PM"
+      type="date"
+      />
+
         <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
     </div>
