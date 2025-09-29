@@ -31,7 +31,7 @@
 .level {
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 15px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
 }
@@ -41,4 +41,10 @@
     color: #2B438D;
     font-weight: 500;
     margin: 0;
+}
+.level .val{
+    background-color: #FF935A;
+    color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 10px;
 }
