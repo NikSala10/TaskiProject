@@ -57,3 +57,29 @@
     gap: 15px;
     flex-direction: column;
 }
+.number-space{
+  margin-left: 20px;
+}
+.ranking-item{
+  position: relative;     
+  display: flex;
+  align-items: center;
+}
+.ranking-number{
+  position: absolute;
+  left: 30px;           
+  top: 50%;               
+  transform: translateY(-50%); 
+  font-size: 25px;
+  font-weight: 700;
+  color: #82C2F6;
+}
+
+.info-with-ranking{
+  display: flex;
+  flex-direction: column;
+}
+.points{
+  font-size: 14px;
+  color: #2B438D;
+}
