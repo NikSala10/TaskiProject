@@ -25,10 +25,10 @@ const CreateGroupForm = () => {
                 placeholder="Enter group name"
                 className="form-input"
               />
-
+            </div>
             <div className="form-group full-width">
               <label htmlFor="description" className="form-label">
-                [Optional Description]
+                Optional Description
               </label>
               <textarea 
                 id="description" 
@@ -40,26 +40,24 @@ const CreateGroupForm = () => {
             </div>
 
             <div className="form-group">
-            <label htmlFor="planBudget" className="form-label">
-              [Plan Budget]
-            </label>
+              <label htmlFor="planBudget" className="form-label">
+                Plan Budget
+              </label>
 
-            <div className="budget-input-container">
-              <span className="currency-symbol">$</span>
-              <input 
-                type="number" 
-                id="planBudget" 
-                name="planBudget" 
-                placeholder="0.00"
-                className="form-input budget-input"
-                min="0"
-                step="0.01"
-              />
+              <div className="budget-input-container">
+                <input 
+                  type="number" 
+                  id="planBudget" 
+                  name="planBudget" 
+                  placeholder="$ 0.00"
+                  className="form-input budget-input"
+                  min="0"
+                  step="0.01"
+                />
+              </div>
             </div>
-
-          </div>
         </div>
-        </div>
+        
 
         <div className="flex-2">
         <div className="form-group">
@@ -74,31 +72,33 @@ const CreateGroupForm = () => {
             />
           </div>
 
-        <div className="form-group">
-          <label htmlFor="planDuration" className="form-label">
-            Plan Duration
-          </label>
-          <select id="planDuration" name="planDuration" className="form-select">
-            <option value="">Select duration</option>
-            <option value="1month">1 Month</option>
-            <option value="6months">6 Months</option>
-            <option value="1year">1 Year</option>
-          </select>
-        </div>
+          <div className="form-group">
+            <label htmlFor="planDuration" className="form-label">
+              Plan Duration
+            </label>
+            <select id="planDuration" name="planDuration" className="form-select">
+              <option value="">Select duration</option>
+              <option value="1month">1 Month</option>
+              <option value="6months">6 Months</option>
+              <option value="1year">1 Year</option>
+            </select>
+          </div>
       
       <p className="budget-note">
-        *The budget you enter will be the total amount that group members can earn.
+        The budget you enter will be the total <br /> amount that group members can earn.
       </p>
       </div>
-    </div>
+      </div>
+    
+      <div className="final-btns">
+        <button type="submit" className="create-group-btn">
+          Create Group & Generate Code
+        </button>
 
-      <button type="submit" className="create-group-btn">
-        Create Group & Generate Code
-      </button>
-
-      <p className="generate-code-note">
-        Generate a unique code for other members to join
-      </p>
+        <p className="generate-code-note">
+          Generate a unique code for other members to join
+        </p>
+      </div>
       </div>
     </form>
   );
