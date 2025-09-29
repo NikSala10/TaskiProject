@@ -10,6 +10,7 @@ import Tasks from "./pages/Tasks/Tasks";
 import PlanReview from "./pages/Plan Review/PlanReview";
 import Ranking from "./pages/Ranking/Ranking";
 import Profile from "./pages/Profile/Profile";
+import Winner from "./pages/Winners/Winners";
 // import SignUpPage from "./pages/Register/Register";
 
 
@@ -20,12 +21,13 @@ function App() {
       <div className="headerUp"><Header /> <User/></div>
       <div className="screens">
         <Routes>
-          <Route path="/" element={<Groups />} />
+          <Route path="/" element={<Winner />} />
           <Route path="/groups" element={<Groups />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/plan-review" element={<PlanReview />} />
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/winner" element={<Winner />} />
         </Routes>
       </div>
     </Router>
