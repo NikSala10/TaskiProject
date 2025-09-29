@@ -6,6 +6,6 @@ export type OptionType = {
 export type InputProps = {
   label: string;
   placeholder?: string;
-  type: "text" | "email" | "password" | "number" | "select";
-  options?: OptionType[]; // solo se usa si es select
+  type: "text" | "email" | "password" | "number" | "select" | "date"; 
+  options?: OptionType[]; 
 };
