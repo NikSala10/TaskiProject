@@ -3,7 +3,7 @@
   max-width: 600px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: Roboto , sans-serif;
   color: #fff; /* texto blanco por defecto */
 }
 
@@ -16,7 +16,6 @@
   color: #fff; /* blanco */
 }
 
-/* Subtítulo */
 .create-group-subtitle {
   text-align: center;
   margin-bottom: 2rem;
@@ -24,7 +23,6 @@
   line-height: 1.5;
 }
 
-/* Separador decorativo */
 .separator {
   height: 1px;
   background: rgba(255, 255, 255, 0.3);
@@ -37,6 +35,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 1rem;
+  margin-right: -5rem;
 }
 
 .form-group {
@@ -57,7 +56,7 @@
   font-weight: 500;
 }
 
-/* Inputs */
+
 .form-input,
 .form-select,
 .form-textarea {
