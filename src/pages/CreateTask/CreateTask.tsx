@@ -59,6 +59,12 @@ const CreateTask = () => {
           <Button text="Assign Task" color="#82C2F6" width="480px" />
           </div>
         </form>
+        <div className="heads-up">
+          <h2>Heads Up!</h2>
+          <div className="div-head">
+            <p>Each task comes with points based on its level:</p>
+          </div>
+        </div>
     </div>
   );
 };
