@@ -2,12 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import CreateGroupPage from "./pages/CreateGroup/CreateGroup";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login/>}/>
+        <Route path="/" element={<Register/>}/>
         <Route path="/create-group" element={<CreateGroupPage/>}/>
         <Route path="/login" element={<Login />} />
 
