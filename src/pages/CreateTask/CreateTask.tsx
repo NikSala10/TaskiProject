@@ -5,14 +5,14 @@ const CreateTask = () => {
   
   useSetPageInfo("Create Task");
 
-  const sendForm = (e) => {
-      e.preventDefault();
-      alert("task created and assigned");
-  }
+  // const sendForm = (e) => {
+  //     e.preventDefault();
+  //     alert("task created and assigned");
+  // }
 
   return (
     <div className="create-task-page">
-      <form onSubmit={(e) => sendForm(e)}>
+      <form>
             
           <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
