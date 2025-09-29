@@ -1,14 +1,12 @@
-import User from "../../components/UserProfile/User";
 import Trophy from "../../assets/Trophy.svg"
 import "./profile.css";
+import { useSetPageInfo } from "../../hook/UseSetPage";
 
 const Profile = () => {
+  useSetPageInfo("");
 
   return (
     <div className="container-profile">
-        <div className="user-profile">
-            <User />
-        </div>
         <div className="header-profile">
             <div className="info-user-profile">
                 <div className="img-profile">
