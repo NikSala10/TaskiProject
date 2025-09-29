@@ -1,0 +1,30 @@
+.input-container-task {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: Arial, sans-serif;
+}
+
+.input-label-task {
+  font-weight: bold;
+  color: #1a2a6c; /* azul oscuro tipo #000080 */
+  font-size: 1rem;
+}
+
+.input-field-task {
+  border: 1.5px solid #1a2a6c;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  color: #1a2a6c;
+  outline: none;
+}
+
+.input-field-task::placeholder {
+  color: #5a6a8c; /* gris azulado suave */
+}
+
+.input-field-task:focus {
+  border-color: #27408b; /* un azul más fuerte al enfocar */
+  box-shadow: 0 0 3px rgba(39, 64, 139, 0.4);
+}
