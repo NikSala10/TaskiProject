@@ -25,14 +25,12 @@
     gap: 5rem;
     margin-bottom: 10px;
     color: #2B438D;
-    font-weight:900;
+    font-weight:600;
     font-size: 18px;
 }
 .tasks p{
     margin: 5px;
 }
-
-
 
 .task-num{
     font-size: 28px;
