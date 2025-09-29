@@ -13,12 +13,13 @@
 }
 
 .div-head p {
-  font-size: 14px;
-  color: #555;
-  text-align: center;
+  font-size: 18px;
+  color: #2B438D;
+  font-weight: 500;
 }
 .div-head{
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
 }
 
 .level {
