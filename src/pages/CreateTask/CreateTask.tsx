@@ -6,6 +6,7 @@ import "./CreateTask.css";
 const CreateTask = () => {
   
   useSetPageInfo("Create Task");
+  
   return (
     <div className="create-task-page">
       <div className="inputs-all">
