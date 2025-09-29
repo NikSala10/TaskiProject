@@ -4,5 +4,4 @@ export interface RankingCardProps {
   name: string;
   points: number;
   icon: string;   
-  color: string;  
 }

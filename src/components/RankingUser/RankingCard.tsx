@@ -1,19 +1,18 @@
 import "./RankingCard.css";
 import type { RankingCardProps } from "../../types/RankingType";
 
-
-const RankingCard = ({ position, name, points, icon, color }: RankingCardProps) => {
+const RankingCard = ({ position, name, points, icon }: RankingCardProps) => {
   return (
     <div className="ranking-card">
       <div className="ranking-left">
         <span className="ranking-position">{position}</span>
-        <div className="ranking-icon" style={{ backgroundColor: color }}>
+        <div className="ranking-icon">
           <img src={icon} alt={name} />
         </div>
-        <span className="ranking-name">{name}</span>
-      </div>
-      <div className="ranking-right">
-        <span className="ranking-points">{points} points</span>
+        <div className="ranking-info">
+          <span className="ranking-name">{name}</span>
+          <span className="ranking-points">{points} points</span>
+        </div>
       </div>
     </div>
   );
