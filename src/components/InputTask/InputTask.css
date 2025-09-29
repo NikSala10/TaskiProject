@@ -15,20 +15,22 @@
   border: 1.5px solid #2B438D;
   border-radius: 0.5rem;
   padding: 0.6rem;
-  padding-right: 2rem; /* 👈 espacio para la flecha */
   font-size: 17px;
   font-weight: 300;
   color: #2B438D;
   outline: none;
-  appearance: none; /* 👈 quita el estilo nativo */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url("data:image/svg+xml;utf8,<svg fill='%232B438D' height='30' viewBox='0 0 24 24' width='30' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") 
-    no-repeat right 0.8rem center;
-  background-color: white;
+  background-position: right 0.8rem center;
+  background-repeat: no-repeat;
   background-size: 1rem;
 }
 
+.input-field-task[type="select"],
+select.input-field-task {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%232B438D' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+}
 
 .input-field-task::placeholder {
   color: #5a6a8c;
