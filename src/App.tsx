@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CreateGroup from "./pages/CreateGroup/CreateGroup";
 //import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import CreateGroupPage from "./pages/CreateGroup/CreateGroup";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CreateGroup/>}/>
-        <Route path="/create-group" element={<CreateGroup/>}/>
+        <Route path="/" element={<CreateGroupPage/>}/>
+        <Route path="/create-group" element={<CreateGroupPage/>}/>
         <Route path="/login" element={<Login />} />
 
       </Routes>
