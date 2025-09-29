@@ -1,0 +1,96 @@
+.square-points {
+    width: 320px;
+    height: 235px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px;
+    background-color: #84b1e4;
+    font-size: 30px;
+    
+}
+.subcontainer-profile {
+    display: flex;
+    gap: 100px;
+}
+
+
+.tasks-summary{
+    display: flex;
+    gap: 5rem;
+    margin-bottom: 10px;
+    color: #2B438D;
+    font-weight:900;
+    font-size: 18px;
+}
+.tasks p{
+    margin: 5px;
+}
+
+
+
+.task-num{
+    font-size: 28px;
+    margin: none;
+}
+
+.trophy-img{
+    width: 20px;
+    min-height: 120px;
+    background-color: black;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.square-points p{
+    margin: 0px;
+}
+.header-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.user-profile{
+    display: flex;
+    justify-content: end;
+    margin-right: 50px;
+    margin-top: 45px;
+}
+.info-user-profile{
+    display: flex;
+    margin-right: 20px;
+}
+
+
+.info-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    color: #2B438D;
+    margin-right: 20px;
+    padding-left: 40px;
+}
+
+.name-profile{
+    font-size: 30px;
+    font-weight: 700;
+    color: #2B438D;  
+}
+
+.role-profile{
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #2B438D;
+    color: white;
+    border-radius: 50px;
+    padding: 5px 20px; 
+}
