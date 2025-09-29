@@ -1,5 +1,5 @@
-import AvatarWithName from "../../components/AvatarWithName/AvatarWithName";
 import User from "../../components/UserProfile/User";
+import Trophy from "../../assets/Trophy.svg"
 import "./profile.css";
 
 const Profile = () => {
@@ -43,15 +43,13 @@ const Profile = () => {
         <div className="subcontainer-profile">
             <div className="square-points">
                 <div className="trophy-img">
-                    <p></p>
+                    <img src={Trophy}/>
                 </div>
                 <p className="num-points">140</p>
                 <p>Points</p>
             </div>
 
-            <AvatarWithName avatar={<img src="https://i.pravatar.cc/150?img=3" alt="avatar" />} namePlayer="Nuni" rol="Member" showRanking={false} numPoints={0}/>
-            <AvatarWithName avatar={<img src="https://i.pravatar.cc/150?img=5" alt="avatar" />} namePlayer="Jui" rol="Member" showRanking={false} numPoints={0}/>
-            <AvatarWithName avatar={<img src="https://i.pravatar.cc/150?img=7" alt="avatar" />} namePlayer="Patiks" rol="Member" showRanking={false} numPoints={0}/>
+           
         </div>
             
     </div>

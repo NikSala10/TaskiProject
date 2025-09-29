@@ -37,16 +37,7 @@
     margin: none;
 }
 
-.trophy-img{
-    width: 20px;
-    min-height: 120px;
-    background-color: black;
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
+
 
 .square-points p{
     margin: 0px;
