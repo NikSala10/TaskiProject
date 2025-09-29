@@ -1,5 +1,5 @@
 
-export interface RankingCardProps {
+export interface CardPointProps {
   position: number;
   name: string;
   points: number;

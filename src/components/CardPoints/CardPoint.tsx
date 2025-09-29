@@ -1,7 +1,7 @@
 import "./CardPoint.css";
-import type { RankingCardProps } from "../../types/RankingType";
+import type { CardPointProps } from "../../types/CardPoint";
 
-const RankingCard = ({ position, name, points, icon }: RankingCardProps) => {
+const CardPoint = ({ position, name, points, icon }: CardPointProps) => {
   return (
     <div className="ranking-card">
       <div className="ranking-left">
@@ -18,4 +18,4 @@ const RankingCard = ({ position, name, points, icon }: RankingCardProps) => {
   );
 };
 
-export default RankingCard;
+export default CardPoint;
