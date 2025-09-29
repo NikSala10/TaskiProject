@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<CreateGroupPage/>}/>
+        <Route path="/" element={<Login/>}/>
         <Route path="/create-group" element={<CreateGroupPage/>}/>
         <Route path="/login" element={<Login />} />
 
