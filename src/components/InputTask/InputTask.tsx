@@ -1,8 +1,8 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputProps } from "../../types/InputTask";
 
 
 
-const InputTask = ({ label, placeholder, type = "text", ...rest }: InputProps) => {
+const InputTask = ({ label, placeholder}: InputProps) => {
   return (
     <div className="input-container">
       <label className="input-label">{label}</label>
