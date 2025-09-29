@@ -16,6 +16,7 @@
   font-size: 17px;
   color: #2B438D;
   font-weight: 500;
+  margin: 0;
 }
 .div-head{
     box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.1);
@@ -30,7 +31,7 @@
   padding: 15px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
