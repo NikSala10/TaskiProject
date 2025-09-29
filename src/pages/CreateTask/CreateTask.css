@@ -46,12 +46,14 @@
     background-color: #FF935A;
     color: white;
     padding: 0.2rem 1rem;
+    width: 65px;
     border-radius: 10px;
 }
 .level .val2{
     background-color: #DBB6FF;
     color: white;
     padding: 0.2rem 1rem;
+    width: 65px;
     border-radius: 10px;
 }
 
@@ -59,6 +61,7 @@
     background-color: #82C2F6;
     color: white;
     padding: 0.2rem 1rem;
+    width: 65px;
     border-radius: 10px;
 }
 
