@@ -36,9 +36,9 @@
   justify-content: space-between;
 }
 
-.level p {
+.level .point {
     font-size: 16px;
-    color: #ffffff;
+    color: #2B438D;
     font-weight: 500;
     margin: 0;
 }
