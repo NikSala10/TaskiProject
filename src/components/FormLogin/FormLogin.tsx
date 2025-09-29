@@ -1,7 +1,10 @@
 
+import { useNavigate } from "react-router";
 import "./LoginForm.css";
 
 const FormLogin = () => {
+  const navigate = useNavigate();
+
   return (
     <form className="login-form">
       <div className="form-group-img">
@@ -12,7 +15,7 @@ const FormLogin = () => {
 
       <h1 className="login-title">Login</h1>
       <p className="login-subtitle">
-        Not registered yet? <a href="/register" className="signup-link">Sign up</a>
+        Not registered yet? <a className="signup-link" onClick={() => {navigate('/register')}}>Sign up</a>
       </p>
 
         <label htmlFor="email" className="form-label">Email</label>
@@ -27,7 +30,7 @@ const FormLogin = () => {
         <a href="/forgot-password" className="forgot-link">Forgot your password?</a>
        </div>
 
-       <button type="submit" className="login-btn">Start</button>
+       <button type="submit" className="login-btn" onClick={() => {navigate('/create-group')}}>Start</button>
       </div>
 
     </form>

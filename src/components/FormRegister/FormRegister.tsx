@@ -12,7 +12,7 @@ const SignUpForm = () => {
       <div className="form-group">
       <h2 className="signup-title">Sign up</h2>
       <p className="signup-subtitle">
-        Already a member? <a href="/login" onClick={() => {navigate('/login')}}>Log in</a>
+        Already a member? <a onClick={() => {navigate('/login')}}>Log in</a>
       </p>
         <label htmlFor="username">User name</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" />

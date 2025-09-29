@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router";
 import "./CreateGroup.css";
 
 const CreateGroupForm = () => {
+  const navigate = useNavigate();
+
   return (
     <form className="create-group-form">
 
@@ -91,7 +94,7 @@ const CreateGroupForm = () => {
       </div>
     
       <div className="final-btns">
-        <button type="submit" className="create-group-btn">
+        <button type="submit" className="create-group-btn" onClick={() => {navigate('/groups')}}>
           Create Group & Generate Code
         </button>
 
