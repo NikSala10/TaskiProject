@@ -1,13 +1,8 @@
-import React from "react";
 import "./CreateGroup.css";
 
-interface CreateGroupFormProps {
-  onSubmit?: (e: React.FormEvent) => void;
-}
-
-const CreateGroupForm: React.FC<CreateGroupFormProps> = ({ onSubmit }) => {
+const CreateGroupForm = () => {
   return (
-    <form onSubmit={onSubmit} className="create-group-form">
+    <form className="create-group-form">
 
       <img src="src/assets/Portada.png" alt="Portada" className="Group-image" />
       <h1 className="create-group-title">Create your group!</h1>
