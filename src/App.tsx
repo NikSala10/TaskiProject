@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreateGroup from "./pages/CreateGroup/CreateGroup";
-import Register from "./pages/Register/Register";
+//import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 
 function App() {
