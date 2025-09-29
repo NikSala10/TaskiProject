@@ -3,8 +3,9 @@ import { useSetPageInfo } from "../../hook/UseSetPage";
 import RabitIcon from "../../assets/Conejo.png";
 import ViperIcon from "../../assets/Serpiente.png";
 import WinnerIcon from "../../assets/trophy.png";
+import '../Ranking/Ranking.css';
 
-const winners = () => {
+const Winners = () => {
   useSetPageInfo("");
 
   return (
@@ -27,4 +28,4 @@ const winners = () => {
   );
 };
 
-export default winners;
+export default Winners;

@@ -7,13 +7,14 @@ import { menuItems } from "./data/itemsBar";
 import { membersIcons } from "./data/memberBar";
 import Tasks from "./pages/Tasks/Tasks";
 import PlanReview from "./pages/Plan Review/PlanReview";
-import Ranking from "./pages/Ranking/Ranking";
 import Profile from "./pages/Profile/Profile";
 import CreateTask from "./pages/CreateTask/CreateTask";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
 import CreateGroupPage from "./pages/CreateGroup/CreateGroup";
 import './App.css';
+import Winners from "./pages/Winners/Winners";
+import RankingPage from "./pages/Ranking/Ranking";
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/create-task" element={<CreateTask />} />
           <Route path="/plan-review" element={<PlanReview />} />
-          <Route path="/ranking" element={<Ranking />} />
+          <Route path="/ranking" element={<RankingPage />} />
+          <Route path="/winner" element={<Winners />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

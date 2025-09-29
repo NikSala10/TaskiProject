@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 0.1rem solid #d6b7ff;
   border-radius: 0.5rem;
   padding: 3rem 2rem;
@@ -10,8 +10,8 @@
   width: 100%;
   max-width: 20rem;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
   min-height: 1rem; 
+  cursor: pointer;
 }
 
 .ranking-left {

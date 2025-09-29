@@ -1,9 +1,9 @@
 import "./CardPoint.css";
 import type { CardPointProps } from "../../types/CardPoint";
 
-const CardPoint = ({ position, name, points, icon }: CardPointProps) => {
+const CardPoint = ({ position, name, points, icon, onClick}: CardPointProps) => {
   return (
-    <div className="ranking-card">
+    <div className="ranking-card" onClick={onClick}>
       <div className="ranking-left">
         <span className="ranking-position">{position}</span>
         <div className="ranking-icon">
