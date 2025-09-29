@@ -5,7 +5,7 @@ export type AvatarWithNameProps = {
   namePlayer: string;
   rol: "Admin"| "Member"; 
   showRanking?: boolean; 
-  numPoints: number;
+  numPoints?: number;
 };
 
 
