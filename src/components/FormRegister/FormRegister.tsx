@@ -1,13 +1,8 @@
-import React from "react";
 import "./SignUpForm.css";
 
-interface SignUpFormProps {
-  onSubmit?: (e: React.FormEvent) => void;
-}
-
-const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit }) => {
+const SignUpForm = () => {
   return (
-    <form onSubmit={onSubmit} className="signup-form">
+    <form  className="signup-form">
      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
      
 

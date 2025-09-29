@@ -1,19 +1,16 @@
-import React from "react";
+
 import "./LoginForm.css";
 
-interface FormLogin {
-  onSubmit?: (e: React.FormEvent) => void;
-}
 
-const FormLogin: React.FC<FormLogin> = ({ onSubmit }) => {
+const FormLogin = () => {
   return (
-    <form onSubmit={onSubmit} className="login-form">
+    <form className="login-form">
       <div className="form-group-img">
       <img src="src/assets/Portada.png" alt="Portada" className="login-image" />
       </div>
 
       <div className="form-group">
-        
+
       <h1 className="login-title">Login</h1>
       <p className="login-subtitle">
         Not registered yet? <a href="/register" className="signup-link">Sign up</a>

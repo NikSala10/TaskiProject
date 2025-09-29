@@ -1,34 +1,28 @@
-/* Contenedor principal */
 .create-group-form {
   display: flex;
-  flex-direction: row; /* imagen izquierda, formulario derecha */
-  height: 100vh;
+  flex-direction: row; 
+  height: 100vh; 
   width: 100%;
-  background: #fdf9f7; /* color de fondo claro */
-  font-family: 'Arial', sans-serif;
-  color: #333;
+  gap: 2rem;
+
 }
 
-/* Imagen de portada */
 .Group-image {
-  flex: 1;
-  max-width: 100%;
+  max-width: 50%; 
+  height: auto;
   object-fit: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
 }
 
 
 .form-grid {
   flex: 1;
-  background: #c8a6f5; /* morado */
+  background: #c8a6f5; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 24rem;
   color: #fff;
+  margin-top: -25rem;
+
 }
 
 .create-group-title {
@@ -42,7 +36,6 @@
   line-height: 1.4;
 }
 
-/* Campos del formulario */
 .form-group {
   margin-bottom: 1.5rem;
   display: flex;
@@ -76,7 +69,6 @@
   margin-right: 0.5rem;
 }
 
-/* Botón */
 .create-group-btn {
   background-color: #fff;
   color: #c8a6f5;
