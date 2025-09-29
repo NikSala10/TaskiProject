@@ -11,7 +11,6 @@ import PlanReview from "./pages/Plan Review/PlanReview";
 import Ranking from "./pages/Ranking/Ranking";
 import Profile from "./pages/Profile/Profile";
 import CreateTask from "./pages/CreateTask/CreateTask";
-// import SignUpPage from "./pages/Register/Register";
 
 
 function App() {
