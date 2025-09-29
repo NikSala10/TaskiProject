@@ -5,7 +5,7 @@ import ViperIcon from "../../assets/Serpiente.png";
 import WinnerIcon from "../../assets/trophy.png";
 
 const winners = () => {
-  useSetPageInfo("Groups");
+  useSetPageInfo("");
 
   return (
     <>

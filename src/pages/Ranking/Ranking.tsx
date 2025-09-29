@@ -7,14 +7,17 @@ import ElephantIcon from "../../assets/Elefante.png";
 import RabitIcon from "../../assets/Conejo.png";
 import ViperIcon from "../../assets/Serpiente.png";
 import BunIcon from "../../assets/Mono.png";
+import { useNavigate } from "react-router";
 
 const RankingPage = () => {
 
   useSetPageInfo("Ranking");
+  const navigate = useNavigate();
+
 
   return (
     <div className="ranking-page">
-      <CardPoint position={1} name="Squirrel" points={140} icon={SquirrelIcon}  />
+      <CardPoint position={1} name="Squirrel" points={140} icon={SquirrelIcon} onClick={() => {navigate('/winner')}}  />
       <CardPoint position={2} name="Nunu" points={110} icon={RabitIcon} />
       <CardPoint position={3} name="Viper" points={107} icon={ViperIcon}  />
       <CardPoint position={4} name="Bear" points={101} icon={BearIcon}  />

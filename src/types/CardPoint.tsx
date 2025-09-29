@@ -4,4 +4,5 @@ export interface CardPointProps {
   name: string;
   points: number;
   icon: string;   
+  onClick?: () => void;
 }
