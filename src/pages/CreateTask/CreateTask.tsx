@@ -13,8 +13,8 @@ const CreateTask = () => {
   return (
     <div className="create-task-page">
       <form>
-            
-          <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
+        
+        <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
     </div>
   );
