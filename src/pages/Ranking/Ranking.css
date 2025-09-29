@@ -1,0 +1,12 @@
+.ranking-page {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 20rem 20rem;
+  gap: 2rem;
+}
+
+.ranking-card {
+  width: 20rem; 
+  max-width: none; 
+  margin-bottom: 0;
+}

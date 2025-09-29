@@ -1,4 +1,5 @@
 import RankingCard from "../../components/RankingUser/RankingCard";
+import "./Ranking.css";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import SquirrelIcon from "../../assets/Ardilla.png";
 import BearIcon from "../../assets/Oso.png";
