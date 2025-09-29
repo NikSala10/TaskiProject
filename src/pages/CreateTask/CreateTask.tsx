@@ -14,7 +14,7 @@ const CreateTask = () => {
     <div className="create-task-page">
       <form onSubmit={(e) => sendForm(e)}>
             
-          <Button text="Create Task" type="submit" />
+          <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
     </div>
   );
