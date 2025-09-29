@@ -22,14 +22,15 @@ const CreateTask = () => {
 
       <InputTask
         label="Asignee"
-        placeholder="Choose a member"
         type="select"
         options={[
-          { value: "alta", label: "Alta" },
-          { value: "media", label: "Media" },
-          { value: "baja", label: "Baja" },
+          { value: "alta", label: "Choose a member" },
+          { value: "alta", label: "Nuni" },
+          { value: "media", label: "Jui" },
+          { value: "baja", label: "Patiks" },
         ]}
       />
+      
         <Button text="Assign Task" type="submit" color="#82C2F6" width="400px" />
         </form>
     </div>
