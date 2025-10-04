@@ -1,36 +1,76 @@
-
 import { useNavigate } from "react-router";
 import "./LoginForm.css";
+import Portada from "../../assets/Portada.png";
 
 const FormLogin = () => {
   const navigate = useNavigate();
 
   return (
-    <form className="login-form" onSubmit={(e) => {e.preventDefault();}}>
-      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
-      <div className="form-group">
-
-      <h1 className="login-title">Login</h1>
-      <p className="login-subtitle">
-        Not registered yet? <a className="signup-link" onClick={() => {navigate('/register')}}>Sign up</a>
-      </p>
-
-        <label htmlFor="email" className="form-label">Email</label>
-        <input 
-          type="email" id="email" name="email" placeholder="Enter your email" className="form-input"/>
-      
-        <label htmlFor="password" className="form-label">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" className="form-input"
-        />
-
-       <div className="forgot-password">
-        <a href="/forgot-password" className="forgot-link">Forgot your password?</a>
-       </div>
-
-       <button type="submit" className="login-btn" onClick={() => {navigate('/create-group')}}>Start</button>
+    <div className="lfx-container">
+      {/* Imagen a la izquierda */}
+      <div className="lfx-img-box">
+        <img src={Portada} alt="Portada" className="lfx-img" />
       </div>
 
-    </form>
+      {/* Formulario a la derecha */}
+      <form
+        className="lfx-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          navigate("/create-group");
+        }}
+      >
+        <h1 className="lfx-title">Login</h1>
+
+        <p className="lfx-subtitle">
+          Not registered yet?{" "}
+          <a
+            className="lfx-link"
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
+            Sign up
+          </a>
+        </p>
+
+        <div className="lfx-group">
+          <label htmlFor="email" className="lfx-label">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="lfx-input"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div className="lfx-group">
+          <label htmlFor="password" className="lfx-label">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="lfx-input"
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <div className="lfx-forgot">
+          <a className="lfx-forgot-link">
+            Forgot your password?
+          </a>
+        </div>
+
+        <button type="submit" className="lfx-btn">
+          Start
+        </button>
+      </form>
+    </div>
   );
 };
 

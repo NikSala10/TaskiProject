@@ -1,4 +1,3 @@
-/* --- Contenedor general --- */
 .suf-container {
   display: flex;
   flex-direction: row;
@@ -7,7 +6,6 @@
   background: #c8a6f5;
 }
 
-/* --- Imagen a la izquierda --- */
 .suf-img-box {
   width: 40%;
   height: 100%;
@@ -22,7 +20,6 @@
   object-fit: cover;
 }
 
-/* --- Formulario a la derecha --- */
 .suf-form {
   width: 60%;
   display: flex;
@@ -35,7 +32,6 @@
   gap: 1.6rem;
 }
 
-/* --- Títulos y subtítulos --- */
 .suf-title {
   font-size: 3rem;
   font-weight: bold;
@@ -48,9 +44,10 @@
 
 .suf-subtitle {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
   margin-top: -0.5rem;
+  cursor: pointer;
 }
 
 .suf-link {
@@ -63,7 +60,6 @@
   text-decoration: underline;
 }
 
-/* --- Campos del formulario --- */
 .suf-group {
   display: flex;
   flex-direction: column;
@@ -90,7 +86,6 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* --- Checkbox de términos --- */
 .suf-terms {
   display: flex;
   align-items: flex-start;
@@ -109,7 +104,6 @@
   color: #fff;
 }
 
-/* --- Botón --- */
 .suf-btn {
   background: #fff;
   color: #c8a6f5;
@@ -127,4 +121,57 @@
 
 .suf-btn:hover {
   background: #eee;
+}
+
+/* --- 📱 Responsive SUF (imagen arriba, formulario abajo) --- */
+@media (max-width: 900px) {
+  .suf-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .suf-img-box {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .suf-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .suf-form {
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+    align-items: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .suf-title {
+    font-size: 2rem;
+  }
+
+  .suf-subtitle {
+    font-size: 1rem;
+  }
+
+  .suf-input,
+  .suf-btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .suf-terms {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .suf-terms-label {
+    font-size: 0.9rem;
+  }
 }

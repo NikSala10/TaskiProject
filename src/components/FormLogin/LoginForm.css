@@ -1,103 +1,108 @@
-.login-form {
-  font-family: 'Roboto', sans-serif;
+.lfx-container {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  background: #c8a6f5;
+  font-family: "Roboto", sans-serif;
 }
 
-.form-group-img {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    margin: 0;
+.lfx-img-box {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-group-img img {
-    width: 100%; 
-    height: 100vh; 
-    object-fit: cover;
+.lfx-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.login-form .form-group {
-  flex: 1;
-  background: #c8a6f5; 
+.lfx-form {
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #c8a6f5;
   color: #fff;
-
-  margin-bottom: 0;
-  padding: 4rem;   /* reduce un poco el padding para que no se aplaste */
+  padding: 4rem;
+  gap: 2rem;
 }
 
-.login-title {
-  font-size: 2.5rem;
+.lfx-title {
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.login-subtitle {
   text-align: center;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
-  color: #fff;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
 }
 
-.signup-link {
+.lfx-subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+  cursor: pointer;
+}
+
+.lfx-link {
   color: #fff;
+  font-weight: 600;
   text-decoration: none;
+}
+
+.lfx-link:hover {
+  text-decoration: underline;
+}
+
+.lfx-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+.lfx-label {
   font-weight: 600;
 }
 
-.signup-link:hover {
-  text-decoration: underline;
-}
-
-.login-form .form-label {
-  text-align: left;
-  width: 300px;
-  margin-bottom: 0.5rem;
-  color: #fff;
-  font-weight: 500;
-  display: block;
-  margin-left: -2rem;
-}
-
-.login-form .form-input {
+.lfx-input {
   padding: 0.8rem;
   border: 1px solid #fff;
   border-radius: 6px;
-  font-size: 0.95rem;
-  outline: none;
   background: transparent;
   color: #fff;
-  width: 300px;
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  outline: none;
 }
 
-.login-form .form-input::placeholder {
+.lfx-input::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
 
-.forgot-password {
-  text-align: left;
+.lfx-forgot {
   width: 100%;
-  margin-bottom: 1.5rem;
+  max-width: 350px;
 }
 
-.forgot-link {
+.lfx-forgot-link {
   color: #fff;
   text-decoration: none;
-  font-size: 0.85rem;
- margin-left: 9.5rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.forgot-link:hover {
+.lfx-forgot-link:hover {
   text-decoration: underline;
 }
 
-.login-btn {
+.lfx-btn {
   background: #fff;
   color: #c8a6f5;
   padding: 0.9rem;
@@ -106,10 +111,62 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  width: 330px;
-  transition: background 0.3s;
+  width: 100%;
+  max-width: 350px;
+  transition: background 0.3s ease;
 }
 
-.login-btn:hover {
+.lfx-btn:hover {
   background: #eee;
+}
+
+@media (max-width: 900px) {
+  .lfx-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .lfx-img-box {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .lfx-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lfx-form {
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+    align-items: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .lfx-title {
+    font-size: 2rem;
+  }
+
+  .lfx-subtitle {
+    font-size: 1rem;
+  }
+
+  .lfx-input,
+  .lfx-btn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .lfx-forgot {
+    text-align: center;
+  }
+
+  .lfx-forgot-link {
+    display: inline-block;
+  }
 }
