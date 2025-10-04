@@ -1,120 +1,130 @@
-.signup-form {
-  overflow: hidden;
+/* --- Contenedor general --- */
+.suf-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  background: #c8a6f5;
 }
-    .signup-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    width: 38rem;
-    height: 1rem;
-    align-items: center;  
-    margin-left:-102rem ;
-    margin-top: -37rem;  
-  }
-  
-  .signup-form {
-    flex: 1;
-    background: #c8a6f5; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    color: #fff;
-    margin-right: -45rem;
-    padding:18rem;
-    padding-top:35rem;
-    margin-top:-1rem;
-    gap: 1.5rem;  }
-  
-  .signup-title {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-  
-  .signup-subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    margin-top: -0.5rem;
-  }
-  
-  .signup-subtitle a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    align-items:left;
-  }
-  
-  .signup-subtitle a:hover {
-    text-decoration: underline;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 320px;
-    color: #fff;
-    background-color: #c8a6f5;
-    margin-top: -45rem;
-    align-items: left;
-    margin-bottom: 1.5rem;
-    gap: 0.5rem;
-  }
-  
-  .form-group input {
-    padding: 0.8rem;
-    border: 1px solid #fff;   
-    border-radius: 6px;
-    font-size: 0.95rem;
-    outline: none;
-    background: transparent;
-    color: #fff;    
-  }
-  
-  .form-group input::placeholder {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  
-  .terms input {
-    margin-top: 0.2rem;
 
-  }
-  
-  .signup-btn {
-    background: #fff;
-    color: #c8a6f5;
-    padding: 0.9rem;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 320px;
-    transition: background 0.3s;
-    margin-right:1rem ;
-  }
-  
-  .signup-btn:hover {
-    background: #eee;
-  }
-  .form-group label {
-    text-align: left;
-    align-self: flex-start;
-    width: 100%;
-    margin-bottom: 0.5rem;
+/* --- Imagen a la izquierda --- */
+.suf-img-box {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#terms  {
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    margin-left:-18rem ;
-   
+
+.suf-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Formulario a la derecha --- */
+.suf-form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  color: #fff;
+  background: #c8a6f5;
+  gap: 1.6rem;
+}
+
+/* --- Títulos y subtítulos --- */
+.suf-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.suf-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: -0.5rem;
+}
+
+.suf-link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.suf-link:hover {
+  text-decoration: underline;
+}
+
+/* --- Campos del formulario --- */
+.suf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+.suf-label {
+  font-weight: 600;
+}
+
+.suf-input {
+  padding: 0.8rem;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.suf-input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Checkbox de términos --- */
+.suf-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+.suf-checkbox {
+  margin-top: 0.3rem;
+}
+
+.suf-terms-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* --- Botón --- */
+.suf-btn {
+  background: #fff;
+  color: #c8a6f5;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  max-width: 350px;
+  transition: background 0.3s ease;
+}
+
+.suf-btn:hover {
+  background: #eee;
 }

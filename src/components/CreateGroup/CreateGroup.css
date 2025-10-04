@@ -48,10 +48,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   width: 62%;
   color: white;
-  padding: 5rem;
+  padding: 1.8rem;
   background: #c8a6f5; 
 }
 

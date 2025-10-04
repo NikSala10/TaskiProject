@@ -6,11 +6,8 @@ const FormLogin = () => {
   const navigate = useNavigate();
 
   return (
-    <form className="login-form">
-      <div className="form-group-img">
-      <img src="src/assets/Portada.png" alt="Portada" className="login-image" />
-      </div>
-
+    <form className="login-form" onSubmit={(e) => {e.preventDefault();}}>
+      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
       <div className="form-group">
 
       <h1 className="login-title">Login</h1>
