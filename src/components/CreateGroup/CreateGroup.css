@@ -149,8 +149,7 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  width: 100%;
-  max-width: 320px;
+  width: 350px;
   transition: background 0.3s;
   margin-right:1rem ;
 }

@@ -29,8 +29,12 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
           className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {/* Icon for Hamburger */}
-          <div className="icon-bar">☰</div>
+          <div className="icon-bar"><svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 19.2188C0.875 18.6837 1.1968 18.25 1.59375 18.25H17.4062C17.8032 18.25 18.125 18.6837 18.125 19.2188C18.125 19.7538 17.8032 20.1875 17.4062 20.1875H1.59375C1.1968 20.1875 0.875 19.7538 0.875 19.2188Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 13.4062C0.875 12.8712 1.1968 12.4375 1.59375 12.4375H17.4062C17.8032 12.4375 18.125 12.8712 18.125 13.4062C18.125 13.9413 17.8032 14.375 17.4062 14.375H1.59375C1.1968 14.375 0.875 13.9413 0.875 13.4062Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 7.59375C0.875 7.05872 1.1968 6.625 1.59375 6.625H17.4062C17.8032 6.625 18.125 7.05872 18.125 7.59375C18.125 8.12878 17.8032 8.5625 17.4062 8.5625H1.59375C1.1968 8.5625 0.875 8.12878 0.875 7.59375Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 1.78125C0.875 1.24622 1.1968 0.8125 1.59375 0.8125H17.4062C17.8032 0.8125 18.125 1.24622 18.125 1.78125C18.125 2.31628 17.8032 2.75 17.4062 2.75H1.59375C1.1968 2.75 0.875 2.31628 0.875 1.78125Z" fill="white"/>
+          </svg></div>
         </div>
         <div className={`items-bar ${menuOpen ? 'open' : ''}`}>
           {items.map((item, index) => (
