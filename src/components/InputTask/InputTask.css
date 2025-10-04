@@ -40,7 +40,13 @@
 select.input-field-task {
   background-image: url("data:image/svg+xml;utf8,<svg fill='%232B438D' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
 }
-
+.input-field-task[type="date"] {
+  color: #2B438D;
+}
+.input-field-task[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(25%) sepia(85%) saturate(1500%) hue-rotate(210deg) brightness(90%) contrast(95%);
+  cursor: pointer;
+}
 .input-field-task::placeholder {
   color: #5a6a8c;
   font-size: 17px;

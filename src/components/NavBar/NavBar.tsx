@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 
 const NavBar = ({ items, avatars }: NavBarProps) => {
   const [activeItem, setActiveItem] = useState<string>("");
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   return (
@@ -24,7 +25,14 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
           <path d="M51.7044 23.2246C52.1886 23.8062 48.9294 38.5322 54.2133 42.7575C56.9396 44.9377 59.8582 42.7575 59.8582 42.7575" stroke="#C090F0" strokeWidth="5.60598"/>
           </svg>
         </div>
-        <div className="items-bar">
+        <div
+          className={`hamburger-menu ${menuOpen ? 'open' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {/* Icon for Hamburger */}
+          <div className="icon-bar">☰</div>
+        </div>
+        <div className={`items-bar ${menuOpen ? 'open' : ''}`}>
           {items.map((item, index) => (
             <ItemsBar
               key={index}

@@ -66,3 +66,43 @@
 .icon-bar.active {
   background-color: rgba(37, 99, 235, 0.1);
 }
+.hamburger-menu {
+  display: none;
+}
+@media (max-width: 900px) {
+  .nav-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .items-bar {
+    display: none; /* Hide items initially */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger on small screens */
+  }
+}
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger-menu.open + .items-bar {
+  display: flex; /* Show items when menu is opened */
+  flex-direction: column;
+}
+
+/* For Avatar bar */
+.avatars-bar {
+  display: none; /* Hide on smaller screens */
+}
+
+@media (min-width: 768px) {
+  .avatars-bar {
+    display: block; /* Show avatars on larger screens */
+  }
+}

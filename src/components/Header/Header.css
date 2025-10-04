@@ -10,3 +10,9 @@ h2{
 .user {
     cursor: pointer;
 }
+@media (max-width: 900px) {
+    #header, h2, .user
+    {
+        display: none;
+    }
+}
