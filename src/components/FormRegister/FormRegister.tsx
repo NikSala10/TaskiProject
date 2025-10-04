@@ -5,7 +5,9 @@ const SignUpForm = () => {
   const navigate = useNavigate();
 
   return (
-    <form  className="signup-form">
+    <form  className="signup-form" onSubmit={(e) => {
+      e.preventDefault(); 
+    }}>
      <img src="src/assets/Portada.png" alt="Portada" className="signup-image" />
      
 
