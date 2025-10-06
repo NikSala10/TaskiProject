@@ -169,7 +169,12 @@
 .square-points-res-tsks {
   display: none;
 }
-
+.tasks-content-respon {
+  display: none;
+}
+.btn-create-task-respon{
+  display: none;
+}
 @media (max-width: 900px) {
   .aditional-info{
     display: none;
@@ -186,6 +191,7 @@
     justify-content: space-between;
     margin-top: 2rem;
     margin-bottom: 0.8rem;
+    width: 400px;
   }
   .tit-res-ts {
     cursor: pointer;
@@ -221,5 +227,50 @@
     font-weight: 700;
     padding: 0.5rem;
     background-color: #82C2F6;
+  }
+  
+  .tasks-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tasks-column {
+    width: 370px;
+    gap: 1rem;
+  }
+  .task-item {
+    width: 100%;
+  }
+  .tasks-content-respon {
+    display: block;
+  }
+  .all-tasks{
+    display: none;
+  }
+
+  .btn-create-task-respon {
+    display: block;
+    position: fixed;
+    bottom: 2rem; 
+    right: 2rem; 
+    width: 60px;
+    height: 60px;
+    background-color: #82C2F6; 
+    color: white; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-create-task-respon:hover {
+    background-color: #4CABF8;
+    transform: scale(1.1);
   }
 }

@@ -171,4 +171,7 @@
     width: 4rem;
     height: 4rem;
   }
+  .user-card{
+    width: 100%;
+  }
 }

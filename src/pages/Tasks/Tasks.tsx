@@ -23,6 +23,9 @@ const Tasks = () => {
 
   return (
     <div className="tasks-page">
+      <div className="btn-create-task-respon" onClick={() => {navigate('/create-task')}}>
+        <p>+</p>
+      </div>
       <div className="btn-create-task">
         <Button text="Create Task" color="#82C2F6" width="180px" onClick={() => {navigate('/create-task')}}/>
       </div>
@@ -43,6 +46,13 @@ const Tasks = () => {
         <h3 className={`tit-res-ts ${activeTab === "additional" ? "active" : ""}`} onClick={() => setActiveTab("additional")}>
           Additional Tasks
         </h3>
+      </div>
+      <div className="tasks-content-respon">
+        {activeTab === "my" ? (
+          <TasksList tasks={normalTasks} />
+        ) : (
+          <TasksList tasks={additionalTasks} />
+        )}
       </div>
       
       <div className="all-tasks">

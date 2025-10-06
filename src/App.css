@@ -46,7 +46,10 @@
   }
   .screens {
     margin-left: 0; 
+    padding-left: 3rem;
+    padding-right: 3rem;
     width: 100%;
+    padding-bottom: 3rem;
   }
   .headerUp{
     margin-left: 0;
