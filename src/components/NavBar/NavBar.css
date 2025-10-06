@@ -66,43 +66,89 @@
 .icon-bar.active {
   background-color: rgba(37, 99, 235, 0.1);
 }
+
 .hamburger-menu {
   display: none;
 }
+.logo-responsive {
+  display: none;
+}
+
+.user-responsive {
+  display: none;
+}
+.icon-bar svg {
+  color: #2B438D; 
+}
+
+
 @media (max-width: 900px) {
   .nav-bar {
     flex-direction: row;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 0 3rem;
+  }
+  .logo {
+    display: none;
+  }
+ .items-bar {
+    display: none; 
   }
 
-  .items-bar {
-    display: none; /* Hide items initially */
+  .items-bar.open {
+    display: flex; 
+    flex-direction: column;
+    position: absolute;
+    top: 50px; 
+    left: 0;
+    width: 100%;
+    background-color: #C090F0; 
+    padding: 0.5rem;
+    padding-right: 8rem;
+    padding-left: 8rem;
+    gap: 3px;
+    z-index: 1000;
+    color: white;
   }
+  .icon-bar {
+    width: 200px;
+  }
+ .item {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+  }
+ .icon-bar svg {
+    color: white;
+}
+  .icon-bar.active {
+    background-color: #d2aef6;
+  }
+  .icon-bar:hover {
+  background-color: #d2aef6; 
+}
 
+  .responsive-icons {
+    display: block;
+    cursor: pointer;
+  }
+  .user-responsive {
+    display: block;
+  }
   .hamburger-menu {
-    display: block; /* Show hamburger on small screens */
+    display: block; 
   }
-}
-
-/* Hamburger Menu Styles */
-.hamburger-menu {
-  display: none;
-  cursor: pointer;
-}
-
-.hamburger-menu.open + .items-bar {
-  display: flex; /* Show items when menu is opened */
-  flex-direction: column;
-}
-
-/* For Avatar bar */
-.avatars-bar {
-  display: none; /* Hide on smaller screens */
-}
-
-@media (min-width: 768px) {
-  .avatars-bar {
-    display: block; /* Show avatars on larger screens */
+  .logo-responsive {
+    display: block;
+    cursor: pointer;
+  }
+  .avatars-bar{
+    display: none;
+  }
+  .responsive-icons{
+    display: flex;
+    gap: 2rem;
   }
 }

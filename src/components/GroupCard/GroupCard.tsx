@@ -6,6 +6,44 @@ const GroupCard = ({ groupName, members, showRanking = false }: GroupCardType) =
   return (
     <div className="card-group">
       <h3 className="group-name">{groupName}</h3>
+      <div className="responsive-card-btn-name">
+        <h3>{groupName}</h3>
+        {!showRanking && <Button text="Remove" color="#FF935A" width="150px" /> }
+      </div>
+      <div className="responsive-card-admi">
+        {(() => {
+          const admin = members.find(m => m.rol.toLowerCase() === "admin");
+          if (!admin) return null;
+          return (
+            <>
+              <span>{admin.avatar}</span>
+              <div className="responsive-info-admi">
+                <h3>{admin.namePlayer}</h3>
+                <h3 className="rol-res">{admin.rol}</h3>
+              </div>
+            </>
+          );
+        })()}
+      </div>
+      <h4 className="members-res-tit">Members</h4>
+      <div className="responsive-card-members">
+        {members
+        .filter(member => member.rol.toLowerCase() === "member")
+        .map((member, index) => (
+        <div key={index} className="ranking-item">
+          {showRanking && (
+            <span className="ranking-number">{index + 1}</span>
+          )}
+          <AvatarWithName
+            avatar={member.avatar}
+            namePlayer={member.namePlayer}
+            rol={member.rol}
+            showRanking={showRanking}
+            numPoints={member.numPoints}
+          />
+        </div>
+      ))}
+      </div>
       <div className="members-list">
         {members.map((member, index) => (
           <div key={index} className="ranking-item">

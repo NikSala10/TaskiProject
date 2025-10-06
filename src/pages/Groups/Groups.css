@@ -83,3 +83,88 @@
   font-size: 14px;
   color: #2B438D;
 }
+.responsive-card-btn-name{
+  display: none;
+}
+.responsive-card-admi{
+  display: none;
+}
+.responsive-card-members{
+  display: none;
+}
+.members-res-tit{
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;  
+    position: absolute;
+    right: 0.2rem; 
+    margin-top: -9.5rem;
+    position: absolute;
+  }
+  .responsive-card-btn-name{
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .group-name{
+    display: none;
+  }
+  .card-group > button:first-of-type{
+    display: none;
+  }
+  .responsive-card-admi{
+    display: block;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .responsive-card-members{
+    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .members-list{
+    display: none;
+  }
+  .members-res-tit{
+    display: block;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    padding-top: 1rem;
+    color: #2B438D;
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .card-group {
+    gap: 15px;
+    padding: 2rem;
+    width: 340px;
+  }
+  .cardsGroups{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 30px;
+    margin-bottom: 3rem;
+  }
+  .responsive-card-admi h3{
+    margin: 0;
+    color: #2B438D;
+    font-size: 16px;
+  }
+  .rol-res{
+    font-weight: 300;
+    margin: 0;
+    color: #2B438D;
+  }
+  .responsive-card-btn-name h3{
+    margin: 0;
+  }
+}

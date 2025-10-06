@@ -13,3 +13,10 @@
 .custom-button:hover {
   filter: brightness(0.9);
 }
+
+@media (max-width: 900px) {
+  .custom-button {
+    height: 38px;
+    font-size: 16px;
+  }
+}
