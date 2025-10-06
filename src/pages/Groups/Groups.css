@@ -136,8 +136,8 @@
   .members-res-tit{
     display: block;
     margin: 0;
-    padding-bottom: 0.5rem;
-    padding-top: 1rem;
+    padding-bottom: 0.1rem;
+    padding-top: 0.3rem;
     color: #2B438D;
     font-weight: 500;
     font-size: 18px;
@@ -166,5 +166,9 @@
   }
   .responsive-card-btn-name h3{
     margin: 0;
+  }
+  .responsive-card-admi span svg {
+    width: 4rem;
+    height: 4rem;
   }
 }

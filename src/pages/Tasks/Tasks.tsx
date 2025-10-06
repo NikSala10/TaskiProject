@@ -6,6 +6,7 @@ import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate } from "react-router";
+import Trophy from '../../assets/Trophy.svg'
 
 const Tasks = () => {
   useSetPageInfo("Tasks");
@@ -15,6 +16,7 @@ const Tasks = () => {
   const additionalTasks = tasks.filter(task => task.isAdditional);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("my");
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -25,6 +27,24 @@ const Tasks = () => {
         <Button text="Create Task" color="#82C2F6" width="180px" onClick={() => {navigate('/create-task')}}/>
       </div>
       <h3 className="tit">All</h3>
+      <div className="square-points-res-tsks">
+        <div className="trophy-img">
+          <img src={Trophy}/>
+        </div>
+        <div>
+          <p className="num-points-res-tsks">140 </p>
+          <p> Points</p>
+        </div>
+      </div>
+      <div className="respon-tit-tasks">
+        <h3 className={`tit-res-ts ${activeTab === "my" ? "active" : ""}`} onClick={() => setActiveTab("my")}>
+          My Tasks
+        </h3>
+        <h3 className={`tit-res-ts ${activeTab === "additional" ? "active" : ""}`} onClick={() => setActiveTab("additional")}>
+          Additional Tasks
+        </h3>
+      </div>
+      
       <div className="all-tasks">
         <TasksList tasks={normalTasks} />
       </div>
