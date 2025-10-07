@@ -124,7 +124,7 @@
   .lfx-container {
     width: 100%;
     flex-direction: column;
-    height: 100vh; /* Mantiene altura completa en pantallas pequeñas */
+    height: 100vh; 
     background: #fff; 
   }
 
@@ -156,13 +156,11 @@
     align-items: center;
     text-align: center;
 
-    /* Bordes redondeados superiores */
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
-    /* Sombra ligera para separación visual */
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   }
 
