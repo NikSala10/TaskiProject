@@ -126,51 +126,49 @@
 @media (max-width: 900px) {
   .suf-container {
     flex-direction: column;
-    height: auto;
+    height: 100vh;        
+    background: #fff;     
   }
 
+  .suf-label {
+    font-weight: 600;
+    margin-right:80% ;
+  }
   .suf-img-box {
     width: 100%;
-    height: 40vh;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFAF0;    
   }
 
   .suf-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    margin-left: 3rem; 
   }
 
   .suf-form {
-    width: 100%;
-    height: auto;
-    padding: 2rem 1.5rem;
+    width: 80%;         
+    height: auto;        
+    background: #c8a6f5;
+    padding: 3rem 1.5rem; 
     align-items: center;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    text-align: center;
+
+    
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+
+  
   }
 
-  .suf-title {
-    font-size: 2rem;
-  }
-
-  .suf-subtitle {
-    font-size: 1rem;
-  }
-
-  .suf-input,
   .suf-btn {
-    width: 100%;
+    width: 88%;
     max-width: 100%;
-  }
-
-  .suf-terms {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .suf-terms-label {
-    font-size: 0.9rem;
+    justify-content: center;
+    margin: 0 auto;
   }
 }
