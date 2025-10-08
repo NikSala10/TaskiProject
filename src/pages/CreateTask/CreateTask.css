@@ -76,3 +76,60 @@
     justify-content: flex-end; 
     padding: 0rem 0rem; 
 }
+.bttns-assingning-respon{
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .div-head{
+        box-shadow: none;
+        padding: 0rem;
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+    }
+    .assign-taks-nl{
+        display: none;
+    }
+    .level {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .levels-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .create-task-page{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 3rem;
+    }
+    .hed{
+        margin-top: 0;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: left;
+    }
+    .heads-up h2 {
+        display: none;
+    }
+    .heads-up {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .go-bacck{
+        display: none;
+    }
+    .bttns-assingning-respon{
+        display: block;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}

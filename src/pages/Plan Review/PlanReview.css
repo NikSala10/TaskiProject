@@ -4,3 +4,8 @@
   gap: 0.1rem;         
   justify-content: flex-start;
 }
+
+
+@media (max-width: 900px) {
+  
+}

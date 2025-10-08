@@ -58,3 +58,15 @@ select.input-field-task {
   border-color: #27408b;
   box-shadow: 0 0 3px rgba(39, 64, 139, 0.4);
 }
+
+@media (max-width: 900px) {
+  .input-container-task{
+    width: 390px;
+  }
+  .input-label-task{
+    font-size: 16px;
+  }
+  .input-field-task, .input-field-task option::placeholder{
+    font-size: 15px;
+  }
+}

@@ -52,7 +52,8 @@ const CreateTask = () => {
         placeholder="Today, 6:00 PM"
         type="date"
         />      
-        <Button text="Assign Task" color="#82C2F6" width="480px" />
+        <div className="assign-taks-nl"><Button text="Assign Task" color="#82C2F6" width="480px" /></div>
+        <div className="bttns-assingning-respon"> <Button text="Assign Task" color="#82C2F6" width="390px" /> <Button text="Go Back" color="#C090F0" width="390px" onClick={() => {navigate('/tasks')}}/></div>
         </div>
 
       <div className="hed">
@@ -60,17 +61,19 @@ const CreateTask = () => {
           <h2>Heads Up!</h2>
           <div className="div-head">
             <p>Each task comes with points <br/> based on its level:</p>
-            <div className="level">
-              <p className="val">Low</p>
-              <p className="point">10 points</p>
-            </div>
-            <div className="level">
-              <p className="val2">Medium</p>
-              <p className="point">20 points</p>
-            </div>
-            <div className="level">
-              <p className="val3">High</p>
-              <p className="point">80 points</p>
+            <div className="levels-container">
+              <div className="level">
+                <p className="val">Low</p>
+                <p className="point">10 points</p>
+              </div>
+              <div className="level">
+                <p className="val2">Medium</p>
+                <p className="point">20 points</p>
+              </div>
+              <div className="level">
+                <p className="val3">High</p>
+                <p className="point">80 points</p>
+              </div>
             </div>
           </div>
           <div className="go-bacck">   <Button text="Go Back" color="#C090F0" width="200px" onClick={() => {navigate('/tasks')}}/></div>
