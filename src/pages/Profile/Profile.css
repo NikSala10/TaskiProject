@@ -179,6 +179,16 @@
 .log-out-respon{
     display: none;
 }
+.content-modal-pf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.tit-prf-md{
+    color:#C090F0 ;
+}
 
 @media (max-width: 900px) {
     .container-profile{

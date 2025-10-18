@@ -70,6 +70,7 @@ body {
   display: flex;
   justify-content: flex-start;
   text-align: left;
+  margin-bottom: 0;
 }
 
 .cgx-fields {
@@ -177,7 +178,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1.5rem;
 }
 
 .cgx-btn {
@@ -226,6 +226,82 @@ input[type="date"] {
   color: #fff;       
   font-family: 'Roboto', sans-serif;  
 }
+.tit-code-grp {
+  text-align: center;
+  color: #C090F0;
+  font-size: 22px;
+  margin: 0;
+}
+.content-modal-cgx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;;
+}
+.invitation-code-cgx {
+  color: #C090F0;
+  font-weight: 400;
+  text-align: left;
+  margin-top: 2rem;
+  width: 100%;        
+  max-width: 380px; 
+}
+.link-box {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  border: 1.6px solid #82C2F6;
+  border-radius: 8px;
+  padding: 0px 0px;
+  padding-left: 10px;
+  width: 380px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+}
+.cgx-input-code-invitation {
+  border: 1.6px solid #82C2F6;
+  border-radius: 8px;
+  padding: 10px 0px;
+  padding-left: 10px;
+  width: 380px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  outline: none;
+  color: #82C2F6;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+.cgx-input-code-invitation::placeholder{
+  color: #82C2F6;
+  font-weight: 300;
+
+}
+.link-text {
+  color: #82C2F6;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  background-color: #82C2F6;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background-color: #6ab0e8;
+}
+
 
 @media (max-width: 900px) {
   .cgx-container {
@@ -237,7 +313,7 @@ input[type="date"] {
   .cgx-label
   {
     font-weight: 600;
-    margin-right:80% ;
+    text-align: left;  
   }
 
   .cgx-img-box {

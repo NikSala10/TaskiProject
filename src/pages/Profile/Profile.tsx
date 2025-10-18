@@ -2,9 +2,17 @@ import Trophy from "../../assets/Trophy.svg"
 import "./profile.css";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import AvatarWithName from "../../components/AvatarWithName/AvatarWithName";
+import { useState } from "react";
+import Modal from "../../components/Modal/Modal";
+import confirmTrophy from '../../assets/confir-trophy.png'
+import Button from "../../components/Button/Button";
 
 const Profile = () => {
   useSetPageInfo("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="container-profile">
@@ -53,14 +61,14 @@ const Profile = () => {
             </div>
         </div>
         <div className="subcontainer-profile">
-            <div className="square-points">
+            <div className="square-points" onClick={openModal}>
                 <div className="trophy-img">
                     <img src={Trophy}/>
                 </div>
                 <p className="num-points">140</p>
                 <p>Points</p>
             </div>
-            <div className="square-points-2">
+            <div className="square-points-2" onClick={openModal}>
                 <div className="trophy-img-2">
                 <img src={Trophy}/>
                 </div>
@@ -118,7 +126,13 @@ const Profile = () => {
         </div>
 
         </div>
-            
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+            <div className="content-modal-pf">
+                <h3 className="tit-prf-md">Congratulations, you have won. <br /> Please confirm if you have <br /> already received your prize. </h3>
+                <img src={confirmTrophy} alt="" />
+                <Button text="Confirm" color="#82C2F6" width="390px"  onClick={closeModal}/>
+            </div>
+        </Modal>
     </div>
     
   );

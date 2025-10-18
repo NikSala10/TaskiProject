@@ -67,13 +67,13 @@ const Tasks = () => {
           </div>
         </div>
       </div>
-         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <div className="content">
-            <h3 className="tit-additional">Aditional Tasks</h3>
-              <div className="additional-tasks-list">
-                <TasksList tasks={additionalTasks} />
-              </div>
-          </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <div className="content">
+          <h3 className="tit-additional">Aditional Tasks</h3>
+            <div className="additional-tasks-list">
+              <TasksList tasks={additionalTasks} />
+            </div>
+        </div>
       </Modal>
 
     </div>

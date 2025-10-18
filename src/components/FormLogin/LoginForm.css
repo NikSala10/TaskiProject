@@ -130,7 +130,8 @@
 
   .lfx-label {
     font-weight: 600;
-    margin-right:66% ;
+    text-align: left;
+    margin-left: 1.5rem;
   }
   
 

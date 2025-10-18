@@ -39,3 +39,10 @@
   display: flex;
   justify-content: flex-end;
 }
+
+@media (max-width: 900px) {
+  .modal-content {
+    width: 75%;
+    padding: 2rem;
+  }
+}
