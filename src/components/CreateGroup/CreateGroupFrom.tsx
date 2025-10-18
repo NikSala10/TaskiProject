@@ -20,9 +20,16 @@ const CreateGroupForm = () => {
 
           <img src={Portada} alt="Portada" className="cgx-img" />
         </div>
-
+        
         {/* Contenido del formulario */}
         <div className="cgx-content">
+          <button
+                  type="button"
+                  className="cgx-close-btn"
+                  onClick={() => navigate("/groups")}
+                >
+                  ✕
+          </button>
           <h1 className="cgx-title">Create your group!</h1>
           <p className="cgx-subtitle">
             Manage household chores and turn teamwork into a fun challenge.<br />
@@ -119,6 +126,13 @@ const CreateGroupForm = () => {
               onClick={() => navigate("/groups")}
             >
               Create Group & Generate Code
+            </button>
+            <button
+              type="button"
+              className="cgx-btn-join"
+              onClick={() => navigate("/joingroup")}
+            >
+              Join a Group
             </button>
             <p className="cgx-code-note">
               Generate a unique code for other members to join

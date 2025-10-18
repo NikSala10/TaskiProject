@@ -115,15 +115,55 @@ body {
 .cgx-select {
   color: white;
   font-family: 'Roboto', sans-serif;
-
 }
+
 .cgx-input:focus,
 .cgx-textarea:focus,
 .cgx-select:focus {
   outline: none;
   border-color: #ffffff;
 }
-
+.cgx-btn-join {
+  background: #8964BD;
+  border: #8964BD;
+  color: #fff;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 350px;
+  transition: background 0.3s;
+  margin-right:1rem ;
+  margin-top: 0.8rem;
+}
+.cgx-btn-join:hover {
+  background-color: #8964BD;
+  filter: brightness(0.9);
+}
+.cgx-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.2rem;
+  background-color: #FF935A;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.cgx-close-btn:hover {
+  background: #F38950;
+  transform: scale(1.1);
+}
 .cgx-note {
   font-size: 17px;
   font-style: italic;
@@ -154,8 +194,9 @@ body {
   margin-right:1rem ;
 }
 
-.cgx-btn :hover {
-  background-color: #eee;
+.cgx-btn:hover {
+  background-color: #FFF;
+  filter: brightness(0.9);
 }
 
 .cgx-code-note {
@@ -282,6 +323,32 @@ input[type="date"] {
   .cgx-code-note {
     font-size: 0.8rem;
   }
+  .cgx-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .cgx-btn,
+  .cgx-btn-join {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 0.9rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  .cgx-btn-join {
+    background: #8964BD;
+    color: #fff;
+    border: 2px solid #8964BD;
+  }
 
 
 }
+
+
