@@ -1,15 +1,15 @@
 import { useEffect } from "react";
-import { usePage } from "../context/PageContext";
+import { useDispatch } from "react-redux";
+import { setPageInfo } from "../redux/slices/pageSlice";
 import { headerIcons } from "../data/headerIcons";
 
 export const useSetPageInfo = (namepage: string) => {
-    const { setPageInfo } = usePage();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const page = headerIcons.find((head) => head.namepage === namepage);
     if (page) {
-      setPageInfo({ icon: page.svg, name: page.namepage });
+      dispatch(setPageInfo({ icon: page.svg, name: page.namepage }));
     }
-  }, [namepage, setPageInfo]);
+  }, [namepage, dispatch]);
 };
-

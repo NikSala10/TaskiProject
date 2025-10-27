@@ -3,7 +3,8 @@ import "./SignUpForm.css";
 import Portada from "../../assets/Portada.png";
 import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile, validatePassword } from "firebase/auth";
-import { auth } from "../../services/firebaseConfig";
+import { auth, db } from "../../services/firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -53,8 +54,13 @@ const SignUpForm = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+        await user.reload();
+        await setDoc(doc(db, "users", user.uid), {
+          email: user.email,
+          username: username,
+        });
         await updateProfile(user, { displayName: username }); 
-        console.log("Nombre guardado en Firebase:", username);
+        console.log("Nombre guardado correctamente:", user.displayName);
         navigate("/create-group");
       })
       .catch((error) => {
@@ -140,7 +146,7 @@ const SignUpForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {meetsMinPasswordLength ? undefined : "Insufficient password"}
+        {meetsMinPasswordLength ? undefined : <p className="suf-error">Insufficient password</p>}
 
         <div className="suf-terms">
           <input type="checkbox" id="terms" name="terms" className="suf-checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)}/>

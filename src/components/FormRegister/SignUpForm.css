@@ -122,6 +122,16 @@
 .suf-btn:hover {
   background: #eee;
 }
+.suf-error {
+  color: rgb(74, 74, 73);
+  margin: 0;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  text-align: left;
+  font-weight: bold;
+}
 
 @media (max-width: 900px) {
   .suf-container {

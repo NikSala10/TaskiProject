@@ -1,17 +1,18 @@
-import { usePage } from "../../context/PageContext";
+import { useSelector } from "react-redux";
 import "./Header.css";
+import type { RootState } from "../../redux/store";
 
 type HeaderProps = {
   className?: string;
 };
 
 const Header = ({ className }: HeaderProps) => {
-  const { pageInfo } = usePage();
+  const { icon, name } = useSelector((state: RootState) => state.page.pageInfo);
 
   return (
     <div className={className} id="header">
-      {pageInfo.icon && <span>{pageInfo.icon}</span>}
-      <h2>{pageInfo.name}</h2>
+      {icon && <span>{icon}</span>}
+      <h2>{name}</h2>
     </div>
   );
 };

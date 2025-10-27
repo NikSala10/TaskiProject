@@ -89,6 +89,8 @@
 .lfx-forgot {
   width: 100%;
   max-width: 350px;
+  margin-top: -1rem;
+
 }
 
 .lfx-forgot-link {
@@ -118,6 +120,14 @@
 
 .lfx-btn:hover {
   background: #eee;
+}
+.lfx-error {
+  color: red;
+  margin: 0;
+  margin-top: -1rem;
+  font-size: 0.9rem;
+  display: flex;
+  text-align: left;
 }
 
 @media (max-width: 900px) {

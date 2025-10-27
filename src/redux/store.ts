@@ -1,10 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice";
+import pageSlice from "./slices/pageSlice";
+import groupSlice from "./slices/groupsSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
+    page: pageSlice,
+    group: groupSlice
   },
+  // Desactiva el aviso de que no deja guardar iconos en redux
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, 
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

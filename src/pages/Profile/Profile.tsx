@@ -6,13 +6,31 @@ import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import confirmTrophy from '../../assets/confir-trophy.png'
 import Button from "../../components/Button/Button";
+import { signOut } from "firebase/auth";
+import { auth } from "../../services/firebaseConfig";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
   useSetPageInfo("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const navigate = useNavigate();
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleCloseSession = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        alert("User signed out successfully.");
+        navigate("/");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error("Error signing out:", error);
+      });
+  };
 
   return (
     <div className="container-profile">
@@ -46,8 +64,8 @@ const Profile = () => {
                 <button className="btn-cp-profile">Change Password</button>
             </div>
         </div>
-        <div className="log-out">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="48" stroke-dashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
+        <div className="log-out" >
+          <svg onClick={handleCloseSession}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="48" stroke-dashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
           </svg>
         </div>
         <div className="tasks-summary">

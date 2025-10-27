@@ -19,8 +19,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { clearUser, setUser } from "./redux/slices/authSlice";
-import { auth } from "./services/firebaseConfig";
+import { auth, db } from "./services/firebaseConfig";
 import { ProtectedRoutes } from "./components/ProtectedRoutes/protectedRoutes";
+import { doc, getDoc } from "firebase/firestore";
 
 
 // 👉 Layout que envuelve las páginas que SÍ llevan NavBar y Header
@@ -39,22 +40,29 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        dispatch(setUser({uid: user.uid,  username: user.displayName || ""}));
+        try {
+          const userDoc = await getDoc(doc(db, "users", user.uid));
+          const username = userDoc.exists() ? userDoc.data().username : "";
+          dispatch(setUser({ uid: user.uid, username }));
+        } catch (err) {
+          console.error("Error fetching user data:", err);
+          dispatch(setUser({ uid: user.uid, username: "" }));
+        }
       } else {
         dispatch(clearUser());
       }
     });
+
     return () => unsubscribe();
   }, [dispatch]);
-
+  
   return (
     <Router>
       <Routes>
         {/* Rutas SIN header ni navbar */}
         <Route path="/" element={<Register />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-group" element={<ProtectedRoutes><CreateGroupPage /></ProtectedRoutes>} />
 
