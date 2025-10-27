@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
+import authSlice from "./slices/authSlice";
 
-//El store es el estado global, es decir, donde guardamos los datos con disponibilidad transversal
 export const store = configureStore({
   reducer: {
-
+    auth: authSlice,
   },
 });
 

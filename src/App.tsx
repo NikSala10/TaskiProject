@@ -15,9 +15,17 @@ import CreateGroupPage from "./pages/CreateGroup/CreateGroup";
 import './App.css';
 import Winners from "./pages/Winners/Winners";
 import RankingPage from "./pages/Ranking/Ranking";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { clearUser, setUser } from "./redux/slices/authSlice";
+import { auth } from "./services/firebaseConfig";
+import { ProtectedRoutes } from "./components/ProtectedRoutes/protectedRoutes";
+
 
 // 👉 Layout que envuelve las páginas que SÍ llevan NavBar y Header
 function Layout({ children }: { children: React.ReactNode }) {
+  
   return (
     <>
       <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
@@ -28,6 +36,19 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser({uid: user.uid,  username: user.displayName || ""}));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+    return () => unsubscribe();
+  }, [dispatch]);
+
   return (
     <Router>
       <Routes>
@@ -35,63 +56,75 @@ function App() {
         <Route path="/" element={<Register />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/create-group" element={<CreateGroupPage />} />
+        <Route path="/create-group" element={<ProtectedRoutes><CreateGroupPage /></ProtectedRoutes>} />
 
         {/* Rutas CON header y navbar */}
         <Route
           path="/groups"
           element={
-            <Layout>
+            <ProtectedRoutes><Layout>
               <Groups />
-            </Layout>
+            </Layout></ProtectedRoutes>
           }
         />
         <Route
           path="/tasks"
           element={
+            <ProtectedRoutes>
             <Layout>
               <Tasks />
             </Layout>
+            </ProtectedRoutes>
           }
         />
         <Route
           path="/create-task"
           element={
+            <ProtectedRoutes>
             <Layout>
               <CreateTask />
             </Layout>
+            </ProtectedRoutes>
           }
         />
         <Route
           path="/plan-review"
           element={
+            <ProtectedRoutes>
             <Layout>
               <PlanReview />
             </Layout>
+            </ProtectedRoutes>
           }
         />
         <Route
           path="/ranking"
           element={
+            <ProtectedRoutes>
             <Layout>
               <RankingPage />
             </Layout>
+            </ProtectedRoutes>
           }
         />
         <Route
           path="/winner"
           element={
+            <ProtectedRoutes>
             <Layout>
               <Winners />
             </Layout>
+            </ProtectedRoutes>
           }
         />
         <Route
           path="/profile"
           element={
+            <ProtectedRoutes>
             <Layout>
               <Profile />
             </Layout>
+            </ProtectedRoutes>
           }
         />
       </Routes>

@@ -1,9 +1,69 @@
 import { useNavigate } from "react-router";
 import "./SignUpForm.css";
 import Portada from "../../assets/Portada.png";
+import { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile, validatePassword } from "firebase/auth";
+import { auth } from "../../services/firebaseConfig";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState(""); 
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [meetsMinPasswordLength, setMeetsMinPasswordLength] = useState<boolean | undefined>(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const checkPassword = async () => {
+      const status = await validatePassword(auth, password);
+      setMeetsMinPasswordLength(status.meetsMinPasswordLength);
+      console.log(meetsMinPasswordLength);
+
+      if (!status.isValid) {
+        // Password could not be validated. Use the status to show what
+        // requirements are met and which are missing.
+        // If a criterion is undefined, it is not required by policy. If the
+        // criterion is defined but false, it is required but not fulfilled by
+        // the given password. For example:
+        // const needsLowerCase = status.containsLowercaseLetter !== true;
+      }
+    };
+    checkPassword();
+  }, [meetsMinPasswordLength, password]);
+
+  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+
+    if (!username.trim() || !email.trim() || !password.trim()) {
+      setError("All fields are required.");
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setError("You must accept the terms and conditions.");
+      return;
+    }
+
+    if (!meetsMinPasswordLength) {
+      setError("Password does not meet minimum requirements.");
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+        await updateProfile(user, { displayName: username }); 
+        console.log("Nombre guardado en Firebase:", username);
+        navigate("/create-group");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
+        // ..
+      });
+  };
 
   return (
     <div className="suf-container">
@@ -16,8 +76,8 @@ const SignUpForm = () => {
       <form
         className="suf-form"
         onSubmit={(e) => {
-          e.preventDefault();
-          navigate("/create-group");
+          handleRegister(e);
+         ;
         }}
       >
         <h2 className="suf-title">Sign up</h2>
@@ -38,11 +98,14 @@ const SignUpForm = () => {
             User name
           </label>
           <input
+            required
             type="text"
             id="username"
             name="username"
             className="suf-input"
             placeholder="Enter your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} 
           />
         </div>
 
@@ -51,11 +114,14 @@ const SignUpForm = () => {
             Email
           </label>
           <input
+            required
             type="email"
             id="email"
             name="email"
             className="suf-input"
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -64,22 +130,30 @@ const SignUpForm = () => {
             Password
           </label>
           <input
+            required
             type="password"
             id="password"
             name="password"
             className="suf-input"
             placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {meetsMinPasswordLength ? undefined : "Insufficient password"}
 
         <div className="suf-terms">
-          <input type="checkbox" id="terms" name="terms" className="suf-checkbox" />
+          <input type="checkbox" id="terms" name="terms" className="suf-checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)}/>
           <label htmlFor="terms" className="suf-terms-label">
             By entering your information, you agree to our Terms and Privacy Policy. Your data will be kept secure and used only in accordance with these terms.{" "}
           </label>
         </div>
-
-        <button type="submit" className="suf-btn">
+        {error && <p className="suf-error">{error}</p>}
+        <button type="submit" className="suf-btn" disabled={!acceptedTerms}
+          style={{
+            opacity: !acceptedTerms ? 0.6 : 1,
+            cursor: !acceptedTerms ? "not-allowed" : "pointer",
+          }}>
           Start
         </button>
       </form>

@@ -1,9 +1,27 @@
 import { useNavigate } from "react-router";
 import "./LoginForm.css";
 import Portada from "../../assets/Portada.png";
+import { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../services/firebaseConfig";
 
 const FormLogin = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        navigate("/create-group");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage);
+      });
+  };
 
   return (
     <div className="lfx-container">
@@ -16,8 +34,7 @@ const FormLogin = () => {
       <form
         className="lfx-form"
         onSubmit={(e) => {
-          e.preventDefault();
-          navigate("/create-group");
+          handleLogin(e);
         }}
       >
         <h1 className="lfx-title">Login</h1>
@@ -44,6 +61,8 @@ const FormLogin = () => {
             name="email"
             className="lfx-input"
             placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -57,6 +76,8 @@ const FormLogin = () => {
             name="password"
             className="lfx-input"
             placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
