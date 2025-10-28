@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import "./SignUpForm.css";
 import Portada from "../../assets/Portada.png";
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile, validatePassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -15,23 +15,11 @@ const SignUpForm = () => {
   const [meetsMinPasswordLength, setMeetsMinPasswordLength] = useState<boolean | undefined>(false);
   const [error, setError] = useState("");
 
+  // Validar longitud mínima de la contraseña
   useEffect(() => {
-    const checkPassword = async () => {
-      const status = await validatePassword(auth, password);
-      setMeetsMinPasswordLength(status.meetsMinPasswordLength);
-      console.log(meetsMinPasswordLength);
+    setMeetsMinPasswordLength(password.length >= 6)
+  }, [password])
 
-      if (!status.isValid) {
-        // Password could not be validated. Use the status to show what
-        // requirements are met and which are missing.
-        // If a criterion is undefined, it is not required by policy. If the
-        // criterion is defined but false, it is required but not fulfilled by
-        // the given password. For example:
-        // const needsLowerCase = status.containsLowercaseLetter !== true;
-      }
-    };
-    checkPassword();
-  }, [meetsMinPasswordLength, password]);
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,10 +42,14 @@ const SignUpForm = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+
+        const avatarUrl = `https://api.dicebear.com/9.x/fun-emoji/svg?seed=${username}`;
+
         await user.reload();
         await setDoc(doc(db, "users", user.uid), {
           email: user.email,
           username: username,
+          avatar: avatarUrl,
         });
         await updateProfile(user, { displayName: username }); 
         console.log("Nombre guardado correctamente:", user.displayName);

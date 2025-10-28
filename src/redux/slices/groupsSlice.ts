@@ -2,18 +2,20 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 interface Member {
   id: string;
+  avatar?: string;
   username: string;
   role: string;
+  numPoints?: number;
 }
-
 export interface Group {
   id: string;
   name: string;
   description?: string;
-  planBudget: number;
-  startDate: string;
-  planDuration: string;
-  ownerID: string;
+  planBudget?: number;
+  startDate?: string;
+  planDuration?: string;
+  ownerID?: string;
+  inviteCode?: string;
   members: Member[];
 }
 

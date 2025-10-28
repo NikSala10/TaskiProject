@@ -2,7 +2,7 @@ import type { GroupCardType } from "../../types/GroupCardType";
 import AvatarWithName from "../AvatarWithName/AvatarWithName";
 import Button from "../Button/Button";
 
-const GroupCard = ({ groupName, members, showRanking = false }: GroupCardType) => {
+const GroupCard = ({ groupName, inviteCode, members, showRanking = false }: GroupCardType) => {
   return (
     <div className="card-group">
       <h3 className="group-name">{groupName}</h3>
@@ -12,23 +12,24 @@ const GroupCard = ({ groupName, members, showRanking = false }: GroupCardType) =
       </div>
       <div className="responsive-card-admi">
         {(() => {
-          const admin = members.find(m => m.rol.toLowerCase() === "admin");
+          const admin = members.find(m => m.role.toLowerCase() === "admin");
           if (!admin) return null;
           return (
             <>
               <span>{admin.avatar}</span>
               <div className="responsive-info-admi">
-                <h3>{admin.namePlayer}</h3>
-                <h3 className="rol-res">{admin.rol}</h3>
+                <h3>{admin.username}</h3>
+                <h3 className="rol-res">{admin.role}</h3>
               </div>
             </>
           );
         })()}
       </div>
+      <p className="invite-code-cr-gp">Invite Code: {inviteCode}</p>
       <h4 className="members-res-tit">Members</h4>
       <div className="responsive-card-members">
         {members
-        .filter(member => member.rol.toLowerCase() === "member")
+        .filter(member => member.role.toLowerCase() === "member")
         .map((member, index) => (
         <div key={index} className="ranking-item">
           {showRanking && (
@@ -36,8 +37,8 @@ const GroupCard = ({ groupName, members, showRanking = false }: GroupCardType) =
           )}
           <AvatarWithName
             avatar={member.avatar}
-            namePlayer={member.namePlayer}
-            rol={member.rol}
+            username={member.username}
+            role={member.role}
             showRanking={showRanking}
             numPoints={member.numPoints}
           />
@@ -50,8 +51,8 @@ const GroupCard = ({ groupName, members, showRanking = false }: GroupCardType) =
             {showRanking && <span className="ranking-number">{index + 1}</span>}
             <AvatarWithName
               avatar={member.avatar}
-              namePlayer={member.namePlayer}
-              rol={member.rol}
+              username={member.username}
+              role={member.role}
               showRanking={showRanking}
               numPoints={member.numPoints}
             />

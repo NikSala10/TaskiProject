@@ -1,9 +1,8 @@
-import type { ReactNode } from "react";
-
 export type AvatarWithNameProps = {
-  avatar: ReactNode;
-  namePlayer: string;
-  rol: "Admin"| "Member"; 
+  id?: string;
+  avatar?: string;
+  username: string;
+  role: string; 
   showRanking?: boolean;
   numPoints?: number;
 };
@@ -12,4 +11,5 @@ export type GroupCardType = {
   groupName: string;
   members: AvatarWithNameProps[];
   showRanking?: boolean;
+  inviteCode?: string;
 };

@@ -34,6 +34,7 @@ export const useJoinGroup = () => {
 
       // 3️⃣ Agregar al usuario en el grupo (en Firestore)
       await updateDoc(doc(db, "groups", groupId), {
+        memberIds: arrayUnion(userID), // 👈 agrega tu UID a la lista de IDs
         members: arrayUnion({
           id: userID,
           username: username,

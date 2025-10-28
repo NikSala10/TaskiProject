@@ -9,15 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addDoc, collection} from "firebase/firestore";
 import { db } from "../../services/firebaseConfig";
 import { addGroup } from "../../redux/slices/groupsSlice";
-import { useJoinGroup } from "../../hook/useJoinGroup";
+import JoinGroupModal from "../JoinGroupModal/JoinGroup";
 
 const CreateGroupForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { joinGroup } = useJoinGroup();
 
   const userID = useSelector((state: RootState) => state.auth.userID);
   const username = useSelector((state: RootState) => state.auth.username);
+  const avatar = useSelector((state: RootState) => state.auth.avatar);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
@@ -27,13 +27,11 @@ const CreateGroupForm = () => {
   const [startDate, setStartDate] = useState("");
   const [planDuration, setPlanDuration] = useState("");
   const [inviteCode, setInviteCode] = useState("");
-  const [joinCode, setJoinCode] = useState("");
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
   const openJoinModal = () => setIsJoinModalOpen(true);
-  const closeJoinModal = () => setIsJoinModalOpen(false);
 
    const handleCreateGroup = async () => {
     if (!userID || !username) {
@@ -63,9 +61,11 @@ const CreateGroupForm = () => {
           {
             id: userID,
             username: username,
+            avatar: avatar,
             role: "Member",
           },
         ],
+        memberIds: [userID],
       });
       await addDoc(collection(db, "groups", docRef.id, "members"), {
         userID,
@@ -86,6 +86,7 @@ const CreateGroupForm = () => {
             {
               id: userID,
               username: username,
+              avatar: avatar,
               role: "Member",
             },
           ],
@@ -98,11 +99,6 @@ const CreateGroupForm = () => {
       alert("Something went wrong creating the group");
     }
   };
-
-
-const handleJoinGroup = async () => {
-  await joinGroup(joinCode);
-};
 
   return (
     <form className="cgx-form">
@@ -263,20 +259,7 @@ const handleJoinGroup = async () => {
             <Button text="Continue" color="#82C2F6" width="390px"  onClick={() => navigate("/groups")}/>
           </div>
       </Modal>
-      <Modal isOpen={isJoinModalOpen} onClose={closeJoinModal}>
-        <div className="content-modal-cgx">
-          <h3 className="tit-code-grp">Join the group!</h3>
-          <p className="invitation-code-cgx">Paste your invitation link here to get started.</p>
-          <input
-            type="text"
-            placeholder="Enter code here"
-            className="cgx-input-code-invitation"
-            value={joinCode}
-            onChange={(e) => setJoinCode(e.target.value)}
-          />
-          <Button text="Join Now" color="#82C2F6" width="390px"  onClick={handleJoinGroup}/>
-        </div>
-      </Modal>
+      <JoinGroupModal isOpen={isJoinModalOpen} onClose={() => setIsJoinModalOpen(false)} />
     </form>
   );
 };

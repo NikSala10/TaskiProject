@@ -16,12 +16,12 @@ import './App.css';
 import Winners from "./pages/Winners/Winners";
 import RankingPage from "./pages/Ranking/Ranking";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
-import { clearUser, setUser } from "./redux/slices/authSlice";
+import { clearUser, setLoading, setUser } from "./redux/slices/authSlice";
 import { auth, db } from "./services/firebaseConfig";
 import { ProtectedRoutes } from "./components/ProtectedRoutes/protectedRoutes";
 import { doc, getDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
 
 
 // 👉 Layout que envuelve las páginas que SÍ llevan NavBar y Header
@@ -40,23 +40,46 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        try {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
-          const username = userDoc.exists() ? userDoc.data().username : "";
-          dispatch(setUser({ uid: user.uid, username }));
-        } catch (err) {
-          console.error("Error fetching user data:", err);
-          dispatch(setUser({ uid: user.uid, username: "" }));
-        }
-      } else {
-        dispatch(clearUser());
-      }
-    });
+  const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      dispatch(setLoading(true)); // 🟣 activamos loading mientras se obtiene el usuario
 
-    return () => unsubscribe();
-  }, [dispatch]);
+      try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          dispatch(
+            setUser({
+              uid: user.uid,
+              username: userData.username || "",
+              avatar: userData.avatar || "",
+            })
+          );
+        } else {
+          dispatch(
+            setUser({
+              uid: user.uid,
+              username: user.displayName || "",
+              avatar: "",
+            })
+          );
+        }
+      } catch (err) {
+        console.error("Error fetching user data:", err);
+        dispatch(clearUser());
+      } finally {
+        dispatch(setLoading(false)); 
+      }
+    } else {
+      dispatch(clearUser());
+    }
+  });
+
+  return () => unsubscribe();
+}, [dispatch]);
+
   
   return (
     <Router>
