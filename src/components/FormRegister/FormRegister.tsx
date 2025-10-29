@@ -20,6 +20,8 @@ const SignUpForm = () => {
     setMeetsMinPasswordLength(password.length >= 6)
   }, [password])
 
+  console.log("usuario registrado" + username);
+  
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,6 +52,7 @@ const SignUpForm = () => {
           email: user.email,
           username: username,
           avatar: avatarUrl,
+          numPoints: 0,
         });
         await updateProfile(user, { displayName: username }); 
         console.log("Nombre guardado correctamente:", user.displayName);

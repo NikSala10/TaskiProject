@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addMemberToGroup } from "../redux/slices/groupsSlice";
+import { addMemberToGroup, addGroup, type Group } from "../redux/slices/groupsSlice";
 import { db } from "../services/firebaseConfig";
 import { arrayUnion, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import type { RootState } from "../redux/store";
@@ -10,6 +10,8 @@ export const useJoinGroup = () => {
   const navigate = useNavigate();
   const userID = useSelector((state: RootState) => state.auth.userID);
   const username = useSelector((state: RootState) => state.auth.username);
+  const avatar = useSelector((state: RootState) => state.auth.avatar);
+  const groups = useSelector((state: RootState) => state.group.groups); // 👈 lista actual
 
   const joinGroup = async (joinCode: string, e?: React.MouseEvent<HTMLButtonElement>) => {
     if (e) e.preventDefault();
@@ -19,7 +21,6 @@ export const useJoinGroup = () => {
     }
 
     try {
-      // 1️⃣ Buscar grupo con ese código
       const q = query(collection(db, "groups"), where("inviteCode", "==", joinCode.trim()));
       const querySnapshot = await getDocs(q);
 
@@ -28,27 +29,46 @@ export const useJoinGroup = () => {
         return;
       }
 
-      // 2️⃣ Tomar el primer grupo encontrado
       const groupDoc = querySnapshot.docs[0];
       const groupId = groupDoc.id;
+      const groupData = groupDoc.data();
 
-      // 3️⃣ Agregar al usuario en el grupo (en Firestore)
       await updateDoc(doc(db, "groups", groupId), {
-        memberIds: arrayUnion(userID), // 👈 agrega tu UID a la lista de IDs
+        memberIds: arrayUnion(userID),
         members: arrayUnion({
           id: userID,
           username: username,
+          avatar: avatar || "",
           role: "Member",
         }),
       });
 
-      // 4️⃣ Guardar también en Redux
+      // Si el grupo no existe todavía en Redux, lo agregamos completo
+      //Si Redux todavía no tiene ese grupo (!groupExists), lo agregamos con dispatch(addGroup(...))
+      const groupExists = groups.some(g => g.id === groupId);
+      if (!groupExists) {
+          const formattedGroup: Group = {
+            id: groupId,
+            name: groupData.name,
+            description: groupData.description,
+            planBudget: groupData.planBudget,
+            startDate: groupData.startDate,
+            planDuration: groupData.planDuration,
+            ownerID: groupData.ownerID,
+            inviteCode: groupData.inviteCode,
+            members: groupData.members || []
+          };
+          dispatch(addGroup(formattedGroup));
+        }
+
+      // Además, actualizamos los miembros en el estado
       dispatch(
         addMemberToGroup({
           groupId: groupId,
           member: {
             id: userID,
             username: username,
+            avatar: avatar || "",
             role: "Member",
           },
         })

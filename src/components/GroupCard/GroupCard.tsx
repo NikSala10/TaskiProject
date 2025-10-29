@@ -1,14 +1,27 @@
+import { useSelector } from "react-redux";
+import { useDeleteGroup } from "../../hook/useDeleteGroup";
 import type { GroupCardType } from "../../types/GroupCardType";
 import AvatarWithName from "../AvatarWithName/AvatarWithName";
 import Button from "../Button/Button";
+import type { RootState } from "../../redux/store";
 
-const GroupCard = ({ groupName, inviteCode, members, showRanking = false }: GroupCardType) => {
+const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = false }: GroupCardType) => {
+  const { removeGroup } = useDeleteGroup();
+  const currentUserID = useSelector((state: RootState) => state.auth.userID);
+
   return (
     <div className="card-group">
       <h3 className="group-name">{groupName}</h3>
       <div className="responsive-card-btn-name">
         <h3>{groupName}</h3>
-        {!showRanking && <Button text="Remove" color="#FF935A" width="150px" /> }
+        {!showRanking && ownerID === currentUserID && (
+        <Button
+          text="Remove"
+          color="#FF935A"
+          width="150px"
+          onClick={() => id && removeGroup(id)}
+        />
+        )}
       </div>
       <div className="responsive-card-admi">
         {(() => {
@@ -59,7 +72,7 @@ const GroupCard = ({ groupName, inviteCode, members, showRanking = false }: Grou
           </div>
         ))}
       </div>
-      {!showRanking && <Button text="Remove" color="#FF935A" width="150px" /> }
+      {!showRanking && ownerID === currentUserID && <Button text="Remove" color="#FF935A" width="150px"  onClick={() => removeGroup(id)}/> }
     </div>
   );
 };

@@ -62,7 +62,7 @@ const CreateGroupForm = () => {
             id: userID,
             username: username,
             avatar: avatar,
-            role: "Member",
+            role: "Admin",
           },
         ],
         memberIds: [userID],
@@ -87,7 +87,7 @@ const CreateGroupForm = () => {
               id: userID,
               username: username,
               avatar: avatar,
-              role: "Member",
+              role: "Admin",
             },
           ],
         })

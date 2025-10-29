@@ -86,6 +86,8 @@ const Groups = () => {
           groups.map((group) => (
             <GroupCard
               key={group.id}
+              id={group.id}
+              ownerID={group.ownerID}
               groupName={group.name}
               inviteCode={group.inviteCode}
               members={group.members || []} 

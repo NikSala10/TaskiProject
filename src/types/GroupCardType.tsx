@@ -8,8 +8,11 @@ export type AvatarWithNameProps = {
 };
 
 export type GroupCardType = {
+  id: string;
   groupName: string;
   members: AvatarWithNameProps[];
   showRanking?: boolean;
+  numPoints?: number;
   inviteCode?: string;
+  ownerID?: string;
 };

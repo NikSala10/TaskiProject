@@ -48,6 +48,10 @@ const groupSlice = createSlice({
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.isLoading = action.payload;
     },
+    deleteGroup: (state, action) => {
+      const groupId = action.payload;
+      state.groups = state.groups.filter((group) => group.id !== groupId);
+    },
     addMemberToGroup: (
       state,
       action: PayloadAction<{ groupId: string; member: Member }>
@@ -60,5 +64,5 @@ const groupSlice = createSlice({
   },
 });
 
-export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup } = groupSlice.actions;
+export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup, deleteGroup } = groupSlice.actions;
 export default groupSlice.reducer;

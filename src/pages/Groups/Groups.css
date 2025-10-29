@@ -6,6 +6,8 @@
 }
 .cardsGroups{
     display: flex;
+    flex-wrap: wrap; /* 👈 permite que bajen a la siguiente fila */
+    justify-content: flex-start;
     margin-top: 2rem;
     gap: 50px;
 }

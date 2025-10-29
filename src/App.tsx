@@ -42,7 +42,7 @@ function App() {
   useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, async (user) => {
     if (user) {
-      dispatch(setLoading(true)); // 🟣 activamos loading mientras se obtiene el usuario
+      dispatch(setLoading(true)); // activamos loading mientras se obtiene el usuario
 
       try {
         const userDocRef = doc(db, "users", user.uid);

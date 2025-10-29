@@ -16,7 +16,7 @@ const FormLogin = () => {
     setErrorMessage(""); 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        navigate("/create-group");
+        navigate("/groups");
       })
        .catch((error) => {
       if (error.code === "auth/user-not-found") {

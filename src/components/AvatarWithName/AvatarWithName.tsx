@@ -6,7 +6,7 @@ const AvatarWithName = ({avatar, username, role, showRanking, numPoints}: Avatar
     <div className="user-card">
       { showRanking && <div className="number-space"></div>}
         <img
-        src={avatar || "https://api.dicebear.com/9.x/fun-emoji/svg?seed=ki"}
+        src={avatar || "https://firebasestorage.googleapis.com/v0/b/algoritmosdatos2024-02.appspot.com/o/Group%20407.svg?alt=media&token=d5f5cbfc-86b0-4407-bcd9-751513aa0031"}
         alt={`${username} avatar`}
         className="avatar"
         />
