@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice";
 import pageSlice from "./slices/pageSlice";
 import groupSlice from "./slices/groupsSlice";
+import tasksSlice from "./slices/tasksSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
     page: pageSlice,
-    group: groupSlice
+    group: groupSlice,
+    tasks: tasksSlice,
   },
   // Desactiva el aviso de que no deja guardar iconos en redux
   middleware: (getDefaultMiddleware) =>

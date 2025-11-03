@@ -4,7 +4,7 @@ interface InitialState {
   userID: string;
   username: string,
   avatar?: string;
-  numPoints?: number;
+  numPoints: number;
   isLoading: boolean;
 }
 
@@ -37,8 +37,18 @@ const authSlice = createSlice({
     setLoading(state, action: PayloadAction<boolean>) {
       state.isLoading = action.payload;
     },
+    setPoints(state, action: PayloadAction<number>) {
+      state.numPoints = action.payload;
+    },
+    addPoints(state, action: PayloadAction<number>) {
+      state.numPoints += action.payload;
+    },
+    subtractPoints(state, action: PayloadAction<number>) {
+      state.numPoints -= action.payload;
+      if (state.numPoints < 0) state.numPoints = 0; // evitar negativos
+    },
   },
 });
 
-export const { setUser, clearUser, setLoading } = authSlice.actions;
+export const { setUser, clearUser, setLoading, addPoints,setPoints,subtractPoints  } = authSlice.actions;
 export default authSlice.reducer;

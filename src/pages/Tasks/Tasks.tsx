@@ -1,26 +1,37 @@
-import { useState } from "react";
 import Button from "../../components/Button/Button";
 import TasksList from "../../components/TasksList/TasksList";
-import { tasks } from "../../data/tasks";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate } from "react-router";
 import Trophy from '../../assets/Trophy.svg'
+import type { RootState } from "../../redux/store";
+import { useState } from "react";
+import { useTasks } from "../../hook/useTasks";
+import { useSelector } from "react-redux";
 
 const Tasks = () => {
   useSetPageInfo("Tasks");
   const navigate = useNavigate();
-
-  const normalTasks = tasks.filter(task => !task.isAdditional);
-  const additionalTasks = tasks.filter(task => task.isAdditional);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("my");
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  useTasks(); 
 
+  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const userID = useSelector((state: RootState) => state.auth.userID);
+
+  const normalTasks = tasks.filter(
+    (t) => !t.isAdditional && (t.assigneeId === userID)
+  );
+
+  const additionalTasks = tasks.filter(
+    (t) => t.isAdditional && t.assigneeId === null
+  );
+  
   return (
     <div className="tasks-page">
       <div className="btn-create-task-respon" onClick={() => {navigate('/create-task')}}>
@@ -51,7 +62,7 @@ const Tasks = () => {
         {activeTab === "my" ? (
           <TasksList tasks={normalTasks} />
         ) : (
-          <TasksList tasks={additionalTasks} />
+          <TasksList tasks={additionalTasks} setActiveTab={setActiveTab} />
         )}
       </div>
       
@@ -71,7 +82,7 @@ const Tasks = () => {
         <div className="content">
           <h3 className="tit-additional">Aditional Tasks</h3>
             <div className="additional-tasks-list">
-              <TasksList tasks={additionalTasks} />
+              <TasksList tasks={additionalTasks}  />
             </div>
         </div>
       </Modal>

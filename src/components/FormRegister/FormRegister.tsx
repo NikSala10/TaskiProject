@@ -5,9 +5,12 @@ import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slices/authSlice";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState(""); 
@@ -18,10 +21,7 @@ const SignUpForm = () => {
   // Validar longitud mínima de la contraseña
   useEffect(() => {
     setMeetsMinPasswordLength(password.length >= 6)
-  }, [password])
-
-  console.log("usuario registrado" + username);
-  
+  }, [password])  
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const SignUpForm = () => {
           numPoints: 0,
         });
         await updateProfile(user, { displayName: username }); 
-        console.log("Nombre guardado correctamente:", user.displayName);
+        dispatch(setUser({ uid: user.uid, username: username, avatar: avatarUrl }));
         navigate("/create-group");
       })
       .catch((error) => {
