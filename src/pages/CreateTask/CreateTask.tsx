@@ -30,11 +30,15 @@ const CreateTask = () => {
     [groups, currentUser]
   );
 
-  // 🔹 Cada vez que se seleccione un grupo, cargamos sus miembros
+  // 🔹 Cada vez que se seleccione un grupo, cargamos sus miembros, menos el que lo creo
   useEffect(() => {
     const group = userGroups.find(g => g.id === selectedGroup);
     if (group) {
-      setMembers(group.members || []); // <- usa un fallback
+      // 🔹 Filtramos al dueño del grupo para que no aparezca como opción
+      const filteredMembers = (group.members || []).filter(
+        (m) => m.id !== group.ownerID
+      );
+      setMembers(filteredMembers);
     } else {
       setMembers([]);
     }
@@ -53,6 +57,7 @@ const CreateTask = () => {
       groupId: selectedGroup,
       priority,
       schedule,
+      creatorId: currentUser,
       assigneeId: assignee === "none" ? null : assignee,
       assigneeName: assignee === "none" ? null : assigneeMember?.username,
     };

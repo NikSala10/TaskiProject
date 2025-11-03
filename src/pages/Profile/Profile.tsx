@@ -9,6 +9,8 @@ import Button from "../../components/Button/Button";
 import { signOut } from "firebase/auth";
 import { auth } from "../../services/firebaseConfig";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
 const Profile = () => {
   useSetPageInfo("");
@@ -18,6 +20,28 @@ const Profile = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const avatar = useSelector((state: RootState) => state.auth.avatar);
+  const userId = useSelector((state: RootState) => state.auth.userID);
+  const username = useSelector((state: RootState) => state.auth.username);
+  const totalPoints = useSelector((state: RootState) => state.auth.numPoints);
+  const tasks = useSelector((state: RootState) => state.tasks.tasks);
+  const userTasks = tasks.filter(t => t.assigneeId === userId);
+
+// Contamos por estado
+  const completedCount = userTasks.filter(t => t.status === "completed").length;
+  const pendingCount = userTasks.filter(t => t.status === "pending").length;
+  const role = useSelector((state: RootState) => {
+    const userID = state.auth.userID;
+    const allGroups = state.group.groups;
+
+    for (const g of allGroups) {
+      const member = g.members.find(m => m.id === userID);
+      if (member) return member.role;
+    }
+
+    return "Member"; // valor por defecto si no lo encuentra
+  });
 
   const handleCloseSession = () => {
     signOut(auth)
@@ -41,11 +65,7 @@ const Profile = () => {
         <div className="header-profile">
             <div className="info-user-profile">
                 <div className="img-profile">
-                    <svg width="120" height="120" viewBox="0 0 49 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M21.4312 0.188651C55.2779 -3.4936 59.0353 47.3665 26.7066 49.9065C-5.62204 52.4465 -10.0558 3.60037 21.4312 0.188651ZM28.1645 15.6541C27.5032 20.7792 28.6605 27.2118 28.1645 32.4722C27.5483 32.2468 27.2928 30.6236 27.1274 29.9773C26.3459 27.1517 24.0163 19.7271 24.0163 17.3074V11.0701C24.0163 10.6943 23.0845 10.3336 22.5885 10.4238C22.2128 10.4989 21.837 12.4979 20.6948 12.1071C20.7399 10.9498 20.2739 9.95788 19.0115 10.6342C18.6658 10.8296 14.0066 16.3154 13.8413 16.6761C12.8042 18.9456 14.6078 19.3213 14.8633 20.6289C15.0286 21.4555 15.0136 27.3922 14.8032 28.0385C14.5326 28.8501 13.195 28.8952 12.5938 29.5715C10.7752 31.6155 11.9175 37.8678 11.5267 38.2736C11.4215 38.3788 9.75323 38.2285 9.04684 38.9049C7.93465 39.987 8.85145 40.6633 10.0689 40.7986C15.3442 41.3848 29.3368 41.3848 34.5971 40.7836C38.1141 40.3778 39.5268 37.6724 39.3766 34.3509C39.1511 29.4062 37.0319 23.8302 36.5209 18.9155C36.1903 15.6992 36.5209 17.1571 38.2493 16.601C41.0148 15.6992 41.0899 10.8446 37.8435 10.1232C33.3797 9.11623 28.8108 10.7244 28.1645 15.6391V15.6541Z" fill="#4EB9AA"/>
-                      <path d="M28.1641 15.6545C28.8104 10.7398 33.3794 9.13161 37.8432 10.1386C41.0896 10.86 41.0144 15.7146 38.249 16.6163C36.5206 17.1875 36.1899 15.7146 36.5206 18.9309C37.0316 23.8305 39.1357 29.4065 39.3762 34.3663C39.5265 37.6878 38.1287 40.3932 34.5968 40.799C29.3364 41.4001 15.3439 41.4001 10.0685 40.814C8.8511 40.6787 7.9343 39.9874 9.04649 38.9203C9.75288 38.2439 11.4362 38.3792 11.5264 38.289C11.9171 37.8982 10.7749 31.6459 12.5935 29.5869C13.1796 28.9256 14.5323 28.8655 14.8028 28.0539C15.0132 27.4076 15.0283 21.4709 14.8629 20.6443C14.6074 19.3517 12.8039 18.961 13.8409 16.6915C14.0063 16.3308 18.6654 10.8299 19.0111 10.6496C20.2586 9.97326 20.7245 10.9652 20.6944 12.1225C21.8216 12.5133 22.2124 10.5143 22.5882 10.4392C23.0841 10.349 24.016 10.7097 24.016 11.0855V17.3227C24.016 19.7425 26.3455 27.1821 27.1271 29.9927C27.3074 30.639 27.5629 32.2621 28.1641 32.4876C28.6601 27.2272 27.5028 20.7795 28.1641 15.6695V15.6545ZM18.1845 18.3598C17.0723 18.1193 15.8699 19.3668 16.1104 20.4339L18.1845 18.3598Z" fill="#F9FCFD"/>
-                      <path d="M18.1848 18.3592L16.1107 20.4333C15.8702 19.3662 17.0726 18.1187 18.1848 18.3592Z" fill="#4EB9AA"/>
-                    </svg>
+                    <img src={avatar} alt="User" style={{ width: "120px", height: "120px", borderRadius: "50%" }}/>
                     <div className="change-img-profile">
                       <svg width="23" height="19" viewBox="0 0 23 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect y="18.2402" width="10.64" height="0.760001" rx="0.380001" fill="#FFFAF8"/>
@@ -55,8 +75,8 @@ const Profile = () => {
                 </div>
                 
                 <div className="info-profile">
-                    <span className="name-profile" >Luli</span>
-                    <span className="role-profile">Administrador</span>
+                    <span className="name-profile">{username}</span>
+                    <span className="role-profile">{role}</span>
                 </div>
             </div>
             
@@ -70,11 +90,11 @@ const Profile = () => {
         </div>
         <div className="tasks-summary">
             <div className=" tasks completed-tasks">
-                <p className="task-num">12</p>
+                <p className="task-num">{completedCount}</p>
                 <p>Completed tasks</p>
             </div>
             <div className="tasks pending-tasks">
-                <p className="task-num">6</p>
+                <p className="task-num">{pendingCount}</p>
                 <p>Pending tasks</p>
             </div>
         </div>
@@ -83,7 +103,7 @@ const Profile = () => {
                 <div className="trophy-img">
                     <img src={Trophy}/>
                 </div>
-                <p className="num-points">140</p>
+                <p className="num-points">{totalPoints}</p>
                 <p>Points</p>
             </div>
             <div className="square-points-2" onClick={openModal}>
@@ -91,7 +111,7 @@ const Profile = () => {
                 <img src={Trophy}/>
                 </div>
                 <div>
-                    <p className="num-points-2">140 </p>
+                    <p className="num-points-2">{totalPoints} </p>
                     <p> Points</p>
                 </div>
             </div>

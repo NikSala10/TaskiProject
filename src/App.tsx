@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import User from "./components/UserProfile/User";
 import Groups from "./pages/Groups/Groups";
 import { menuItems } from "./data/itemsBar";
-import { membersIcons } from "./data/memberBar";
 import Tasks from "./pages/Tasks/Tasks";
 import PlanReview from "./pages/Plan Review/PlanReview";
 import Profile from "./pages/Profile/Profile";
@@ -29,7 +28,7 @@ function Layout({ children }: { children: React.ReactNode }) {
   
   return (
     <>
-      <div className="navBar"><NavBar items={menuItems} avatars={membersIcons} /></div>
+      <div className="navBar"><NavBar items={menuItems} /></div>
       <div className="headerUp"><Header /> <User/></div>
       <div className="screens">{children}</div>
     </>

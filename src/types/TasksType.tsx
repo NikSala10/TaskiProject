@@ -6,6 +6,7 @@ export interface Task {
   assigneeName?: string | null;
   priority: "low" | "medium" | "high";
   points: number;
+  creatorId: string;   
   isAdditional?: boolean;
   schedule?: string;
   status: "pending" | "completed" | "additional";
@@ -15,10 +16,11 @@ export interface Task {
 export type TaskItemProps = {
   task: Task;
   setActiveTab?: (tab: string) => void;
+  showEditDelete?: boolean; 
 };
 
 export type TaskListProps = {
   tasks: Task[];
   setActiveTab?: (tab: string) => void;
-
+  showEditDelete?: boolean; 
 };

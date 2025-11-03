@@ -1,14 +1,58 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type {NavBarProps } from "../../types/NavBarType";
 import ItemsBar from "../ItemsBar/ItemsBar";
 import Member from "../Member/Member";
 import "./NavBar.css";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
-const NavBar = ({ items, avatars }: NavBarProps) => {
+const NavBar = ({ items }: NavBarProps) => {
   const [activeItem, setActiveItem] = useState<string>("");
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+interface MemberType {
+  id: string;
+  username: string;
+  avatar: string;
+  role?: string;
+}
+
+interface GroupType {
+  id: string;
+  name: string;
+  ownerID: string;
+  members?: MemberType[];
+}
+
+const groups = useSelector((state: RootState) => state.group.groups as GroupType[]);
+const userID = useSelector((state: RootState) => state.auth.userID);
+
+  // Obtener los tres primeros miembros de cada grupo en el que el usuario está
+const memberAvatars = useMemo(() => {
+  const allMembersMap: Record<string, { avatar: string; name: string; color?: string }> = {};
+
+  groups.forEach(group => {
+    const members = group.members ?? [];
+    const isInGroup = group.ownerID === userID || members.some(m => m.id === userID);
+
+    if (isInGroup) {
+      members.slice(0, 3).forEach(m => {
+        if (!allMembersMap[m.id]) { // solo agregamos si no existe
+          allMembersMap[m.id] = {
+            avatar: m.avatar,
+            name: m.username,
+            color: "#82C2F6",
+          };
+        }
+      });
+    }
+    });
+
+    // convertir a array y limitar a 3 miembros globalmente
+    return Object.values(allMembersMap).slice(0, 3);
+  }, [groups, userID]);
 
   return (
     <div
@@ -70,7 +114,7 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
         <div className="avatars-bar">
           <h3>Members</h3>
           <div className="members">
-            {avatars.map((avatar, index) => (
+            {memberAvatars.map((avatar, index) => (
                 <Member key={index} avatar={avatar.avatar} name={avatar.name} color={avatar.color} />
             ))}
           </div>

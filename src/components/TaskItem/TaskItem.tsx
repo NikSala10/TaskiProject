@@ -12,7 +12,6 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks); 
   const userID = useSelector((state: RootState) => state.auth.userID);
   const userName = useSelector((state: RootState) => state.auth.username);
-  console.log("usuario registrado", userName);
 
   const [isCompleted, setIsCompleted] = useState(task.status === "completed");
   const [isAccepted, setIsAccepted] = useState(!task.isAdditional);
@@ -98,6 +97,10 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
   };
 
   const renderButton = () => {
+      if (task.creatorId === userID) {
+      return null;
+    }
+
     if (task.isAdditional && !isAccepted) {
       return (
         <button
@@ -112,7 +115,23 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
   
   return (
     <div className={`task-item ${isCompleted ? "completed" : ""}`}>
+      <div className="actions-tasks-edi-elim">
         <h3>{task.title}</h3>
+        {task.creatorId === userID && (  
+          <div className="sub-colum-actions">
+            <div className="eliminar-task">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="#5b5b5b77" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1"/>
+              </svg>
+            </div>
+            <div className="edit-task">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path fill="#ffffffc3" d="M18.925 3.137a3.027 3.027 0 0 0-4.283.001l-9.507 9.52a3.03 3.03 0 0 0-.885 2.139V18c0 .414.336.75.75.75h3.223c.803 0 1.573-.32 2.14-.887l9.5-9.506a3.03 3.03 0 0 0 0-4.28zM4 20.25a.75.75 0 0 0 0 1.5h16a.75.75 0 0 0 0-1.5z"/>
+              </svg>
+            </div>
+          </div>
+        )}
+      </div>
         <div className="task-info">
           <div className="text-info">
             <span className="priority" style={{ backgroundColor: getPriorityColor(task.priority) }}>
@@ -124,8 +143,7 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
           <div>
             <div>{renderButton()}</div>
         </div>
-          </div>
-          
+        </div>          
     </div>
   );
 };
