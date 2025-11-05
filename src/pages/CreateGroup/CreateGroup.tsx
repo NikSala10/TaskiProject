@@ -8,6 +8,6 @@ const CreateGroupPage = () => {
       </div>
     </div>
   );
-};
+}; 
 
 export default CreateGroupPage;
