@@ -11,6 +11,8 @@ import { auth } from "../../services/firebaseConfig";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
+import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+
 
 const Profile = () => {
   useSetPageInfo("");
@@ -20,6 +22,11 @@ const Profile = () => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const [currentPass, setCurrentPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [showChangePassModal, setShowChangePassModal] = useState(false);
+
 
   const avatar = useSelector((state: RootState) => state.auth.avatar);
   const userId = useSelector((state: RootState) => state.auth.userID);
@@ -55,6 +62,44 @@ const Profile = () => {
         console.error("Error signing out:", error);
       });
   };
+  const handleChangePassword = async () => {
+    const user = auth.currentUser;
+
+    if (!user) return alert("No user logged in.");
+
+    try {
+      // Reautenticar
+      const credential = EmailAuthProvider.credential(user.email!, currentPass);
+      await reauthenticateWithCredential(user, credential);
+
+      // Cambiar contraseña
+      await updatePassword(user, newPass);
+      
+      alert("Password updated successfully.");
+      setShowChangePassModal(false);
+      setCurrentPass("");
+      setNewPass("");
+    } catch (error: unknown) {
+  console.error(error);
+
+  // Verificamos si es un objeto y si tiene propiedad "code"
+  if (typeof error === "object" && error !== null && "code" in error) {
+    const err = error as { code: string };
+
+    if (err.code === "auth/wrong-password") {
+      alert("Current password is incorrect.");
+    } else if (err.code === "auth/weak-password") {
+      alert("New password is too weak.");
+    } else {
+      alert("Something went wrong. Try again.");
+    }
+  } else {
+    // Si no es un error de Firebase
+    alert("Unexpected error occurred.");
+  }
+}
+  };
+
 
   return (
     <div className="container-profile">
@@ -81,7 +126,7 @@ const Profile = () => {
             </div>
             
             <div className="btn-profile">
-                <button className="btn-cp-profile">Change Password</button>
+                <button className="btn-cp-profile" onClick={() => setShowChangePassModal(true)}>Change Password</button>
             </div>
         </div>
         <div className="log-out" >
@@ -171,6 +216,30 @@ const Profile = () => {
                 <Button text="Confirm" color="#82C2F6" width="390px"  onClick={closeModal}/>
             </div>
         </Modal>
+        {showChangePassModal && (
+      <Modal isOpen={showChangePassModal} onClose={() => setShowChangePassModal(false)}>
+        <h3 className="tit-additional">Change Password</h3>
+        <div className="content-chng-pss">
+          <label className="input-label-chang-pss">Current Password</label>
+          <input
+            type="password"
+            placeholder="Current password"
+            value={currentPass}
+            onChange={(e) => setCurrentPass(e.target.value)}
+            className="input-field-chn-pss"
+          />
+          <label className="input-label-chang-pss">New Password</label>
+          <input
+            type="password"
+            placeholder="New password"
+            className="input-field-chn-pss"
+            value={newPass}
+            onChange={(e) => setNewPass(e.target.value)}
+          />
+          <Button text="Save" color="#82C2F6" width="300px"  onClick={handleChangePassword}/>
+        </div>
+      </Modal>
+    )}
     </div>
     
   );
