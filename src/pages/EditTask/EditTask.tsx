@@ -173,4 +173,4 @@ await updateDoc(taskRef, clean);
   );
 };
 
-export default EditTask;
+export default EditTask; 
