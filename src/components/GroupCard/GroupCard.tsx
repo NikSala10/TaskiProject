@@ -18,14 +18,14 @@ const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = 
         <h3>{groupName}</h3>
         {!showRanking && ownerID === currentUserID ? (
           <Button
-            text="Remove Group"
+            text="Remove"
             color="#FF5A5A"
             width="150px"
             onClick={() => id && removeGroup(id)}
           />
         ) : (
           <Button
-            text="Leave Group"
+            text="Leave"
             color="#FF935A"
             width="150px"
             onClick={() => id && leaveGroup(id)}
@@ -43,6 +43,7 @@ const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = 
               <div className="responsive-info-admi">
                 <h3>{admin.username}</h3>
                 <h3 className="rol-res">{admin.role}</h3>
+                <h3 className="rol-res">Invite code:{inviteCode}</h3>
               </div>
             </>
           );
