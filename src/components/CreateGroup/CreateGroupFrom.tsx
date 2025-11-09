@@ -1,9 +1,104 @@
 import { useNavigate } from "react-router";
 import "./CreateGroup.css";
 import Portada from "../../assets/Portada.png";
+import { useState } from "react";
+import Modal from "../Modal/Modal";
+import Button from "../Button/Button";
+import type { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { addDoc, collection} from "firebase/firestore";
+import { db } from "../../services/firebaseConfig";
+import { addGroup } from "../../redux/slices/groupsSlice";
+import JoinGroupModal from "../JoinGroupModal/JoinGroup";
 
 const CreateGroupForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const userID = useSelector((state: RootState) => state.auth.userID);
+  const username = useSelector((state: RootState) => state.auth.username);
+  const avatar = useSelector((state: RootState) => state.auth.avatar);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [groupName, setGroupName] = useState("");
+  const [description, setDescription] = useState("");
+  const [planBudget, setPlanBudget] = useState<number>(0);
+  const [startDate, setStartDate] = useState("");
+  const [planDuration, setPlanDuration] = useState("");
+  const [inviteCode, setInviteCode] = useState("");
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const openJoinModal = () => setIsJoinModalOpen(true);
+
+   const handleCreateGroup = async () => {
+    if (!userID || !username) {
+      alert("User data not loaded yet, please wait a moment.");
+      console.warn("Redux user not loaded:", { userID, username });
+      return;
+    }
+
+    if (!groupName || !startDate || !planDuration || planBudget <= 0) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    try {
+      const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+      setInviteCode(code);
+
+      const docRef = await addDoc(collection(db, "groups"), {
+        name: groupName,
+        description,
+        planBudget,
+        startDate,
+        planDuration,
+        ownerID: userID,
+        inviteCode: code,
+        members: [
+          {
+            id: userID,
+            username: username,
+            avatar: avatar,
+            role: "Admin",
+          },
+        ],
+        memberIds: [userID],
+      });
+      await addDoc(collection(db, "groups", docRef.id, "members"), {
+        userID,
+        username,
+        role: "Member", 
+      });
+
+      dispatch(
+        addGroup({
+          id: docRef.id,
+          name: groupName,
+          description,
+          planBudget,
+          startDate,
+          planDuration,
+          ownerID: userID,
+           members: [
+            {
+              id: userID,
+              username: username,
+              avatar: avatar,
+              role: "Admin",
+            },
+          ],
+        })
+      );
+
+      openModal();
+    } catch (error) {
+      console.error("Error creating group:", error);
+      alert("Something went wrong creating the group");
+    }
+  };
 
   return (
     <form className="cgx-form">
@@ -20,9 +115,15 @@ const CreateGroupForm = () => {
 
           <img src={Portada} alt="Portada" className="cgx-img" />
         </div>
-
+        
         {/* Contenido del formulario */}
         <div className="cgx-content">
+          <button
+            type="button"
+            className="cgx-close-btn"
+            onClick={() => navigate("/groups")}
+          >✕
+          </button>
           <h1 className="cgx-title">Create your group!</h1>
           <p className="cgx-subtitle">
             Manage household chores and turn teamwork into a fun challenge.<br />
@@ -37,11 +138,14 @@ const CreateGroupForm = () => {
                   <strong>Group Name</strong>
                 </label>
                 <input
+                  required
                   type="text"
                   id="groupName"
                   name="groupName"
                   placeholder="Enter group name"
                   className="cgx-input"
+                  value={groupName}
+                  onChange={(e) => setGroupName(e.target.value)}
                 />
               </div>
 
@@ -54,6 +158,8 @@ const CreateGroupForm = () => {
                   name="description"
                   placeholder="Enter group description (optional)"
                   className="cgx-textarea"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   rows={3}
                 />
               </div>
@@ -63,13 +169,14 @@ const CreateGroupForm = () => {
                   Plan Budget
                 </label>
                 <input
+                  required
                   type="number"
                   id="planBudget"
                   name="planBudget"
                   placeholder="$ 0.00"
                   className="cgx-input"
-                  min="0"
-                  step="0.01"
+                  value={planBudget}
+                  onChange={(e) => setPlanBudget(Number(e.target.value))}
                 />
               </div>
             </div>
@@ -81,10 +188,13 @@ const CreateGroupForm = () => {
                   <strong>Start Date</strong>
                 </label>
                 <input
+                  required
                   type="date"
                   id="startDate"
                   name="startDate"
                   className="cgx-input"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
                 />
               </div>
 
@@ -93,9 +203,12 @@ const CreateGroupForm = () => {
                   Plan Duration
                 </label>
                 <select
+                  required
                   id="planDuration"
                   name="planDuration"
                   className="cgx-select"
+                  value={planDuration}
+                  onChange={(e) => setPlanDuration(e.target.value)}
                 >
                   <option value="">Select duration</option>
                   <option value="1month">1 Month</option>
@@ -116,9 +229,16 @@ const CreateGroupForm = () => {
             <button
               type="button"
               className="cgx-btn"
-              onClick={() => navigate("/groups")}
+              onClick={handleCreateGroup}
             >
               Create Group & Generate Code
+            </button>
+            <button
+              type="button"
+              className="cgx-btn-join"
+              onClick={openJoinModal}
+            >
+              Join Group
             </button>
             <p className="cgx-code-note">
               Generate a unique code for other members to join
@@ -126,6 +246,20 @@ const CreateGroupForm = () => {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <div className="content-modal-cgx">
+            <h3 className="tit-code-grp">All set!  Your group has <br /> been created successfully</h3>
+            <p className="invitation-code-cgx">Here is your invitation code:</p>
+            <div className="link-box">
+              <span className="link-text">{inviteCode}</span>
+              <button className="copy-btn"  onClick={(e) => {e.preventDefault();navigator.clipboard.writeText(inviteCode);alert("Code copied!")}}><svg width="13" height="25" viewBox="0 0 13 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.547188 4.195C0.554356 1.90675 2.42051 0.0575852 4.71536 0.0647737C7.01022 0.0719622 8.86475 1.93278 8.85759 4.22103L8.81086 19.1367C8.80656 20.5096 7.68687 21.6191 6.30996 21.6148C4.93304 21.6105 3.82032 20.494 3.82462 19.1211L3.86096 7.52C3.8624 7.06235 4.23563 6.69252 4.6946 6.69396C5.15357 6.6954 5.52448 7.06756 5.52304 7.52521L5.4867 19.1263C5.48527 19.5839 5.85618 19.9561 6.31515 19.9575C6.77412 19.959 7.14735 19.5891 7.14878 19.1315L7.19551 4.21582C7.19981 2.84287 6.08709 1.72638 4.71017 1.72207C3.33326 1.71776 2.21357 2.82726 2.20927 4.2002L2.16254 19.1159C2.15538 21.4041 4.00991 23.2649 6.30476 23.2721C8.59962 23.2793 10.4658 21.4302 10.4729 19.1419L10.5093 7.54083C10.5107 7.08318 10.8839 6.71335 11.3429 6.71478C11.8019 6.71622 12.1728 7.08839 12.1714 7.54604L12.135 19.1471C12.125 22.3507 9.51237 24.9395 6.29957 24.9294C3.08678 24.9194 0.490431 22.3142 0.500465 19.1107L0.547188 4.195Z" fill="white"/>
+              </svg>Copy</button>
+            </div>
+            <Button text="Continue" color="#82C2F6" width="390px"  onClick={() => navigate("/groups")}/>
+          </div>
+      </Modal>
+      <JoinGroupModal isOpen={isJoinModalOpen} onClose={() => setIsJoinModalOpen(false)} />
     </form>
   );
 };

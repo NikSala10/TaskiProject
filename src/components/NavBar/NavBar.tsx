@@ -1,14 +1,58 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type {NavBarProps } from "../../types/NavBarType";
 import ItemsBar from "../ItemsBar/ItemsBar";
 import Member from "../Member/Member";
 import "./NavBar.css";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
 
-const NavBar = ({ items, avatars }: NavBarProps) => {
+const NavBar = ({ items }: NavBarProps) => {
   const [activeItem, setActiveItem] = useState<string>("");
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+interface MemberType {
+  id: string;
+  username: string;
+  avatar: string;
+  role?: string;
+}
+
+interface GroupType {
+  id: string;
+  name: string;
+  ownerID: string;
+  members?: MemberType[];
+}
+
+const groups = useSelector((state: RootState) => state.group.groups as GroupType[]);
+const userID = useSelector((state: RootState) => state.auth.userID);
+
+  // Obtener los tres primeros miembros de cada grupo en el que el usuario está
+const memberAvatars = useMemo(() => {
+  const allMembersMap: Record<string, { avatar: string; name: string; color?: string }> = {};
+
+  groups.forEach(group => {
+    const members = group.members ?? [];
+    const isInGroup = group.ownerID === userID || members.some(m => m.id === userID);
+
+    if (isInGroup) {
+      members.slice(0, 3).forEach(m => {
+        if (!allMembersMap[m.id]) { // solo agregamos si no existe
+          allMembersMap[m.id] = {
+            avatar: m.avatar,
+            name: m.username,
+            color: "#82C2F6",
+          };
+        }
+      });
+    }
+    });
+
+    // convertir a array y limitar a 3 miembros globalmente
+    return Object.values(allMembersMap).slice(0, 3);
+  }, [groups, userID]);
 
   return (
     <div
@@ -32,9 +76,9 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
             <path d="M36.3597 12.5523C37.7421 13.1666 38.915 13.8446 39.8785 14.586C40.842 15.3063 41.5436 16.0266 41.9835 16.7469C42.4233 17.446 42.6537 18.1346 42.6747 18.8125C42.6956 19.4904 42.4548 20.1154 41.9521 20.6874C41.4494 21.2382 40.7163 21.6937 39.7528 22.0538C38.7893 22.414 37.7002 22.6047 36.4854 22.6258C35.2705 22.6682 34.129 22.5623 33.0608 22.3081C31.9926 22.0327 31.092 21.5454 30.3589 20.8463C29.6258 20.1472 29.2593 19.3103 29.2593 18.3358C29.2593 17.9757 29.2907 17.6473 29.3535 17.3507C29.4373 17.0541 29.5316 16.8211 29.6363 16.6516C29.762 16.4609 29.8876 16.2915 30.0133 16.1432C30.1599 15.9949 30.2961 15.8783 30.4217 15.7936C30.5684 15.7089 30.694 15.6453 30.7987 15.6029C30.9244 15.5606 31.0187 15.5288 31.0815 15.5076L31.1758 15.4758L35.8256 17.7003C35.8047 17.7003 35.7628 17.7109 35.6999 17.732C35.658 17.732 35.5743 17.7426 35.4486 17.7638C35.3229 17.785 35.1972 17.8168 35.0716 17.8592C34.9668 17.9015 34.8412 17.9651 34.6946 18.0498C34.5479 18.1134 34.4223 18.1981 34.3175 18.304C34.2128 18.3888 34.1186 18.5053 34.0348 18.6536C33.9719 18.7807 33.9405 18.929 33.9405 19.0985C33.9196 19.8188 34.2442 20.3802 34.9145 20.7827C35.5847 21.1641 36.255 21.1852 36.9252 20.8463C37.6164 20.5073 37.9725 19.7976 37.9934 18.7172C37.9934 18.2723 37.7211 17.8486 37.1766 17.446C36.6529 17.0435 36.0246 16.7046 35.2915 16.4292C34.5794 16.1326 33.752 15.7512 32.8095 15.2852C31.8879 14.7979 31.1443 14.2894 30.5788 13.7598C30.0552 13.2726 29.6887 12.7323 29.4792 12.1391C29.2698 11.5248 29.2593 10.921 29.4478 10.3278C29.6363 9.71343 29.9819 9.16261 30.4846 8.67535C30.9873 8.16691 31.7308 7.75379 32.7152 7.43601C33.7206 7.11824 34.8935 6.95935 36.234 6.95935C38.936 6.95935 40.821 7.5949 41.8892 8.86602C42.9574 10.1159 42.926 11.832 41.795 14.014L36.6425 11.6625C36.9357 11.493 37.2185 11.26 37.4907 10.9634C37.763 10.6456 37.9725 10.3278 38.1191 10.01C38.2657 9.67106 38.2448 9.37446 38.0563 9.12024C37.8887 8.86602 37.5222 8.70713 36.9566 8.64357C36.4749 8.58002 36.0036 8.6118 35.5428 8.73891C35.082 8.86602 34.7155 9.06728 34.4432 9.34269C34.1919 9.6181 34.0453 9.92528 34.0034 10.2642C33.9615 10.582 34.1395 10.9528 34.5375 11.3765C34.9354 11.8002 35.5428 12.1921 36.3597 12.5523Z" fill="white"/>
             <path d="M9.83377 22.4034C7.21562 22.4034 5.90654 22.4034 5.90654 22.4034V21.5772V22.4034C4.83834 22.467 3.97959 22.3081 3.33029 21.9267C2.68098 21.5242 2.18877 20.8569 1.85365 19.9247C1.53947 18.9714 1.38238 17.7003 1.38238 16.1114V9.02492H0.534102L0 7.1818H1.38238V0L5.93796 1.33467V7.1818H8.67131V9.02492H5.93796V12.4887C5.93796 14.2047 5.93796 16.0266 5.93796 17.9545C5.97985 19.1197 6.4197 20.1578 7.25751 21.0687C8.09532 21.9585 8.95407 22.4034 9.83377 22.4034Z" fill="white"/>
             <ellipse cx="14.9236" cy="10.2484" rx="1.33526" ry="2.62168" fill="white"/>
-            <path d="M25.684 10.9634C25.684 16.9306 22.2905 21.7679 18.1044 21.7679C13.9184 21.7679 10.5249 16.9306 10.5249 10.9634" stroke="white" stroke-width="2.78056" stroke-linecap="square"/>
-            <path d="M18.5361 10.8044C19.0859 10.8044 20.3406 10.85 21.4357 11.7447C21.7564 10.6058 22.5206 8.07057 24.7804 7.82525" stroke="white" stroke-width="1.03278"/>
-            <path d="M25.6453 11.5195C25.8855 11.8079 24.2689 19.112 26.8897 21.2078C28.242 22.2891 29.6896 21.2078 29.6896 21.2078" stroke="white" stroke-width="2.78056"/>
+            <path d="M25.684 10.9634C25.684 16.9306 22.2905 21.7679 18.1044 21.7679C13.9184 21.7679 10.5249 16.9306 10.5249 10.9634" stroke="white" strokeWidth="2.78056" strokeLinecap="square"/>
+            <path d="M18.5361 10.8044C19.0859 10.8044 20.3406 10.85 21.4357 11.7447C21.7564 10.6058 22.5206 8.07057 24.7804 7.82525" stroke="white" strokeWidth="1.03278"/>
+            <path d="M25.6453 11.5195C25.8855 11.8079 24.2689 19.112 26.8897 21.2078C28.242 22.2891 29.6896 21.2078 29.6896 21.2078" stroke="white" strokeWidth="2.78056"/>
           </svg>
         </div>
         <div className="responsive-icons">
@@ -46,10 +90,10 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
           </div>
           <div className={"hamburger-menu"} onClick={() => setMenuOpen(!menuOpen)}>
               <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 19.2188C0.875 18.6837 1.1968 18.25 1.59375 18.25H17.4062C17.8032 18.25 18.125 18.6837 18.125 19.2188C18.125 19.7538 17.8032 20.1875 17.4062 20.1875H1.59375C1.1968 20.1875 0.875 19.7538 0.875 19.2188Z" fill="white"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 13.4062C0.875 12.8712 1.1968 12.4375 1.59375 12.4375H17.4062C17.8032 12.4375 18.125 12.8712 18.125 13.4062C18.125 13.9413 17.8032 14.375 17.4062 14.375H1.59375C1.1968 14.375 0.875 13.9413 0.875 13.4062Z" fill="white"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 7.59375C0.875 7.05872 1.1968 6.625 1.59375 6.625H17.4062C17.8032 6.625 18.125 7.05872 18.125 7.59375C18.125 8.12878 17.8032 8.5625 17.4062 8.5625H1.59375C1.1968 8.5625 0.875 8.12878 0.875 7.59375Z" fill="white"/>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.875 1.78125C0.875 1.24622 1.1968 0.8125 1.59375 0.8125H17.4062C17.8032 0.8125 18.125 1.24622 18.125 1.78125C18.125 2.31628 17.8032 2.75 17.4062 2.75H1.59375C1.1968 2.75 0.875 2.31628 0.875 1.78125Z" fill="white"/>
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.875 19.2188C0.875 18.6837 1.1968 18.25 1.59375 18.25H17.4062C17.8032 18.25 18.125 18.6837 18.125 19.2188C18.125 19.7538 17.8032 20.1875 17.4062 20.1875H1.59375C1.1968 20.1875 0.875 19.7538 0.875 19.2188Z" fill="white"/>
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.875 13.4062C0.875 12.8712 1.1968 12.4375 1.59375 12.4375H17.4062C17.8032 12.4375 18.125 12.8712 18.125 13.4062C18.125 13.9413 17.8032 14.375 17.4062 14.375H1.59375C1.1968 14.375 0.875 13.9413 0.875 13.4062Z" fill="white"/>
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.875 7.59375C0.875 7.05872 1.1968 6.625 1.59375 6.625H17.4062C17.8032 6.625 18.125 7.05872 18.125 7.59375C18.125 8.12878 17.8032 8.5625 17.4062 8.5625H1.59375C1.1968 8.5625 0.875 8.12878 0.875 7.59375Z" fill="white"/>
+              <path fillRule="evenodd" clipRule="evenodd" d="M0.875 1.78125C0.875 1.24622 1.1968 0.8125 1.59375 0.8125H17.4062C17.8032 0.8125 18.125 1.24622 18.125 1.78125C18.125 2.31628 17.8032 2.75 17.4062 2.75H1.59375C1.1968 2.75 0.875 2.31628 0.875 1.78125Z" fill="white"/>
               </svg>
           </div>
         </div>
@@ -70,7 +114,7 @@ const NavBar = ({ items, avatars }: NavBarProps) => {
         <div className="avatars-bar">
           <h3>Members</h3>
           <div className="members">
-            {avatars.map((avatar, index) => (
+            {memberAvatars.map((avatar, index) => (
                 <Member key={index} avatar={avatar.avatar} name={avatar.name} color={avatar.color} />
             ))}
           </div>

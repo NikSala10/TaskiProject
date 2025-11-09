@@ -10,12 +10,11 @@ export type IconTextBarProps = {
 
 
 export type MemberBarProps = {
-  avatar: ReactNode; 
+  avatar: string; 
   name: string;
   color?: string;
 };
 
 export type NavBarProps = {
   items: IconTextBarProps[]; 
-  avatars: MemberBarProps[];
 };

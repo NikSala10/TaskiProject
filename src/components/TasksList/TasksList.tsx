@@ -1,22 +1,35 @@
 import type { TaskListProps } from "../../types/TasksType"; 
 import TaskItem from "../TaskItem/TaskItem";
 
-const TasksList = ({ tasks }: TaskListProps) => {
+const TasksList = ({ tasks, setActiveTab, showEditDelete, singleColumn = false }: TaskListProps & { singleColumn?: boolean }) => {
+  if (singleColumn) {
+    return (
+      <div className="tasks-column">
+        {tasks.map(task => (
+          <TaskItem key={task.id} task={task} setActiveTab={setActiveTab} showEditDelete={showEditDelete} />
+        ))}
+      </div>
+    );
+  }
+
+  // modo por defecto (dos columnas)
+  const middleIndex = Math.ceil(tasks.length / 2);
+  const firstHalf = tasks.slice(0, middleIndex);
+  const secondHalf = tasks.slice(middleIndex);
+
   return (
     <div className="tasks-list">
       <div className="tasks-column">
-        {tasks.slice(0, 4).map((task) => (
-          <TaskItem key={task.id} task={task} />
+        {firstHalf.map(task => (
+          <TaskItem key={task.id} task={task} setActiveTab={setActiveTab} showEditDelete={showEditDelete} />
         ))}
       </div>
-
       <div className="tasks-column">
-        {tasks.slice(4).map((task) => (
-          <TaskItem key={task.id} task={task} />
+        {secondHalf.map(task => (
+          <TaskItem key={task.id} task={task} setActiveTab={setActiveTab} showEditDelete={showEditDelete} />
         ))}
       </div>
     </div>
   );
 };
-
 export default TasksList;

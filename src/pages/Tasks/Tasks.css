@@ -1,21 +1,34 @@
 .btn-create-task{
     display: flex;
     justify-content: flex-end; 
-    padding: 0rem 3rem;   
+    padding: 0rem 3rem;  
+    gap: 1rem; 
 }
 .add {
     display: flex;
     justify-content: flex-end; 
     padding: 0rem 3rem;   
-
+    margin-top: 6rem;
 }
-
+.sub-colum-actions {
+  display: flex;
+}
+.actions-tasks-edi-elim {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .tit{
     font-size: 24px;
     font-weight: 600;
     margin: 0;
     color: #2B438D;
     margin-bottom: 1.5rem;
+}
+.no-nada-msg {
+  color: #2B438D;
+  text-align: center;
+
 }
 .tetxt{
     display: flex;
@@ -59,7 +72,7 @@
   align-items: center;
   justify-content: space-between;
   color: #ffffff;
-  width: 70%;
+  width: 78%;
 }
 
 .task-info {
@@ -161,7 +174,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 8rem;
+
 }
 .respon-tit-tasks{
   display: none;
@@ -192,6 +205,12 @@
     margin-top: 2rem;
     margin-bottom: 0.8rem;
     width: 400px;
+  }
+  .text-info {
+    width: 85%;
+  }
+  .text-info p {
+    font-size: 14px;
   }
   .tit-res-ts {
     cursor: pointer;
