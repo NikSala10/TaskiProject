@@ -47,8 +47,11 @@ const authSlice = createSlice({
       state.numPoints -= action.payload;
       if (state.numPoints < 0) state.numPoints = 0; // evitar negativos
     },
+    setAvatar(state, action: PayloadAction<string>) {
+      state.avatar = action.payload;
+    },
   },
 });
 
-export const { setUser, clearUser, setLoading, addPoints,setPoints,subtractPoints  } = authSlice.actions;
+export const { setUser, clearUser, setLoading, addPoints,setPoints,subtractPoints, setAvatar  } = authSlice.actions;
 export default authSlice.reducer;
