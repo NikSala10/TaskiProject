@@ -59,10 +59,10 @@ const Tasks = () => {
         </div>
       </div>
       <div className="respon-tit-tasks">
-        <h3 className={tit-res-ts ${activeTab === "my" ? "active" : ""}} onClick={() => setActiveTab("my")}>
+        <h3 className={`tit-res-ts ${activeTab === "my" ? "active" : ""}`} onClick={() => setActiveTab("my")}>
           My Tasks
         </h3>
-        <h3 className={tit-res-ts ${activeTab === "additional" ? "active" : ""}} onClick={() => setActiveTab("additional")}>
+        <h3 className={`tit-res-ts ${activeTab === "additional" ? "active" : ""}`} onClick={() => setActiveTab("additional")}>
           Additional Tasks
         </h3>
       </div>

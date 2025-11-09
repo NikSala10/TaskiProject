@@ -59,7 +59,7 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
 
   // Función para redirigir a editar tarea
   const handleEditTask = () => {
-    navigate(/edit-task/${task.id});
+    navigate(`/edit-task/${task.id}`);
   };
 
   const handleAcceptTask = async () => {
@@ -125,13 +125,13 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
       );
     } else {
       return (
-        <button className={complete-btn ${isCompleted ? "completed" : ""}} onClick={handleToggleComplete}>{isCompleted ? "✓" : ""}</button>
+        <button className={`complete-btn ${isCompleted ? "completed" : ""}`} onClick={handleToggleComplete}>{isCompleted ? "✓" : ""}</button>
       );
     }
   };
   
   return (
-    <div className={task-item ${isCompleted ? "completed" : ""}}>
+    <div className={`task-item ${isCompleted ? "completed" : ""}`}>
       <div className="actions-tasks-edi-elim">
         <h3>{task.title}</h3>
         {task.creatorId === userID && (  

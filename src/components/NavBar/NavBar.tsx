@@ -97,7 +97,7 @@ const memberAvatars = useMemo(() => {
               </svg>
           </div>
         </div>
-        <div className={items-bar ${menuOpen ? "open" : ""}}>
+        <div className={`items-bar ${menuOpen ? "open" : ""}`}>
           {items.map((item, index) => (
             <ItemsBar
               key={index}
