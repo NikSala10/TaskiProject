@@ -15,7 +15,7 @@ const NavBar = ({ items }: NavBarProps) => {
 interface MemberType {
   id: string;
   username: string;
-  avatar: string;
+  avatar?: string;
   role?: string;
 }
 
@@ -41,7 +41,7 @@ const memberAvatars = useMemo(() => {
       members.slice(0, 3).forEach(m => {
         if (!allMembersMap[m.id]) { // solo agregamos si no existe
           allMembersMap[m.id] = {
-            avatar: m.avatar,
+            avatar: m.avatar || "",
             name: m.username,
             color: "#82C2F6",
           };
@@ -97,7 +97,7 @@ const memberAvatars = useMemo(() => {
               </svg>
           </div>
         </div>
-        <div className={`items-bar ${menuOpen ? "open" : ""}`}>
+        <div className={items-bar ${menuOpen ? "open" : ""}}>
           {items.map((item, index) => (
             <ItemsBar
               key={index}
