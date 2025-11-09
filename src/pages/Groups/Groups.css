@@ -107,7 +107,9 @@
   color: #2B438D;
   margin-top: -1.7rem;
 }
-
+.invite-code-cr-gp{
+  display: none;
+}
 @media (max-width: 900px) {
   .btns {
     display: flex;
@@ -132,7 +134,6 @@
   }
   .responsive-card-admi{
     display: block;
-    display: flex;
     align-items: center;
     gap: 15px;
   }
