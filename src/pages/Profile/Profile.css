@@ -189,7 +189,42 @@
 .tit-prf-md{
     color:#C090F0 ;
 }
+.content-chng-pss {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  align-items: flex-start; /* contenido alineado a la izquierda */
+  
+  max-width: 290px; /* ancho para que pueda centrarse */
+  margin: 0 auto; /* centra el bloque en la pantalla */
+}
 
+.input-label-chang-pss {
+  font-weight: 600;
+  color: #2B438D; 
+  font-size: 18px;
+  margin-bottom: -0.5rem;
+}
+
+.input-field-chn-pss {
+  border: 1.5px solid #2B438D;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  padding: 0.6rem;
+  width: 280px;
+  font-size: 17px;
+  font-weight: 300;
+  color: #2B438D;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 0.8rem center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+}
 @media (max-width: 900px) {
     .container-profile{
         position: absolute;
