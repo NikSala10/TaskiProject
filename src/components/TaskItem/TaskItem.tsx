@@ -5,7 +5,7 @@ import { deleteDoc, doc, getDoc, increment, setDoc, updateDoc } from "firebase/f
 import { deleteTask, setTasks } from "../../redux/slices/tasksSlice";
 import { db } from "../../services/firebaseConfig";
 import type { RootState } from "../../redux/store";
-import { addPoints } from "../../redux/slices/authSlice";
+import { setPoints } from "../../redux/slices/authSlice";
 import { useNavigate } from "react-router";
 
 const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
@@ -22,30 +22,35 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
     const newStatus = !isCompleted;
     setIsCompleted(newStatus);
 
-    // Actualizar estado de la tarea en Firestore
     const taskRef = doc(db, "tasks", task.id);
     await updateDoc(taskRef, { status: newStatus ? "completed" : "pending" });
 
-    // Si la tarea se completa, sumar puntos al usuario
     const userRef = doc(db, "users", userID);
     const userSnap = await getDoc(userRef);
+
     if (!userSnap.exists()) {
       await setDoc(userRef, { username: userName, numPoints: 0 });
     }
 
-  // Actualizar puntos en Firestore
-  await updateDoc(userRef, { numPoints: increment(newStatus ? task.points : -task.points) });
+    // ✅ Actualizar puntos correctamente en Firestore
+    await updateDoc(userRef, {
+      numPoints: increment(newStatus ? task.points : -task.points)
+    });
 
-    // Actualizar Redux localmente
+    // ✅ Leer el valor actualizado REAL desde Firestore
+    const updatedUserSnap = await getDoc(userRef);
+    const updatedPoints = updatedUserSnap.data()?.numPoints ?? 0;
+
+    // ✅ Actualizar Redux con el valor REAL del servidor
+    dispatch(setPoints(updatedPoints));
+
+    // ✅ Actualizar tareas en pantalla
     const updatedTasks: Task[] = tasks.map((t) =>
       t.id === task.id ? { ...t, status: newStatus ? "completed" : "pending" } : t
     );
     dispatch(setTasks(updatedTasks));
-    dispatch(setTasks(updatedTasks));
-
-  // Actualizar Redux: puntos
-  dispatch(addPoints(newStatus ? task.points : -task.points));
   };
+
 
   // Función para eliminar tarea
   const handleDeleteTask = async () => {
