@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface Member {
+export interface Member {
   id: string;
   avatar?: string;
   username: string;
@@ -61,8 +61,21 @@ const groupSlice = createSlice({
         group.members.push(action.payload.member);
       }
     },
+     updateGroup: (
+      state,
+      action: PayloadAction<{ id: string; members: Member[] }>
+    ) => {
+      const { id, members } = action.payload;
+      const group = state.groups.find((g) => g.id === id);
+      if (group) group.members = members;
+
+      if (state.currentGroup && state.currentGroup.id === id) {
+        state.currentGroup.members = members;
+      }
+    },
   },
 });
 
-export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup, deleteGroup } = groupSlice.actions;
+
+export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup, deleteGroup, updateGroup } = groupSlice.actions;
 export default groupSlice.reducer;

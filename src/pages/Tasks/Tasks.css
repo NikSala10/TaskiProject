@@ -174,7 +174,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 .respon-tit-tasks{
   display: none;
@@ -186,6 +185,9 @@
   display: none;
 }
 .btn-create-task-respon{
+  display: none;
+}
+.btn-created-task-respon{
   display: none;
 }
 @media (max-width: 900px) {
@@ -289,6 +291,31 @@
   }
 
   .btn-create-task-respon:hover {
+    background-color: #4CABF8;
+    transform: scale(1.1);
+  }
+  .btn-created-task-respon {
+    display: block;
+    position: fixed;
+    right: 2rem; 
+    bottom: 7rem;
+    width: 60px;
+    height: 60px;
+    background-color: #82C2F6; 
+    color: white; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn-created-task-respon:hover {
     background-color: #4CABF8;
     transform: scale(1.1);
   }

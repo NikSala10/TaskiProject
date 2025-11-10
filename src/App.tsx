@@ -21,6 +21,7 @@ import { auth, db } from "./services/firebaseConfig";
 import { ProtectedRoutes } from "./components/ProtectedRoutes/protectedRoutes";
 import { doc, getDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
+import EditTask from "./pages/EditTask/EditTask";
 
 
 // 👉 Layout que envuelve las páginas que SÍ llevan NavBar y Header
@@ -113,6 +114,16 @@ function App() {
             <ProtectedRoutes>
             <Layout>
               <CreateTask />
+            </Layout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/edit-task/:id/"
+          element={
+            <ProtectedRoutes>
+            <Layout>
+              <EditTask />
             </Layout>
             </ProtectedRoutes>
           }

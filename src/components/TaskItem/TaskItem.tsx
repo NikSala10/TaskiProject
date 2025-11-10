@@ -1,14 +1,16 @@
 import { useState } from "react";
 import type { Task, TaskItemProps } from "../../types/TasksType";
 import { useDispatch, useSelector } from "react-redux";
-import { doc, getDoc, increment, setDoc, updateDoc } from "firebase/firestore";
-import { setTasks } from "../../redux/slices/tasksSlice";
+import { deleteDoc, doc, getDoc, increment, setDoc, updateDoc } from "firebase/firestore";
+import { deleteTask, setTasks } from "../../redux/slices/tasksSlice";
 import { db } from "../../services/firebaseConfig";
 import type { RootState } from "../../redux/store";
 import { addPoints } from "../../redux/slices/authSlice";
+import { useNavigate } from "react-router";
 
 const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const tasks = useSelector((state: RootState) => state.tasks.tasks); 
   const userID = useSelector((state: RootState) => state.auth.userID);
   const userName = useSelector((state: RootState) => state.auth.username);
@@ -43,6 +45,21 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
 
   // Actualizar Redux: puntos
   dispatch(addPoints(newStatus ? task.points : -task.points));
+  };
+
+  // Función para eliminar tarea
+  const handleDeleteTask = async () => {
+    if (!confirm("Are you sure you want to delete this task?")) return;
+
+    const taskRef = doc(db, "tasks", task.id);
+    await deleteDoc(taskRef); // ✅ Borra de Firebase
+
+    dispatch(deleteTask(task.id)); // ✅ Borra de Redux
+  };
+
+  // Función para redirigir a editar tarea
+  const handleEditTask = () => {
+    navigate(`/edit-task/${task.id}`);
   };
 
   const handleAcceptTask = async () => {
@@ -119,12 +136,12 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
         <h3>{task.title}</h3>
         {task.creatorId === userID && (  
           <div className="sub-colum-actions">
-            <div className="eliminar-task">
+            <div className="eliminar-task" onClick={handleDeleteTask} style={{cursor: "pointer"}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="#5b5b5b77" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2zM18 4h-2.5l-.71-.71c-.18-.18-.44-.29-.7-.29H9.91c-.26 0-.52.11-.7.29L8.5 4H6c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1"/>
               </svg>
             </div>
-            <div className="edit-task">
+            <div className="edit-task" onClick={handleEditTask} style={{cursor: "pointer"}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path fill="#ffffffc3" d="M18.925 3.137a3.027 3.027 0 0 0-4.283.001l-9.507 9.52a3.03 3.03 0 0 0-.885 2.139V18c0 .414.336.75.75.75h3.223c.803 0 1.573-.32 2.14-.887l9.5-9.506a3.03 3.03 0 0 0 0-4.28zM4 20.25a.75.75 0 0 0 0 1.5h16a.75.75 0 0 0 0-1.5z"/>
               </svg>

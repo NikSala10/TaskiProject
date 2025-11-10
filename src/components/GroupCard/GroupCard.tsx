@@ -4,9 +4,11 @@ import type { GroupCardType } from "../../types/GroupCardType";
 import AvatarWithName from "../AvatarWithName/AvatarWithName";
 import Button from "../Button/Button";
 import type { RootState } from "../../redux/store";
+import { useLeaveGroup } from "../../hook/useLeaveGroup";
 
 const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = false }: GroupCardType) => {
   const { removeGroup } = useDeleteGroup();
+  const { leaveGroup } = useLeaveGroup();
   const currentUserID = useSelector((state: RootState) => state.auth.userID);
 
   return (
@@ -14,14 +16,22 @@ const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = 
       <h3 className="group-name">{groupName}</h3>
       <div className="responsive-card-btn-name">
         <h3>{groupName}</h3>
-        {!showRanking && ownerID === currentUserID && (
-        <Button
-          text="Remove"
-          color="#FF935A"
-          width="150px"
-          onClick={() => id && removeGroup(id)}
-        />
+        {!showRanking && ownerID === currentUserID ? (
+          <Button
+            text="Remove"
+            color="#FF5A5A"
+            width="150px"
+            onClick={() => id && removeGroup(id)}
+          />
+        ) : (
+          <Button
+            text="Leave"
+            color="#FF935A"
+            width="150px"
+            onClick={() => id && leaveGroup(id)}
+          />
         )}
+
       </div>
       <div className="responsive-card-admi">
         {(() => {
@@ -33,6 +43,7 @@ const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = 
               <div className="responsive-info-admi">
                 <h3>{admin.username}</h3>
                 <h3 className="rol-res">{admin.role}</h3>
+                <h3 className="rol-res">Invite code:{inviteCode}</h3>
               </div>
             </>
           );
@@ -72,7 +83,21 @@ const GroupCard = ({ id, ownerID, groupName, inviteCode, members, showRanking = 
           </div>
         ))}
       </div>
-      {!showRanking && ownerID === currentUserID && <Button text="Remove" color="#FF935A" width="150px"  onClick={() => removeGroup(id)}/> }
+      {!showRanking && ownerID === currentUserID ? (
+          <Button
+            text="Remove"
+            color="#FF5A5A"
+            width="150px"
+            onClick={() => id && removeGroup(id)}
+          />
+        ) : (
+          <Button
+            text="Leave"
+            color="#FF935A"
+            width="150px"
+            onClick={() => id && leaveGroup(id)}
+          />
+        )}
     </div>
   );
 };
