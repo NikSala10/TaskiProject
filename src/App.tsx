@@ -55,6 +55,7 @@ function App() {
               uid: user.uid,
               username: userData.username || "",
               avatar: userData.avatar || "",
+              numPoints: userData.numPoints || 0,
             })
           );
         } else {
@@ -63,6 +64,7 @@ function App() {
               uid: user.uid,
               username: user.displayName || "",
               avatar: "",
+              numPoints: 0,
             })
           );
         }
