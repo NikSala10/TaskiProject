@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { PeriodType, CardProps } from "../../types/PlanReviewType";
 import { PERIOD_LABELS } from "../../types/PlanReviewType";
 import {
@@ -15,8 +15,11 @@ import {
 import "./Card.css";
 import Button from "../Button/Button";
 import EditIcon from "../../assets/Vector.png";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebaseConfig";
+import { useNavigate } from "react-router";
+import type { RootState } from "../../redux/store";
+import { updateGroupStartDate } from "../../redux/slices/groupsSlice";
 
 const Card = ({
   groupId,
@@ -25,10 +28,31 @@ const Card = ({
   initialPeriod = "1year",
 }: CardProps) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [activePeriod, setActivePeriod] = useState<PeriodType>(initialPeriod);
   const [isEditingBudget, setIsEditingBudget] = useState(false);
   const [budgetValue, setBudgetValue] = useState(budget.toString());
   const [isLoading, setIsLoading] = useState(false);
+  const startDate = useSelector((state: RootState) =>
+    state.group.groups.find((g) => g.id === groupId)?.startDate
+  );
+  const formattedStartDate = startDate
+  ? new Date(startDate).toLocaleDateString()
+  : "No start date";
+
+  const canResetPeriod = () => {
+    if (!startDate) return false;
+
+    const start = new Date(startDate);
+    const today = new Date();
+
+    // Para comparar solo la fecha, sin horas
+    start.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
+    // Solo se puede resetear si start es un día ANTERIOR al de hoy
+    return start < today;
+  };
 
   const [isEditingName, setIsEditingName] = useState(false);
   const [nameValue, setNameValue] = useState(familyName);
@@ -96,31 +120,38 @@ const Card = ({
   };
 
   const handleResetPeriod = async () => {
-    if (isLoading) return; // Prevenir clicks mientras carga
-    
-    if (
-      !window.confirm(
-        "¿Estás seguro de que quieres resetear el período? Esto reiniciará la fecha de inicio."
-      )
-    ) {
-      return;
-    }
+  if (isLoading) return;
 
-    try {
-      setIsLoading(true);
-      await resetGroupPeriod(groupId);
-      alert("Período reseteado exitosamente");
-    } catch (error) {
-      console.error("Error resetting period:", error);
-      alert("Error al resetear el período");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  if (!window.confirm("Are you sure you want to reset the period? This will reset the start date.")) {
+    return;
+  }
+
+  try {
+    setIsLoading(true);
+
+    // 1. Resetea en Firestore
+    await resetGroupPeriod(groupId);
+
+    // 2. Obtiene nueva fecha desde Firestore
+    const groupRef = doc(db, "groups", groupId);
+    const updatedDoc = await getDoc(groupRef);
+    const newStartDate = updatedDoc.data()?.startDate;
+
+    // 3. Actualiza Redux para re-renderizar UI
+    dispatch(updateGroupStartDate({ groupId, startDate: newStartDate }));
+
+    alert("Period successfully reset.");
+  } catch (error) {
+    console.error("Error resetting period:", error);
+    alert("Error resetting period.");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   const handleContinuePlan = () => {
     if (isLoading) return; // Prevenir clicks mientras carga
-    console.log("Continuar plan para grupo:", groupId);
+    navigate("/tasks");
   };
 
    const handleSaveName = async () => {
@@ -182,6 +213,7 @@ const Card = ({
           </button>
         ))}
       </div>
+      <p className="period-text"><b>Start Date:</b>{formattedStartDate}</p>
 
       <div className="budget-section">
         <label className="budget-label">Budget</label>
@@ -233,7 +265,6 @@ const Card = ({
           )}
         </div>
       </div>
-
       <div className="actions-section">
         <Button
           text="Continue Plan"
@@ -242,10 +273,11 @@ const Card = ({
           onClick={handleContinuePlan}
         />
         <Button
-          text="Reset Period"
-          color="#FF935A"
+          text={canResetPeriod() ? "Reset Period" : "No Reset"}
+          color={canResetPeriod() ? "#FF935A" : "#C4C4C4"} // gris si no se puede
           width="180px"
-          onClick={handleResetPeriod}
+          onClick={canResetPeriod() ? handleResetPeriod : undefined}
+          disabled={!canResetPeriod() || isLoading}
         />
       </div>
     </div>

@@ -61,8 +61,13 @@ const groupSlice = createSlice({
         group.members.push(action.payload.member);
       }
     },
+    updateGroupStartDate(state, action) {
+      const { groupId, startDate } = action.payload;
+      const group = state.groups.find(g => g.id === groupId);
+      if (group) group.startDate = startDate;
+    }
   },
 });
 
-export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup, deleteGroup } = groupSlice.actions;
+export const { addGroup, setGroups, setCurrentGroup, setLoading, addMemberToGroup, deleteGroup, updateGroupStartDate} = groupSlice.actions;
 export default groupSlice.reducer;

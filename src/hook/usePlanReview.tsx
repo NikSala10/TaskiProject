@@ -44,14 +44,12 @@ export const usePlanReview = () => {
       );
 
       // Filtrar solo grupos donde el usuario es owner o miembro
-      const userGroups = groupsData.filter(
-        (group) =>
-          group.ownerID === userID ||
-          group.members.some((m) => m.id === userID)
-      );
+     const userGroups = groupsData.filter(
+      (group) => group.ownerID === userID
+    );
 
-      dispatch(setPlanReviewGroups(userGroups));
-      dispatch(setPlanReviewLoading(false));
+    dispatch(setPlanReviewGroups(userGroups));
+    dispatch(setPlanReviewLoading(false));
     });
 
 
