@@ -22,7 +22,7 @@ export const useTasks = () => {
         };
       });
 
-      dispatch(setTasks(allTasks)); // ✅ Enviar TODAS las tareas al redux
+      dispatch(setTasks(allTasks)); //  Enviar TODAS las tareas al redux
     });
 
     return () => unsubscribe();
