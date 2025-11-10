@@ -4,7 +4,11 @@
   gap: 0.1rem;         
   justify-content: flex-start;
 }
-
+.cards-plan-review{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
 
 /* Responsive para tablets y móviles */
 @media (max-width: 900px) {
