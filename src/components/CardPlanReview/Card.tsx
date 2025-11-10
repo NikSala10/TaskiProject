@@ -5,6 +5,7 @@ import { PERIOD_LABELS } from "../../types/PlanReviewType";
 import {
   updatePlanReviewGroupPeriod,
   updatePlanReviewGroupBudget,
+  updatePlanReviewGroupName,
 } from "../../redux/slices/planReviewSlice";
 import {
   updateGroupPeriod,
@@ -14,6 +15,8 @@ import {
 import "./Card.css";
 import Button from "../Button/Button";
 import EditIcon from "../../assets/Vector.png";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../services/firebaseConfig";
 
 const Card = ({
   groupId,
@@ -27,6 +30,9 @@ const Card = ({
   const [budgetValue, setBudgetValue] = useState(budget.toString());
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [nameValue, setNameValue] = useState(familyName);
+
   const periods: PeriodType[] = ["1month", "6months", "1year"];
 
   const handlePeriodClick = async (period: PeriodType) => {
@@ -35,6 +41,7 @@ const Card = ({
     try {
       setIsLoading(true);
       await updateGroupPeriod(groupId, period);
+      alert("The period was successfully updated.");
       setActivePeriod(period);
       dispatch(
         updatePlanReviewGroupPeriod({
@@ -116,9 +123,50 @@ const Card = ({
     console.log("Continuar plan para grupo:", groupId);
   };
 
+   const handleSaveName = async () => {
+    if (!nameValue.trim()) return alert("The name cannot be empty.");
+
+    try {
+      setIsLoading(true);
+
+      // 1. Actualizar en Firestore
+      await updateDoc(doc(db, "groups", groupId), {
+        name: nameValue,
+      });
+
+      // 2. Actualizar en Redux
+      dispatch(updatePlanReviewGroupName({ groupId, name: nameValue }));
+
+      setIsEditingName(false);
+    } catch (error) {
+      console.error("Error updating name:", error);
+      alert("Error updating the group name");
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="plan-card">
-      <h2 className="plan-title">{familyName}</h2>
+      <div className="plan-title-container">
+        {isEditingName ? (
+          <>
+            <input
+              className="budget-input"
+              value={nameValue}
+              onChange={(e) => setNameValue(e.target.value)}
+            />
+            <button className="edit-btn save-btn" onClick={handleSaveName} disabled={isLoading}>✓</button>
+            <button className="edit-btn cancel-btn" onClick={() => { setNameValue(familyName); setIsEditingName(false); }}>✕</button>
+          </>
+        ) : (
+          <div className="plan-title-edit-container">
+            <h2 className="plan-title">{familyName}</h2>
+            <button className="edit-btn" onClick={() => setIsEditingName(true)}>
+              <img src={EditIcon} alt="Edit" className="edit-icon" />
+            </button>
+          </div>
+        )}
+      </div>
       <p className="period-text">The current period of this group is:</p>
 
       <div className="period-buttons">

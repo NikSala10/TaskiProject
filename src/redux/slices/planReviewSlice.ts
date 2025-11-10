@@ -56,6 +56,15 @@ const planReviewSlice = createSlice({
         group.planBudget = action.payload.planBudget;
       }
     },
+    updatePlanReviewGroupName(
+      state,
+      action: PayloadAction<{ groupId: string; name: string }>
+    ) {
+      const group = state.groups.find(g => g.id === action.payload.groupId);
+      if (group) {
+        group.name = action.payload.name;
+      }
+    }
   },
 });
 
@@ -64,6 +73,7 @@ export const {
   setPlanReviewLoading,
   updatePlanReviewGroupPeriod,
   updatePlanReviewGroupBudget,
+  updatePlanReviewGroupName
 } = planReviewSlice.actions;
 
 export default planReviewSlice.reducer;

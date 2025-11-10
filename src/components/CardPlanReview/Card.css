@@ -122,3 +122,8 @@
   flex-direction: column;
   gap: 1rem;
 }
+.plan-title-edit-container{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

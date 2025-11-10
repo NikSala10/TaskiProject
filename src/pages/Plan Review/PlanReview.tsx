@@ -31,15 +31,17 @@ const PlanReview = () => {
 
   return (
     <div className="plan-review-container">
-      {groups.map((group) => (
-        <Card
-          key={group.id}
-          groupId={group.id}
-          familyName={group.name}
-          budget={group.planBudget}
-          initialPeriod={group.planDuration as PeriodType}
-        />
-      ))}
+      <div className="cards-plan-review">
+        {groups.map((group) => (
+          <Card
+            key={group.id}
+            groupId={group.id}
+            familyName={group.name}
+            budget={group.planBudget}
+            initialPeriod={group.planDuration as PeriodType}
+          />
+        ))}
+      </div>
     </div>
   );
 };
