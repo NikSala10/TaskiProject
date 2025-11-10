@@ -10,6 +10,9 @@
   max-width: none; 
   margin-bottom: 0;
 }
+.tit-winners-pg{
+  color: #2B438D;
+}
 
 /* Responsive para tablets */
 @media (max-width: 900px) {

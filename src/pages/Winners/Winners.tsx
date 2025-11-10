@@ -21,8 +21,8 @@ const Winners = () => {
   return (
     <>
     <div className="header-group">
-      <h1>The cycle has ended and we reveal the lucky winners</h1>
-      <p>The prize will be divided as follows: 50% for first place, 30% for second place, and 20% for third place.</p>
+      <h1 className="tit-winners-pg">The cycle has ended and we reveal the lucky winners</h1>
+      <p className="tit-winners-pg">The prize will be divided as follows: 50% for first place, 30% for second place, and 20% for third place.</p>
       <div className="winner-icon-container">
         <img src={WinnerIcon} alt="Winner Trophy" className="winner-icon" />
       </div>
