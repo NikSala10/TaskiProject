@@ -1,13 +1,22 @@
 import CardPoint from "../../components/CardPoints/CardPoint";
 import { useSetPageInfo } from "../../hook/UseSetPage";
-import RabitIcon from "../../assets/Conejo.png";
-import ViperIcon from "../../assets/Serpiente.png";
-import WinnerIcon from "../../assets/trophy.png";
 import '../Ranking/Ranking.css';
 import "./Winners.css";
+import WinnerIcon from "../../assets/trophy.png";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
+import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
 
 const Winners = () => {
   useSetPageInfo("");
+  useLoadAllUsers(); 
+  const users = useSelector((state: RootState) => state.users.users);
+
+  // Ordenar por puntos y tomar top 3
+  const topThree = [...users]
+    .filter(user => user.numPoints > 0) // solo usuarios con puntos
+    .sort((a, b) => b.numPoints - a.numPoints)
+    .slice(0, 3);
 
   return (
     <>
@@ -20,13 +29,18 @@ const Winners = () => {
     </div>  
 
     <div className="ranking-page">
-      <CardPoint position={1} name="Squirrel" points={140} icon={ViperIcon}  />
-      <CardPoint position={2} name="Nunu" points={110} icon={RabitIcon} />
-      <CardPoint position={3} name="Viper" points={107} icon={ViperIcon}  />
-    </div>
+        {topThree.map((user, index) => (
+          <CardPoint
+            key={user.uid}
+            position={index + 1}
+            name={user.username}
+            points={user.numPoints}
+            icon={user.avatar || ""}
+          />
+        ))}
+      </div>
     </>
 
   );
 };
-
 export default Winners;

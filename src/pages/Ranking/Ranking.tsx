@@ -1,28 +1,38 @@
 import CardPoint from "../../components/CardPoints/CardPoint";
 import "./Ranking.css";
 import { useSetPageInfo } from "../../hook/UseSetPage";
-import SquirrelIcon from "../../assets/Ardilla.png";
-import BearIcon from "../../assets/Oso.png";
-import ElephantIcon from "../../assets/Elefante.png";
-import RabitIcon from "../../assets/Conejo.png";
-import ViperIcon from "../../assets/Serpiente.png";
-import BunIcon from "../../assets/Mono.png";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../redux/store";
+import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
 
 const RankingPage = () => {
 
   useSetPageInfo("Ranking");
   const navigate = useNavigate();
+  useLoadAllUsers();
 
+  const users = useSelector((state: RootState) => state.users.users);
+  console.log(users);
+  const isLoading = useSelector((state: RootState) => state.users.isLoading);
+
+  // Ordenamos los usuarios por puntos de mayor a menor
+  const sortedUsers = [...users].sort((a, b) => (b.numPoints ?? 0) - (a.numPoints ?? 0));
+
+  if (isLoading) return <p>Loading ranking...</p>;
 
   return (
     <div className="ranking-page">
-      <CardPoint position={1} name="Squirrel" points={140} icon={SquirrelIcon} onClick={() => {navigate('/winner')}}  />
-      <CardPoint position={2} name="Nunu" points={110} icon={RabitIcon} />
-      <CardPoint position={3} name="Viper" points={107} icon={ViperIcon}  />
-      <CardPoint position={4} name="Bear" points={101} icon={BearIcon}  />
-      <CardPoint position={5} name="Elephant" points={98} icon={ElephantIcon}  />
-      <CardPoint position={6} name="Mono" points={91} icon={BunIcon}  />
+      {sortedUsers.map((user, index) => (
+        <CardPoint
+          key={user.uid}
+          position={index + 1} // posición real
+          name={user.username}
+          points={user.numPoints ?? 0}
+          icon={user.avatar} 
+          onClick={index === 0 ? () => navigate("/winner") : undefined}
+        />
+      ))}
     </div>
   );
 };

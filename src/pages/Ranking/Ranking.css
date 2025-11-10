@@ -2,11 +2,11 @@
   display: grid;
   margin: 0 auto;
   grid-template-columns: 20rem 20rem;
-  gap: 2rem;
+  gap: 3.5rem;
 }
 
 .ranking-card {
-  width: 20rem; 
+  width: 22.5rem; 
   max-width: none; 
   margin-bottom: 0;
 }

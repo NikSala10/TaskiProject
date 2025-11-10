@@ -14,11 +14,14 @@ import { updatePassword, reauthenticateWithCredential, EmailAuthProvider } from 
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { setAvatar } from "../../redux/slices/authSlice";
 import { updateGroup, type Member } from "../../redux/slices/groupsSlice";
+import AvatarWithName from "../../components/AvatarWithName/AvatarWithName";
+import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
 
 
 const Profile = () => {
   useSetPageInfo("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useLoadAllUsers();
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,6 +40,16 @@ const Profile = () => {
   const totalPoints = useSelector((state: RootState) => state.auth.numPoints);
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const userTasks = tasks.filter(t => t.assigneeId === userId);
+
+  const users = useSelector((state: RootState) => state.users.users);
+  console.log(users);
+  
+
+// Ordenar de mayor a menor por puntos
+  const topUsers = [...users]
+    .filter(user => user.numPoints > 0) // solo usuarios con puntos
+    .sort((a, b) => b.numPoints - a.numPoints)
+    .slice(0, 3);
 
 // Contamos por estado
   const completedCount = userTasks.filter(t => t.status === "completed").length;
@@ -155,7 +168,7 @@ const handleAvatarChange = async (newAvatar: string) => {
   return (
     <div className="container-profile">
         <div className="log-out-respon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="48" stroke-dashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path strokeDasharray="48" strokeDashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path strokeDasharray="12" strokeDashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path strokeDasharray="6" strokeDashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
           </svg>
         </div>
         <div className="header-profile">
@@ -181,7 +194,7 @@ const handleAvatarChange = async (newAvatar: string) => {
             </div>
         </div>
         <div className="log-out" >
-          <svg onClick={handleCloseSession}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="48" stroke-dashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path stroke-dasharray="12" stroke-dashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
+          <svg onClick={handleCloseSession}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path strokeDasharray="48" strokeDashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path strokeDasharray="12" strokeDashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path strokeDasharray="6" strokeDashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
           </svg>
         </div>
         <div className="tasks-summary">
@@ -215,18 +228,18 @@ const handleAvatarChange = async (newAvatar: string) => {
             <div className="groups-ranking">
               <h2 className="title-list">Ranking</h2>
               <div className="ranking-list">
-                  <div className="ranking-item">
-                      <span className="ranking-number">1</span>
-                      
-                      </div>
-                      <div className="ranking-item">
-                          <span className="ranking-number">2</span>
-                     
-                      </div>
-                      <div className="ranking-item">
-                          <span className="ranking-number">3</span>
-                     
-                  </div>
+                {topUsers.map((user, index) => (
+                <div key={user.uid} className="ranking-item">
+                  <span className="ranking-number">{index + 1}</span>
+                  <AvatarWithName
+                    avatar={user.avatar}
+                    username={user.username}
+                    role={user.role ?? "Member"} // si quieres mostrar rol
+                    numPoints={user.numPoints ?? 0}
+                    showRanking={true}
+                  />
+                </div>
+              ))}
               </div>
 
         </div>
