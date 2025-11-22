@@ -14,7 +14,7 @@ export const useLeaveGroup = () => {
       const groupRef = doc(db, "groups", groupId);
       const groupSnap = await getDoc(groupRef);
 
-      if (!groupSnap.exists()) return;
+      if (!groupSnap.exists()) return; //Verifica si el grupo existe
 
       const data = groupSnap.data();
       const members = data.members as Member[];

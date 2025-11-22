@@ -11,6 +11,7 @@ export const useTasks = () => {
   useEffect(() => {
     const q = query(collection(db, "tasks"));
 
+    // onSnapshot es un listener en tiempo real de Firestore:
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const allTasks: Task[] = snapshot.docs.map((doc) => {
         const data = doc.data() as Omit<Task, "id" | "isAdditional">;

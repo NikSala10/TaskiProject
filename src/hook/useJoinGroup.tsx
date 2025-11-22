@@ -21,20 +21,20 @@ export const useJoinGroup = () => {
     }
 
     try {
-      const q = query(collection(db, "groups"), where("inviteCode", "==", joinCode.trim()));
-      const querySnapshot = await getDocs(q);
+      const q = query(collection(db, "groups"), where("inviteCode", "==", joinCode.trim())); // Qury: Crea la consulta.
+      const querySnapshot = await getDocs(q); // contiene todos los grupos con ese código de invitación.
 
       if (querySnapshot.empty) {
         alert("No group found with that code.");
         return;
       }
 
-      const groupDoc = querySnapshot.docs[0];
+      const groupDoc = querySnapshot.docs[0]; // Toma el primer elemento encontrado
       const groupId = groupDoc.id;
       const groupData = groupDoc.data();
 
       await updateDoc(doc(db, "groups", groupId), {
-        memberIds: arrayUnion(userID),
+        memberIds: arrayUnion(userID), //Agrega elementos a un array solo si no existen ya, evita duplicados.
         members: arrayUnion({
           id: userID,
           username: username,

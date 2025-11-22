@@ -23,6 +23,7 @@ const Groups = () => {
   const groups = useSelector((state: RootState) => state.group.groups);
 
   useEffect(() => {
+    // onAuthStateChanged: función de Firebase Auth que: Escucha cambios en el estado de autenticación del usuario, para saber si está logueado o no.
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user) {
         setLoading(false);

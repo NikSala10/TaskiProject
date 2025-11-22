@@ -32,19 +32,19 @@ const TaskItem = ({ task, setActiveTab }: TaskItemProps) => {
       await setDoc(userRef, { username: userName, numPoints: 0 });
     }
 
-    // ✅ Actualizar puntos correctamente en Firestore
+    //  Actualizar puntos correctamente en Firestore
     await updateDoc(userRef, {
       numPoints: increment(newStatus ? task.points : -task.points)
     });
 
-    // ✅ Leer el valor actualizado REAL desde Firestore
+    //  Leer el valor actualizado REAL desde Firestore
     const updatedUserSnap = await getDoc(userRef);
     const updatedPoints = updatedUserSnap.data()?.numPoints ?? 0;
 
-    // ✅ Actualizar Redux con el valor REAL del servidor
+    //  Actualizar Redux con el valor REAL del servidor
     dispatch(setPoints(updatedPoints));
 
-    // ✅ Actualizar tareas en pantalla
+    // Actualizar tareas en pantalla
     const updatedTasks: Task[] = tasks.map((t) =>
       t.id === task.id ? { ...t, status: newStatus ? "completed" : "pending" } : t
     );
