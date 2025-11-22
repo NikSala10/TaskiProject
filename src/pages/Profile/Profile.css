@@ -85,6 +85,9 @@
 }
 .btn-profile{
     margin-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .btn-cp-profile{
     background-color: #EAEAFA;
@@ -99,6 +102,22 @@
 
 .btn-cp-profile:hover{
     background-color: #2B438D;
+    color: white;
+    transition: 0.3s;
+}
+.btn-confirm-profile{
+    background-color: #f4ac86;
+    color: #f8f8f8;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 13px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-confirm-profile:hover{
+    background-color: #FF935A;
     color: white;
     transition: 0.3s;
 }

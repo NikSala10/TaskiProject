@@ -80,9 +80,9 @@ const Groups = () => {
       />
       <div className="cardsGroups">
          {loading ? (
-          <p>Cargando grupos...</p>
+          <p>Loading groups...</p>
         ) : groups.length === 0 ? (
-          <p>No estás en ningún grupo todavía.</p>
+          <p>You're not in any group yet.</p>
         ) : (
           groups.map((group) => (
             <GroupCard

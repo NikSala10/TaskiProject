@@ -16,6 +16,7 @@ import { setAvatar } from "../../redux/slices/authSlice";
 import { updateGroup, type Member } from "../../redux/slices/groupsSlice";
 import AvatarWithName from "../../components/AvatarWithName/AvatarWithName";
 import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
+import confetti from "canvas-confetti";
 
 
 const Profile = () => {
@@ -41,9 +42,14 @@ const Profile = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
   const userTasks = tasks.filter(t => t.assigneeId === userId);
 
-  const users = useSelector((state: RootState) => state.users.users);
-  console.log(users);
-  
+  const users = useSelector((state: RootState) => state.users.users);  
+
+// Usuario en primer lugar
+const firstPlaceUser = [...users]
+  .sort((a, b) => (b.numPoints ?? 0) - (a.numPoints ?? 0))[0];
+
+// Saber si el usuario logueado es el primero
+const isFirstPlace = firstPlaceUser?.uid === userId;
 
 // Ordenar de mayor a menor por puntos
   const topUsers = [...users]
@@ -131,7 +137,7 @@ const avatarOptions = [
 const updateAvatarInGroups = async (userId: string, newAvatar: string) => {
   const q = query(
     collection(db, "groups"),
-    where("memberIds", "array-contains", userId) // ✅ ahora solo trae grupos donde ese usuario es miembro
+    where("memberIds", "array-contains", userId) 
   );
 
   const snapshot = await getDocs(q);
@@ -159,11 +165,15 @@ const handleAvatarChange = async (newAvatar: string) => {
   await updateDoc(doc(db, "users", userId), { avatar: newAvatar });
   alert("Avatar updated successfully!");
 
-  await updateAvatarInGroups(userId, newAvatar); // ✅ aquí
+  await updateAvatarInGroups(userId, newAvatar);
 };
-
-
-
+const launchConfetti = () => {
+  confetti({
+    particleCount: 200,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+};
 
   return (
     <div className="container-profile">
@@ -191,12 +201,18 @@ const handleAvatarChange = async (newAvatar: string) => {
             
             <div className="btn-profile">
                 <button className="btn-cp-profile" onClick={() => setShowChangePassModal(true)}>Change Password</button>
+                 {isFirstPlace && (
+                    <button className="btn-confirm-profile" onClick={openModal}>
+                      Confirm Payment
+                    </button>
+                  )}
             </div>
         </div>
         <div className="log-out" >
           <svg onClick={handleCloseSession}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#2B438D" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path strokeDasharray="48" strokeDashoffset="48" d="M16 5v-1c0 -0.55 -0.45 -1 -1 -1h-9c-0.55 0 -1 0.45 -1 1v16c0 0.55 0.45 1 1 1h9c0.55 0 1 -0.45 1 -1v-1"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="48;0"/></path><path strokeDasharray="12" strokeDashoffset="12" d="M10 12h11"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="12;0"/></path><path strokeDasharray="6" strokeDashoffset="6" d="M21 12l-3.5 -3.5M21 12l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.9s" dur="0.2s" values="6;0"/></path></g>
           </svg>
         </div>
+
         <div className="tasks-summary">
             <div className=" tasks completed-tasks">
                 <p className="task-num">{completedCount}</p>
@@ -208,14 +224,14 @@ const handleAvatarChange = async (newAvatar: string) => {
             </div>
         </div>
         <div className="subcontainer-profile">
-            <div className="square-points" onClick={openModal}>
+            <div className="square-points" >
                 <div className="trophy-img">
                     <img src={Trophy}/>
                 </div>
                 <p className="num-points">{totalPoints}</p>
                 <p>Points</p>
             </div>
-            <div className="square-points-2" onClick={openModal}>
+            <div className="square-points-2" >
                 <div className="trophy-img-2">
                 <img src={Trophy}/>
                 </div>
@@ -234,7 +250,7 @@ const handleAvatarChange = async (newAvatar: string) => {
                   <AvatarWithName
                     avatar={user.avatar}
                     username={user.username}
-                    role={user.role ?? "Member"} // si quieres mostrar rol
+                    role={user.role ?? "Member"} 
                     numPoints={user.numPoints ?? 0}
                     showRanking={true}
                   />
@@ -249,7 +265,10 @@ const handleAvatarChange = async (newAvatar: string) => {
             <div className="content-modal-pf">
                 <h3 className="tit-prf-md">Congratulations, you have won. <br /> Please confirm if you have <br /> already received your prize. </h3>
                 <img src={confirmTrophy} alt="" />
-                <Button text="Confirm" color="#82C2F6" width="390px"  onClick={closeModal}/>
+                <Button text="Confirm" color="#82C2F6" width="390px"  onClick={() => {
+                  closeModal();
+                  launchConfetti();
+                }}/>
             </div>
         </Modal>
         {showChangePassModal && (
