@@ -1,9 +1,9 @@
-import Trophy from "../../assets/Trophy.svg"
-import "./profile.css";
+import Trophy from "../../../public/assets/Trophy.svg"
+import "./Profile.css";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
-import confirmTrophy from '../../assets/confir-trophy.png'
+import confirmTrophy from '../../../public/assets/confir-trophy.png'
 import Button from "../../components/Button/Button";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConfig";

@@ -14,7 +14,7 @@ import {
 } from "../../services/groupService";
 import "./Card.css";
 import Button from "../Button/Button";
-import EditIcon from "../../assets/Vector.png";
+import EditIcon from "../../../public/assets/Vector.png";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../services/firebaseConfig";
 import { useNavigate } from "react-router";

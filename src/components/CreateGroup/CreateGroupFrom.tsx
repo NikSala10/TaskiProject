@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import "./CreateGroup.css";
-import Portada from "../../assets/Portada.png";
+import Portada from "../../../public/assets/Portada.png";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";

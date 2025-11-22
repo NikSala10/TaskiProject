@@ -4,7 +4,7 @@ import { useSetPageInfo } from "../../hook/UseSetPage";
 import "./Tasks.css";
 import Modal from "../../components/Modal/Modal";
 import { useNavigate } from "react-router";
-import Trophy from '../../assets/Trophy.svg'
+import Trophy from '../../../public/assets/Trophy.svg'
 import type { RootState } from "../../redux/store";
 import { useState } from "react";
 import { useTasks } from "../../hook/useTasks";

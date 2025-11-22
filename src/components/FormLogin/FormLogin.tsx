@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import "./LoginForm.css";
-import Portada from "../../assets/Portada.png";
+import Portada from "../../../public/assets/Portada.png";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../services/firebaseConfig";

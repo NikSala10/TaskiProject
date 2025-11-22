@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import "./SignUpForm.css";
-import Portada from "../../assets/Portada.png";
+import Portada from "../../../public/assets/Portada.png";
 import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../../services/firebaseConfig";

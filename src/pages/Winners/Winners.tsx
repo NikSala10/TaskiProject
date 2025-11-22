@@ -2,7 +2,7 @@ import CardPoint from "../../components/CardPoints/CardPoint";
 import { useSetPageInfo } from "../../hook/UseSetPage";
 import '../Ranking/Ranking.css';
 import "./Winners.css";
-import WinnerIcon from "../../assets/trophy.png";
+import WinnerIcon from "../../../public/assets/trophy.png";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
