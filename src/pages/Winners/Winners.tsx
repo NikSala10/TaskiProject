@@ -6,9 +6,12 @@ import WinnerIcon from "../../../public/assets/trophy.png";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { useLoadAllUsers } from "../../hook/useLoadAllUsers";
+import confetti from "canvas-confetti";
+
 
 const Winners = () => {
   useSetPageInfo("");
+  confetti();
   useLoadAllUsers(); 
   const users = useSelector((state: RootState) => state.users.users);
 
